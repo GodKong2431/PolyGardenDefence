@@ -3,24 +3,59 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
+
+
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance { get; private set; }
     public int life = 100;
     public int gold = 0;
     public int wave = 0;
+    private List<IGameGoldObserver> _gameGoldObservers = new List<IGameGoldObserver>();
+    private List<IGameLifeObserver> _gameLifeObservers = new List<IGameLifeObserver>();
+    private List<IGameWaveObserver> _gameWaveObservers = new List<IGameWaveObserver>();
 
-    void OnEnemyKilled(int bounty) //°ñµå È¹µæ
+    public void AddGoldObserver(IGameGoldObserver Observer)
     {
-        gold += bounty; //ui ³ª¿À¸é Ãß°¡
+        _gameGoldObservers.Add(Observer);
     }
-    void Life(bool sublife)
+
+    public void RemoveGoldObserver(IGameGoldObserver Observer)
+    {
+        _gameLifeObservers.Remove(Observer);
+    }
+    public void AddLifeObserver(IGameLifeObserver Observer)
+    {
+        _gameLifeObservers.Add(Observer);
+    }
+
+    public void RemoveLifeObserver(IGameLifeObserver Observer)
+    {
+        _gameGoldObservers.Remove(Observer);
+    }
+    public void AddWaveObserver(IGameWaveObserver Observer)
+    {
+        _gameWaveObservers.Add(Observer);
+    }
+
+    public void RemoveWaveObserver(IGameWaveObserver Observer)
+    {
+        _gameWaveObservers.Remove(Observer);
+    }
+
+    public void OnEnemyKilled(int bounty) //°ñµå È¹µæ
+    {
+        gold += bounty;
+        //ui¿¡¼­ Ãâ·Â
+    }
+    public void Life(bool sublife)
     {
         if(sublife == true)
         {
             if(life > 0)
             {
                 life--;
-                //uiÇ¥½Ã
+                //ui¿¡¼­ Ãâ·Â
             }
             else
             {
@@ -29,18 +64,25 @@ public class GameManager : MonoBehaviour
             
         }
     }
-    void Wave()
+    public void Wave()
     {
-        wave++;
+        if (wave == 20)
+        {
+            Ending();
+        }
+        else
+        {
+            wave++;
+        }
     }
 
-    void GameOver(bool Die)
+    public void GameOver(bool Die)
     {
         //ui Ãâ·Â
     }
-    void Ending() 
+    public void Ending() 
     {
-
+        
     }
     void Start()
     {
