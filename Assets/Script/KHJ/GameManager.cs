@@ -5,49 +5,47 @@ using UnityEngine;
 
 
 
-public class GameManager : MonoBehaviour
+public class GameManager : SingleTon<GameManager>
 {
-    public static GameManager Instance { get; private set; }
     public int life = 100;
     public int gold = 0;
     public int wave = 0;
-    //private List<IGameGoldObserver> _gameGoldObservers = new List<IGameGoldObserver>();
-    //private List<IGameLifeObserver> _gameLifeObservers = new List<IGameLifeObserver>();
-    //private List<IGameWaveObserver> _gameWaveObservers = new List<IGameWaveObserver>();
 
-    //public void AddGoldObserver(IGameGoldObserver Observer) //ÀÌ°Å ÀÓ½Ã·Î ¸¸µë ÇÕÄ¥¼öµµ ÀÖÀ½
-    //{
-    //    _gameGoldObservers.Add(Observer);
-    //}
 
-    //public void RemoveGoldObserver(IGameGoldObserver Observer)
-    //{
-    //    _gameGoldObservers.Remove(Observer);
-    //}
-    //public void AddLifeObserver(IGameLifeObserver Observer)
-    //{
-    //    _gameLifeObservers.Add(Observer);
-    //}
 
-    //public void RemoveLifeObserver(IGameLifeObserver Observer)
-    //{
-    //    _gameLifeObservers.Remove(Observer);
-    //}
-    //public void AddWaveObserver(IGameWaveObserver Observer)
-    //{
-    //    _gameWaveObservers.Add(Observer);
-    //}
+    #region Observer LisnerList
+    private Notify<IGameGoldObserver> _gameGoldObserver = new Notify<IGameGoldObserver>();
+    public Notify<IGameGoldObserver> GameGoldObserver
+    {
+        get { return _gameGoldObserver; }
+        set { _gameGoldObserver = value; }
+    }
 
-    //public void RemoveWaveObserver(IGameWaveObserver Observer)
-    //{
-    //    _gameWaveObservers.Remove(Observer);
-    //}
+
+    private Notify<IGameLifeObserver> _gameLifeObservers = new Notify<IGameLifeObserver>();
+    public Notify<IGameLifeObserver> GameLifeObservers
+    {
+        get { return _gameLifeObservers; }
+        set { _gameLifeObservers = value; }
+    }
+
+
+    private Notify<IGameWaveObserver> _gameWaveObservers = new Notify<IGameWaveObserver>();
+    public Notify<IGameWaveObserver> GameWaveObservers
+    {
+        get { return _gameWaveObservers; }
+        set { _gameWaveObservers = value; }
+    }
+    #endregion
+
+
 
 
     public void OnEnemyKilled(int bounty) //°ñµå È¹µæ
     {
         AddGold(bounty);
     }
+
     public void AddGold(int add) //OnEnemyKilled ¶û ÇÕÄ¥±î »ý°¢Áß
     {
         gold += add;
@@ -90,13 +88,4 @@ public class GameManager : MonoBehaviour
     {
         
     }
-    void Start()
-    {
-        
-    }
-    void Update()
-    {
-       
-    }
-    
 }
