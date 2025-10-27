@@ -2,57 +2,50 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletManager : MonoBehaviour
+public class BulletManager : SingleTon<BulletManager>
 {
-    List<Bullet> _bulletPool;
+    List<BulletBase> _bulletPool = new List<BulletBase>();
     [SerializeField] GameObject _arrow;
     [SerializeField] GameObject _ball;
     [SerializeField] GameObject _stone;
     [SerializeField] GameObject _missile;
 
-    private void Awake()//불릿풀 뉴 할당.
-    {
-        _bulletPool = new List<Bullet>();
-    }
-
     public GameObject MakeBullet(BulletType type)//불릿 만드는 매서드.
     {
-        bool isAlive = false;
-
-        for (int i = 0; i < _bulletPool.Count; i++) //타입 맞는 불릿 존재하면 활성화.
+        //불릿 풀에서 타입 맞는 불릿 찾아서 활성화.
+        foreach(BulletBase bullet in _bulletPool)
         {
-            if (_bulletPool[i]._type == type && _bulletPool[i].gameObject.activeSelf == false)
+            if(bullet._type == type && bullet.gameObject.activeSelf == false)
             {
-                _bulletPool[i].gameObject.SetActive(true);
-                isAlive = true;
-                return _bulletPool[i].gameObject;
+                bullet.gameObject.SetActive(true);
+                return bullet.gameObject;
             }
-        }
-        if (isAlive == false) //없다면 새로 생성해서 등록.
+        }        
+        //없다면 새로 생성해서 등록.
         {
+            GameObject bullet = null;
             switch (type)
             {
                 case BulletType.Arrow:
-                    _bulletPool.Add(Instantiate(_arrow).GetComponent<Bullet>());
-                    return _bulletPool[_bulletPool.Count-1].gameObject;                    
-                case BulletType.Ball:
-                    _bulletPool.Add(Instantiate(_ball).GetComponent<Bullet>());
-                    return _bulletPool[_bulletPool.Count - 1].gameObject;
-                case BulletType.Stone:
-                    _bulletPool.Add(Instantiate(_stone).GetComponent<Bullet>());
-                    return _bulletPool[_bulletPool.Count - 1].gameObject;
+                    bullet = _arrow;
+                    break;
+                case BulletType.CannonBall:
+                    bullet = _ball;
+                    break;
+                case BulletType.Boulder:
+                    bullet= _stone;
+                    break;
                 case BulletType.Missile:
-                    _bulletPool.Add(Instantiate(_missile).GetComponent<Bullet>());
-                    return _bulletPool[_bulletPool.Count - 1].gameObject;
+                    bullet=_missile;
+                    break;
                 default:
-                    Debug.Log("MakeBullet에서 오류 발생.");
+                    Debug.Log("알 수 없는 불릿 타입."+type);
                     return null;
             }
-        }
-        else
-        {
-            Debug.Log("MakeBullet에서 오류 발생.");
-            return null;
-        }
+            BulletBase newBullet =  Instantiate(bullet).GetComponent<BulletBase>();
+            newBullet._type = type;
+            _bulletPool.Add(newBullet);
+            return newBullet.gameObject;
+        }        
     }
 }
