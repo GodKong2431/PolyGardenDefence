@@ -14,35 +14,33 @@ public class Bullet : MonoBehaviour
     public float _attack { get; set; }
     public float _speed { get; set; }
 
-    Rigidbody _rb;
-
-
-    // Start is called before the first frame update
+    private Rigidbody _rigidBody;       
 
     private void Awake()
     {
-        _rb = GetComponent<Rigidbody>();
+        _rigidBody = GetComponent<Rigidbody>();
     }
 
     private void OnEnable()
     {
-        _rb.velocity = Vector3.zero;
+        ShootBullet();
     }
 
-    void Start()
+    protected virtual void ShootBullet()
     {
-        _rb.velocity = transform.forward * _speed;
+        _rigidBody.velocity = transform.forward * _speed;
     }
-
-    // Update is called once per frame
-    void Update()
+    
+    private void OffBullet()
     {
-
+        gameObject.SetActive(false);
     }
 
-    void OffBullet()
+    private void OnTriggerEnter(Collider other)
     {
-
+        if (other.gameObject.tag == "Enemy")
+        {
+            OffBullet();
+        }
     }
-
 }
