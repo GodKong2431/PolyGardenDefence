@@ -15,14 +15,14 @@ public class GameManager : MonoBehaviour
     private List<IGameLifeObserver> _gameLifeObservers = new List<IGameLifeObserver>();
     private List<IGameWaveObserver> _gameWaveObservers = new List<IGameWaveObserver>();
 
-    public void AddGoldObserver(IGameGoldObserver Observer)
+    public void AddGoldObserver(IGameGoldObserver Observer) //ÀÌ°Å ÀÓ½Ã·Î ¸¸µë ÇÕÄ¥¼öµµ ÀÖÀ½
     {
         _gameGoldObservers.Add(Observer);
     }
 
     public void RemoveGoldObserver(IGameGoldObserver Observer)
     {
-        _gameLifeObservers.Remove(Observer);
+        _gameGoldObservers.Remove(Observer);
     }
     public void AddLifeObserver(IGameLifeObserver Observer)
     {
@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
 
     public void RemoveLifeObserver(IGameLifeObserver Observer)
     {
-        _gameGoldObservers.Remove(Observer);
+        _gameLifeObservers.Remove(Observer);
     }
     public void AddWaveObserver(IGameWaveObserver Observer)
     {
@@ -43,11 +43,17 @@ public class GameManager : MonoBehaviour
         _gameWaveObservers.Remove(Observer);
     }
 
+
     public void OnEnemyKilled(int bounty) //°ñµå È¹µæ
     {
-        gold += bounty;
+        AddGold(bounty);
+    }
+    public void AddGold(int add) //OnEnemyKilled ¶û ÇÕÄ¥±î »ý°¢Áß
+    {
+        gold += add;
         //ui¿¡¼­ Ãâ·Â
     }
+
     public void Life(bool sublife)
     {
         if(sublife == true)

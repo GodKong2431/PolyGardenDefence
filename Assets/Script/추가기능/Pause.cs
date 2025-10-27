@@ -20,9 +20,9 @@ public class Pause : MonoBehaviour
     public void Paused()
     {
         isPaused = !isPaused; //반전
-        if (isPaused) //True면 일시정지 false면 진행
+        if (isPaused) //True면 일시정지 
         { Time.timeScale = 0f; }
-        else
+        else //false면 진행
         { Time.timeScale = 1f; }
     }
 }

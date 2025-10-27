@@ -11,21 +11,21 @@ public class GameLoop : MonoBehaviour
 
         //스폰 포인트에서 스폰
     }
-    public void StartLoop()
-    {
-        if(!loop)
-        {
-            StartCoroutine(Loop());
-        }
-    }
-    private IEnumerator Loop()
-    {
-        loop = true;
-        while(GameManager.Instance.life > 0)
-        {
+    //public void StartLoop()
+    //{
+    //    if (!loop)
+    //    {
+    //        StartCoroutine(Loop());
+    //    }
+    //}
+    //private IEnumerator Loop()
+    //{
+    //    loop = true;
+    //    while (GameManager.Instance.life > 0)
+    //    {
 
-        }
-    }
+    //    }
+    //}
     private void StartWave()
     {
 
