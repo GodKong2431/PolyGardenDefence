@@ -35,16 +35,19 @@ public class BulletManager : MonoBehaviour
                 case BulletType.Arrow:
                     _bulletPool.Add(Instantiate(_arrow).GetComponent<Bullet>());
                     break;
-                case BulletType.Ball:                    
+                case BulletType.Ball:
                     _bulletPool.Add(Instantiate(_ball).GetComponent<Bullet>());
                     break;
-                case BulletType.Stone:                    
+                case BulletType.Stone:
                     _bulletPool.Add(Instantiate(_stone).GetComponent<Bullet>());
                     break;
-                case BulletType.Missile:                    
+                case BulletType.Missile:
                     _bulletPool.Add(Instantiate(_missile).GetComponent<Bullet>());
+                    break;
+                default:
+                    Debug.Log("MakeBullet에서 오류 발생.");
                     break;
             }
         }
-    }    
+    }
 }

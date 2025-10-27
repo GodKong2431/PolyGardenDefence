@@ -25,8 +25,16 @@ public class Bullet : MonoBehaviour
     {
         ShootBullet();
     }
+    protected virtual void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Enemy")
+        {
+            //GiveDamage(other.GetComponent<Enemy>())              
+        }
+        OffBullet();
+    }
 
-    protected virtual void ShootBullet()
+    private void ShootBullet()
     {
         _rigidBody.velocity = transform.forward * _speed;
     }
@@ -34,13 +42,12 @@ public class Bullet : MonoBehaviour
     private void OffBullet()
     {
         gameObject.SetActive(false);
+    }    
+
+    protected void GiveDamage()//인자값 Enemy enemy받기
+    {
+        //enemy.ApplyDamage(_attack);
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Enemy")
-        {
-            OffBullet();
-        }
-    }
+    
 }
