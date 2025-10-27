@@ -7,11 +7,12 @@ public class TestTower : MonoBehaviour
     [SerializeField] BulletManager _bulletManager;
     [SerializeField] BulletType _type;
     WaitForSeconds waitForSeconds;
+    [SerializeField] float delay;
     // Start is called before the first frame update
 
     private void Awake()
     {
-        waitForSeconds = new WaitForSeconds(1);
+        waitForSeconds = new WaitForSeconds(delay);
     }
 
     void Start()
