@@ -7,38 +7,69 @@ using UnityEngine;
 
 public class GameManager : SingleTon<GameManager>
 {
-    public int life = 100;
-    public int gold = 0;
-    public int wave = 0;
+    //Life 관련 필드
+    private int _maxLife = 100;
+    private int _currentLife = 0;
+
+    //Gold 관련 필드
+    private int _gold = 0;
+
+    //Wave 관련 필드
+    private int _currentWave = 0;
+    private int _maxWave = 10;
+    private float _progress = 0;
 
 
 
     #region Observer LisnerList
+    //Gold 옵저버 생성
     private Notify<IGameGoldObserver> _gameGoldObserver = new Notify<IGameGoldObserver>();
+    //Gold 옵저버 프로퍼티
     public Notify<IGameGoldObserver> GameGoldObserver
     {
         get { return _gameGoldObserver; }
-        set { _gameGoldObserver = value; }
+    }
+    //Gold Lisner 실행
+    private void NotifyGoldUpdate()
+    {
+        foreach (IGameGoldObserver goldObserver in _gameGoldObserver.NotifyList)
+        {
+            goldObserver.OnGameGoldChanged(_gold);
+        }
     }
 
-
+    //Life 옵저버 생성
     private Notify<IGameLifeObserver> _gameLifeObservers = new Notify<IGameLifeObserver>();
-    public Notify<IGameLifeObserver> GameLifeObservers
+    //Life 옵저버 프로퍼티
+    public Notify<IGameLifeObserver> GameLifeObserver
     {
         get { return _gameLifeObservers; }
-        set { _gameLifeObservers = value; }
+    }
+    //Life Lisner 실행
+    private void NotifyLifeUpdate()
+    {
+        foreach (IGameLifeObserver lifeObserver in _gameLifeObservers.NotifyList)
+        {
+            lifeObserver.OnGameLifeChanged(_currentLife, _maxLife);
+        }
     }
 
-
+    //Wave 옵저버 생성
     private Notify<IGameWaveObserver> _gameWaveObservers = new Notify<IGameWaveObserver>();
-    public Notify<IGameWaveObserver> GameWaveObservers
+    //Wave 옵저버 프로퍼티
+    public Notify<IGameWaveObserver> GameWaveObserver
     {
         get { return _gameWaveObservers; }
-        set { _gameWaveObservers = value; }
+    }
+    //Wave Lisner 실행
+    private void NotifyWaveUpdate()
+    {
+        foreach (IGameWaveObserver waveObserver in _gameWaveObservers.NotifyList)
+        {
+            waveObserver.OnGameWaveChanged(_currentWave, _progress);
+        }
     }
     #endregion
-
-
 
 
     public void OnEnemyKilled(int bounty) //골드 획득
@@ -48,7 +79,7 @@ public class GameManager : SingleTon<GameManager>
 
     public void AddGold(int add) //OnEnemyKilled 랑 합칠까 생각중
     {
-        gold += add;
+        _gold += add;
         //ui에서 출력
     }
 
@@ -56,9 +87,9 @@ public class GameManager : SingleTon<GameManager>
     {
         if(sublife == true)
         {
-            if(life > 0)
+            if(_currentLife > 0)
             {
-                life--;
+                _currentLife--;
                 //ui에서 출력
             }
             else
@@ -70,13 +101,13 @@ public class GameManager : SingleTon<GameManager>
     }
     public void Wave()
     {
-        if (wave == 20)
+        if (_currentWave <= _maxWave)
         {
             Ending();
         }
         else
         {
-            wave++;
+            _currentWave++;
         }
     }
 
