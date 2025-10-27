@@ -2,33 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CatapultTower : TowerBase
+public class CannonTower : TowerBase
 {
-    [SerializeField] private float criticalChance = 0.2f; //치명타 확률
-    [SerializeField] private float criticalMultiplier = 2.0f; //치명타 배율
-    
-    
+    [SerializeField] private float explosionRadius = 3.0f;
+
     protected override void Awake()
     {
-        damage = 5f;
-        range = 10f;
+        damage = 3f;
         base.Awake();
     }
     protected override void AttackTarget()
     {
-        if(target.Count==0 || Time.time < nextShot)
+        if (target.Count == 0 || Time.time < nextShot)
         {
             return;
         }
-
         nextShot = Time.time + shotDelay;
-
-        float criticalDamage = damage;
-
-        if (Random.value < criticalChance)
-        {
-            criticalDamage *= criticalMultiplier;
-        }
 
         foreach (var bullet in bulletPool)
         {
@@ -38,7 +27,8 @@ public class CatapultTower : TowerBase
 
                 bullet.transform.position = firePoint.position;
                 bullet.transform.rotation = firePoint.rotation;
-                setBulletComponent.SetDamage(criticalDamage);
+                setBulletComponent.SetDamage(damage);
+                //setBulletComponent.SetRadius(explosionRadius);
                 bullet.SetActive(true);
                 return;
             }

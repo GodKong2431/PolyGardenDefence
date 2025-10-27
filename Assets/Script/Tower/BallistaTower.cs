@@ -2,33 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CatapultTower : TowerBase
+public class BallistaTower : TowerBase
 {
-    [SerializeField] private float criticalChance = 0.2f; //치명타 확률
-    [SerializeField] private float criticalMultiplier = 2.0f; //치명타 배율
-    
-    
+    [SerializeField] private int pierceCount = 2; //관통 횟수
+
     protected override void Awake()
     {
+        // 사거리가 길고 관통하는 대신 딜레이도 길게
         damage = 5f;
         range = 10f;
+        shotDelay = 1.5f;
         base.Awake();
     }
+
     protected override void AttackTarget()
     {
-        if(target.Count==0 || Time.time < nextShot)
+        if (target.Count == 0 || Time.time < nextShot)
         {
             return;
         }
-
         nextShot = Time.time + shotDelay;
-
-        float criticalDamage = damage;
-
-        if (Random.value < criticalChance)
-        {
-            criticalDamage *= criticalMultiplier;
-        }
 
         foreach (var bullet in bulletPool)
         {
@@ -38,7 +31,8 @@ public class CatapultTower : TowerBase
 
                 bullet.transform.position = firePoint.position;
                 bullet.transform.rotation = firePoint.rotation;
-                setBulletComponent.SetDamage(criticalDamage);
+                setBulletComponent.SetDamage(damage);
+                //setBulletComponent.SetPiercing(pierceCount);
                 bullet.SetActive(true);
                 return;
             }

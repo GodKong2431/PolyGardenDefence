@@ -81,11 +81,11 @@ public class TowerBase : MonoBehaviour
         {
             if (bullet.activeSelf == false)
             {
-                BE setBulletDamage = bullet.GetComponent<BE>();
+                BE setBulletComponent = bullet.GetComponent<BE>();
 
                 bullet.transform.position = firePoint.position;
                 bullet.transform.rotation = firePoint.rotation;
-                setBulletDamage.SetDamage(damage);
+                setBulletComponent.SetDamage(damage);
                 bullet.SetActive(true);
                 return;
             }
