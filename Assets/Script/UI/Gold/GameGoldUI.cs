@@ -5,11 +5,12 @@ using UnityEngine;
 
 public class GameGoldUI : MonoBehaviour, IGameGoldObserver
 {
-    private TextMeshProUGUI _GoldText;
+    [Header("GoldUI")]
+    [SerializeField]private TextMeshProUGUI _goldText;
     private GameManager gameManager;
     public void OnGameGoldChanged(int Gold)
     {
-        _GoldText.text = 100.ToString();
+        _goldText.text = Gold.ToString() + "G";
     }
 
     private void Start()
