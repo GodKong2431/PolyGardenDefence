@@ -11,37 +11,37 @@ public class GameManager : MonoBehaviour
     public int life = 100;
     public int gold = 0;
     public int wave = 0;
-    private List<IGameGoldObserver> _gameGoldObservers = new List<IGameGoldObserver>();
-    private List<IGameLifeObserver> _gameLifeObservers = new List<IGameLifeObserver>();
-    private List<IGameWaveObserver> _gameWaveObservers = new List<IGameWaveObserver>();
+    //private List<IGameGoldObserver> _gameGoldObservers = new List<IGameGoldObserver>();
+    //private List<IGameLifeObserver> _gameLifeObservers = new List<IGameLifeObserver>();
+    //private List<IGameWaveObserver> _gameWaveObservers = new List<IGameWaveObserver>();
 
-    public void AddGoldObserver(IGameGoldObserver Observer) //¿Ã∞≈ ¿”Ω√∑Œ ∏∏µÎ «’ƒ•ºˆµµ ¿÷¿Ω
-    {
-        _gameGoldObservers.Add(Observer);
-    }
+    //public void AddGoldObserver(IGameGoldObserver Observer) //¿Ã∞≈ ¿”Ω√∑Œ ∏∏µÎ «’ƒ•ºˆµµ ¿÷¿Ω
+    //{
+    //    _gameGoldObservers.Add(Observer);
+    //}
 
-    public void RemoveGoldObserver(IGameGoldObserver Observer)
-    {
-        _gameGoldObservers.Remove(Observer);
-    }
-    public void AddLifeObserver(IGameLifeObserver Observer)
-    {
-        _gameLifeObservers.Add(Observer);
-    }
+    //public void RemoveGoldObserver(IGameGoldObserver Observer)
+    //{
+    //    _gameGoldObservers.Remove(Observer);
+    //}
+    //public void AddLifeObserver(IGameLifeObserver Observer)
+    //{
+    //    _gameLifeObservers.Add(Observer);
+    //}
 
-    public void RemoveLifeObserver(IGameLifeObserver Observer)
-    {
-        _gameLifeObservers.Remove(Observer);
-    }
-    public void AddWaveObserver(IGameWaveObserver Observer)
-    {
-        _gameWaveObservers.Add(Observer);
-    }
+    //public void RemoveLifeObserver(IGameLifeObserver Observer)
+    //{
+    //    _gameLifeObservers.Remove(Observer);
+    //}
+    //public void AddWaveObserver(IGameWaveObserver Observer)
+    //{
+    //    _gameWaveObservers.Add(Observer);
+    //}
 
-    public void RemoveWaveObserver(IGameWaveObserver Observer)
-    {
-        _gameWaveObservers.Remove(Observer);
-    }
+    //public void RemoveWaveObserver(IGameWaveObserver Observer)
+    //{
+    //    _gameWaveObservers.Remove(Observer);
+    //}
 
 
     public void OnEnemyKilled(int bounty) //∞ÒµÂ »πµÊ
