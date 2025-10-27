@@ -4,44 +4,55 @@ using UnityEngine;
 
 public class TowerBase : MonoBehaviour
 {
-    [SerializeField] GameObject bulletPrefab;
-    [SerializeField] private float range;
-    [SerializeField] private Transform firePoint;
-    //private string name;
-    //private float damage; //총알에서 설정하는게 나을듯
-    //private float shotSpeed;//마찬가지
-    private float shotDelay = 0.1f;
-    private float nextShot = 0;
-    private List<Transform> target = new List<Transform>();
+    [SerializeField] protected GameObject bulletPrefab;
+    [SerializeField] protected float range;
+    [SerializeField] protected Transform firePoint;
+    [SerializeField] protected string name = "base tower";
+    [SerializeField] protected float damage = 1f;
+    [SerializeField] protected float shotDelay = 0.5f;
 
-    private SphereCollider sphereCollider;
-    private GameObject[] bulletPool;
-    [SerializeField] private int bulletPoolSize = 15;
+    protected float nextShot = 0;
+    protected List<Transform> target = new List<Transform>();
+
+    protected SphereCollider sphereCollider;
+    protected GameObject[] bulletPool;
+    [SerializeField] protected int bulletPoolSize = 15;
 
 
 
-    private void Awake()
+    protected virtual void Awake()
     {
         sphereCollider = GetComponent<SphereCollider>();
         Init();
         SetRange();
     }
 
-    private void Update()
+    protected void Update()
     {
         SetTarget();
         AttackTarget();
     }
     //공격범위 설정
-    private void SetRange()
+    protected void SetRange()
     {
         if (sphereCollider != null)
         {
             sphereCollider.radius = range;
         }
     }
-    private void SetTarget()
+    protected void SetTarget()
     {
+        for(int i = 0; i < target.Count; i++)
+        {
+            Transform currentTarget = target[i];
+
+            if(currentTarget == null || currentTarget.gameObject.activeSelf==false)
+            {
+                target.RemoveAt(i);
+                i--;
+            }
+        }
+
         if (target.Count > 0)
         {
             Transform firstEnemy = target[0];
@@ -51,14 +62,15 @@ public class TowerBase : MonoBehaviour
                 transform.LookAt(firstEnemy);
             }
         }
-        else
-        {
-            target.RemoveAt(0);
-        }
+       
     }
 
-    public virtual void AttackTarget()
+    protected virtual void AttackTarget()
     {
+        if(target.Count == 0)
+        {
+            return;
+        }
         if (Time.time < nextShot)
         {
             return;
@@ -69,8 +81,11 @@ public class TowerBase : MonoBehaviour
         {
             if (bullet.activeSelf == false)
             {
+                BE setBulletDamage = bullet.GetComponent<BE>();
+
                 bullet.transform.position = firePoint.position;
                 bullet.transform.rotation = firePoint.rotation;
+                setBulletDamage.SetDamage(damage);
                 bullet.SetActive(true);
                 return;
             }
@@ -79,7 +94,7 @@ public class TowerBase : MonoBehaviour
     }
 
     //오브젝트 풀링으로 총알 미리생성, 후에 매니저로 이동
-    private void Init()
+    protected void Init()
     {
         bulletPool = new GameObject[bulletPoolSize];
 
@@ -91,7 +106,7 @@ public class TowerBase : MonoBehaviour
     }
 
     //콜라이더로 들어오는 적 순서대로 리스트에 저장
-    private void OnTriggerEnter(Collider other)
+    protected void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Enemy"))
         {
@@ -104,7 +119,7 @@ public class TowerBase : MonoBehaviour
         }
     }
     //콜라이더 나가는 순서대로 제거
-    private void OnTriggerExit(Collider other)
+    protected void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Enemy"))
         {
