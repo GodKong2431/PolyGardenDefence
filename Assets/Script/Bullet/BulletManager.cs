@@ -15,7 +15,7 @@ public class BulletManager : MonoBehaviour
         _bulletPool = new List<Bullet>();
     }
 
-    public void MakeBullet(BulletType type)//불릿 만드는 매서드.
+    public GameObject MakeBullet(BulletType type)//불릿 만드는 매서드.
     {
         bool isAlive = false;
 
@@ -25,7 +25,7 @@ public class BulletManager : MonoBehaviour
             {
                 _bulletPool[i].gameObject.SetActive(true);
                 isAlive = true;
-                break;
+                return _bulletPool[i].gameObject;
             }
         }
         if (isAlive == false) //없다면 새로 생성해서 등록.
@@ -34,20 +34,25 @@ public class BulletManager : MonoBehaviour
             {
                 case BulletType.Arrow:
                     _bulletPool.Add(Instantiate(_arrow).GetComponent<Bullet>());
-                    break;
+                    return _bulletPool[_bulletPool.Count-1].gameObject;                    
                 case BulletType.Ball:
                     _bulletPool.Add(Instantiate(_ball).GetComponent<Bullet>());
-                    break;
+                    return _bulletPool[_bulletPool.Count - 1].gameObject;
                 case BulletType.Stone:
                     _bulletPool.Add(Instantiate(_stone).GetComponent<Bullet>());
-                    break;
+                    return _bulletPool[_bulletPool.Count - 1].gameObject;
                 case BulletType.Missile:
                     _bulletPool.Add(Instantiate(_missile).GetComponent<Bullet>());
-                    break;
+                    return _bulletPool[_bulletPool.Count - 1].gameObject;
                 default:
                     Debug.Log("MakeBullet에서 오류 발생.");
-                    break;
+                    return null;
             }
+        }
+        else
+        {
+            Debug.Log("MakeBullet에서 오류 발생.");
+            return null;
         }
     }
 }

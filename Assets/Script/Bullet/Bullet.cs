@@ -11,8 +11,9 @@ public enum BulletType
 public class Bullet : MonoBehaviour
 {
     public BulletType _type { get; set; }
-    public float _attack { get; set; }
-    public float _speed { get; set; }
+    [SerializeField] float _attack;
+    [SerializeField] float _speed;
+    [SerializeField] float _deactiveTime;
 
     private Rigidbody _rigidBody;       
 
@@ -23,16 +24,16 @@ public class Bullet : MonoBehaviour
 
     private void OnEnable()
     {
-        ShootBullet();
+        ShootBullet();        
     }
     protected virtual void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Enemy")
         {
             //GiveDamage(other.GetComponent<Enemy>())              
-        }
+        }        
         OffBullet();
-    }
+    }   
 
     private void ShootBullet()
     {
@@ -41,7 +42,8 @@ public class Bullet : MonoBehaviour
     
     private void OffBullet()
     {
-        gameObject.SetActive(false);
+        _rigidBody.velocity = Vector3.zero;
+        gameObject.SetActive(false);        
     }    
 
     protected void GiveDamage()//인자값 Enemy enemy받기
