@@ -8,10 +8,6 @@ public class BallistaTower : TowerBase
 
     protected override void Awake()
     {
-        // 사거리가 길고 관통하는 대신 딜레이도 길게
-        _damage = 5f;
-        _range = 10f;
-        _shotDelay = 1.5f;
         base.Awake();
     }
 
