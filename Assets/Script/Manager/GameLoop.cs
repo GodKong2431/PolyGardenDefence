@@ -2,15 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameLoop : MonoBehaviour
+public class GameLoop : SingleTon<GameLoop>
 {
     private EnemyStatsSO _enemyStats;
     private bool _isloop = false;
-    private void Start()
-    {
-
-        //스폰 포인트에서 스폰
-    }
     public void StartLoop()
     {
         if (!_isloop)
@@ -19,16 +14,19 @@ public class GameLoop : MonoBehaviour
         }
         //버튼 누르면 시작
     }
+
     private IEnumerator Loop()
     {
-        GameManager.Instance.Wave();
+        GameManager.Instance.Wave(); //GameManager 웨이브 작동
         _isloop = true;
         EnemySpawner.Instance.Spawn(_enemyStats, count: 5, pathId: 0, interval: 0.8f);
-
-        yield return null; 
+        //EnemySpawner의 Spawn작동
+        yield return new WaitUntil(IsWave);
+        _isloop = false;
     }
-    private void StartWave()
+    private bool IsWave()
     {
-
+        return EnemyTracker.Instance != null && EnemyTracker.Instance.ActiveEnemyCount == 0;
+        //EnemyTracker가 존재하고 활성 적이 0이면 true 반환
     }
 }

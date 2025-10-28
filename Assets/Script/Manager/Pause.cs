@@ -2,20 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pause : MonoBehaviour
+public class Pause : SingleTon<Pause>
 {
     private bool _isPaused = false;
-    void Start()
-    {
-        
-    }
-
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape)) //Esc 누를시 Paused작동
         {
             Paused();
+            //설정 추가
         }
+
+        //버튼 혹은 단축키
     }
     public void Paused()
     {
