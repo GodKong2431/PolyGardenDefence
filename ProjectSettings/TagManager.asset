@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - Tower
+  - Bullet
+  - NomalTile
+  - TowerPlacementTile
   layers:
   - Default
   - TransparentFX
@@ -16,7 +20,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - InteractionObject
   - 
   - 
   - 
