@@ -51,10 +51,10 @@ public class BulletBase : MonoBehaviour
             GiveDamage(other);
             OffBullet();
         }
-        else if (!other.gameObject.CompareTag("Bullet"))
+        else if (!other.gameObject.CompareTag("Bullet") && !other.gameObject.CompareTag("Tower"))
         {
             OffBullet();
-        }        
+        }
     }
     private void CountTime()
     {
