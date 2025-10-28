@@ -2,57 +2,40 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpawner : SingleTon<EnemySpawner>
+public class EnemySpawner : MonoBehaviour
 {
-    [Header("Prefabs")]
-    [SerializeField] private List<EnemyBase> _enemyPrefabs = new(); // 여러 적 프리팹 등록
-
-    [Header("Matching")]
-    [Tooltip("StatsSO 이름과 프리팹 이름의 부분/정확 일치로 매칭합니다. 필요 시 키를 StatsSO에 추가하세요.")]
+    [Header("Refs")]
+    [SerializeField] private ScenePoolService _pool;   // ★ 인스펙터로 같은 씬의 ScenePoolService 할당
+    [SerializeField] private List<EnemyBase> _enemyPrefabs = new();
     [SerializeField] private bool _usePartialNameMatch = true;
 
-    /// <summary>
-    /// 웨이브 엔트리용 스폰 API
-    /// </summary>
     public void Spawn(EnemyStatsSO stats, int count, int pathId, float interval)
     {
-        if (stats == null)
-        {
-            Debug.LogError("[EnemySpawner] EnemyStatsSO is null");
-            return;
-        }
+        if (stats == null) { Debug.LogError("[EnemySpawner] stats null"); return; }
         StartCoroutine(SpawnRoutine(stats, count, pathId, interval));
     }
 
     private IEnumerator SpawnRoutine(EnemyStatsSO stats, int count, int pathId, float interval)
     {
         var path = MapManager.Instance.GetPath(pathId);
-        if (path == null)
-        {
-            Debug.LogError($"[EnemySpawner] Path not found: {pathId}");
-            yield break;
-        }
+        if (path == null) yield break;
 
         var prefab = FindPrefabFor(stats);
-        if (prefab == null)
-        {
-            Debug.LogError($"[EnemySpawner] No prefab matched for stats: {stats.name}");
-            yield break;
-        }
+        if (prefab == null) yield break;
 
-        // 필요 시 예열 (프리팹별 풀)
-        PoolService.Instance.GetPool(prefab, preload: count);
+        // (선택) 예열
+        _pool.GetPool(prefab, preload: count);
 
         for (int i = 0; i < count; i++)
         {
-            var enemy = PoolService.Instance.Get(prefab);
+            var enemy = _pool.Get(prefab);           // ★ 씬 풀에서 꺼냄(재사용)
             enemy.transform.position = path.Points[0].position;
-            enemy.SetPrefabRef(prefab);        // 풀 반환용 레퍼런스 주입
-            enemy.Init(stats, path);           // 스탯/경로 주입
+            enemy.SetPrefabRef(prefab);
+            enemy.SetPoolService(_pool);             // ★ 반환 대상 풀 지정
+            enemy.Init(stats, path);
             yield return new WaitForSeconds(interval);
         }
     }
-
 
     /// <summary>
     /// StatsSO에 맞는 프리팹을 리스트에서 찾아 반환.

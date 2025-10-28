@@ -139,7 +139,7 @@ public class EnemyMovement : MonoBehaviour
         enabled = true;
 
         if (_anim != null)
-            _anim.SetFloat("Speed", 0f);
+            _anim.SetFloat("Speed", _speed);
     }
 
    

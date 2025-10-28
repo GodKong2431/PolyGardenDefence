@@ -18,8 +18,12 @@ public class EnemyBase : MonoBehaviour, IPoolable//,IDamageable
     [SerializeField] private string _playerTag = "Player";    // 플레이어 감지용 태그
     [SerializeField] private float _attackAnimLead = 0.0f;    // 예시: 모션 선딜(초) (현재 코드에는 없음, 0이면 즉시)
 
-    // 풀 반납용 프리팹 참조(스폰 시 주입)
-    [SerializeField] private EnemyBase _prefabRef;            // Return 시 풀 식별 키로 사용
+    [Header("Pooling")]
+    [SerializeField] private EnemyBase _prefabRef;           // 어느 프리팹 풀인지
+    private ScenePoolService _poolService;                   // 어느 풀 매니저로 돌려보낼지
+
+    public void SetPrefabRef(EnemyBase prefab) => _prefabRef = prefab;
+    public void SetPoolService(ScenePoolService svc) => _poolService = svc;
 
     private float _hp;
     private Transform _target;                                // 공격 대상(플레이어)
@@ -97,7 +101,6 @@ public class EnemyBase : MonoBehaviour, IPoolable//,IDamageable
         }
     }
 
-    public void SetPrefabRef(EnemyBase prefab) => _prefabRef = prefab;
 
     // -------- 피해/사망 --------
     public void ApplyDamage(float amount)
@@ -135,15 +138,14 @@ public class EnemyBase : MonoBehaviour, IPoolable//,IDamageable
     {
         _movement?.Stop();
 
-        if (_prefabRef == null)
+        if (_poolService == null || _prefabRef == null)
         {
-            // 예외 방지: 프리팹 참조가 없으면 파괴로 폴백
-            Debug.LogWarning("[EnemyBase] prefabRef is null. Destroy fallback.");
+            Debug.LogWarning("[EnemyBase] poolService/prefabRef null. Destroy fallback.");
             Destroy(gameObject);
             return;
         }
 
-        PoolService.Instance.Return(this, _prefabRef);
+        _poolService.Return(this, _prefabRef);  // ★ 전역이 아니라 "씬 풀"로 반환
     }
 
     // -------- 공격 감지/처리 --------
@@ -168,7 +170,7 @@ public class EnemyBase : MonoBehaviour, IPoolable//,IDamageable
     {
         if (_target != null && other.transform == _target)
         {
-            StopAttack();
+            StopAttack(true);
             _movement?.Resume(); // 목표 이탈 시 이동 재개
         }
     }
@@ -204,17 +206,21 @@ public class EnemyBase : MonoBehaviour, IPoolable//,IDamageable
             yield return new WaitForSeconds(_stats.attackDelay);
         }
 
-        StopAttack();
+        StopAttack(true);
     }
 
-    private void StopAttack()
+    private void StopAttack(bool resumeMove = false)
     {
         if (_attackCo != null)
         {
             StopCoroutine(_attackCo);
             _attackCo = null;
         }
+
         _target = null;
+
+        if (resumeMove)
+            _movement?.Resume();
     }
 
     // -------- IPoolable --------

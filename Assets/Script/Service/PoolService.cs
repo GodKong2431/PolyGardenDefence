@@ -2,92 +2,53 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// 전역 오브젝트 풀 매니저 (SingleTon 기반)
-/// 사용 예시:
-/// 1. 스폰
-/// var enemy = PoolService.Instance.Get(_enemyPrefab);
-/// enemy.Init(...);
-///
-/// 2. 반납
-/// PoolService.Instance.Return(enemy, _enemyPrefab);
-///
-/// 3. 미리 생성(예열)
-/// PoolService.Instance.GetPool(_enemyPrefab, preload: 10);
-/// </summary>
-public class PoolService : SingleTon<PoolService>
+public class ScenePoolService : MonoBehaviour
 {
-    // 프리팹을 키로 풀 객체를 보관하는 딕셔너리
-    private readonly Dictionary<Component, object> _poolMap = new Dictionary<Component, object>();
+    // 프리팹별 풀
+    private readonly Dictionary<Component, object> _poolMap = new();
 
-    protected override void Awake()
-    {
-        base.Awake();
-    }
-
-    /// <summary>
-    /// 특정 프리팹에 대한 풀을 가져오거나 새로 생성
-    /// </summary>
     public ObjectPool<T> GetPool<T>(T prefab, int preload = 0) where T : Component
     {
-        if (prefab == null)
-        {
-            Debug.LogError("[PoolService] Prefab is null");
-            return null;
-        }
-
-        // 이미 등록된 풀 있으면 반환
+        if (prefab == null) { Debug.LogError("[ScenePoolService] Prefab is null"); return null; }
         if (_poolMap.TryGetValue(prefab, out var poolObj))
-        {
             return (ObjectPool<T>)poolObj;
-        }
 
-        // 새 풀 생성
-        var root = GetOrCreateRoot(typeof(T).Name);
-        var pool = new ObjectPool<T>(prefab, preload, root);
+        // 씬 전용 루트(씬 안에만 존재)
+        var rootGo = new GameObject($"__ScenePool__{typeof(T).Name}");
+        rootGo.transform.SetParent(transform, false); // 씬 안에만 존재
+        var pool = new ObjectPool<T>(prefab, preload, rootGo.transform);
         _poolMap.Add(prefab, pool);
-
         return pool;
     }
 
-    /// <summary>
-    /// 프리팹으로부터 풀에서 오브젝트 꺼내기
-    /// </summary>
     public T Get<T>(T prefab) where T : Component
     {
         var pool = GetPool(prefab);
         return pool != null ? pool.Get() : null;
     }
 
-    /// <summary>
-    /// 사용이 끝난 오브젝트를 풀로 반납
-    /// </summary>
     public void Return<T>(T instance, T prefab) where T : Component
     {
         var pool = GetPool(prefab);
         if (pool == null)
         {
-            Debug.LogWarning("[PoolService] Pool not found. Destroy fallback.");
-            Object.Destroy(instance.gameObject);
+            Debug.LogWarning("[ScenePoolService] Pool not found. Destroy fallback.");
+            if (instance) Destroy(instance.gameObject);
             return;
         }
-
         pool.Return(instance);
     }
 
-    /// <summary>
-    /// 풀 오브젝트 정리용 부모 Transform 확보
-    /// Hierarchy 깔끔하게 정리됨
-    /// </summary>
-    private Transform GetOrCreateRoot(string typeName)
+    // 필요 시: 현재 씬의 풀 모두 비우기(리트라이/리셋 버튼용)
+    public void ClearAll()
     {
-        var go = GameObject.Find($"__Pool__{typeName}");
-        if (go == null)
+        foreach (var kv in _poolMap)
         {
-            go = new GameObject($"__Pool__{typeName}");
-            DontDestroyOnLoad(go);
+            if (kv.Value is System.IDisposable d) d.Dispose(); // 선택: 확장 시
+            var typeName = kv.Key ? kv.Key.GetType().Name : "Unknown";
+            var root = transform.Find($"__ScenePool__{typeName}");
+            if (root) Destroy(root.gameObject);
         }
-
-        return go.transform;
+        _poolMap.Clear();
     }
 }
