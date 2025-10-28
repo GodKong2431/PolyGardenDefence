@@ -119,4 +119,14 @@ public class EnemyMovement : MonoBehaviour
             _anim.SetFloat("Speed", 0f);
         }
     }
+
+    // 이동 재개(공격 끝나고 다시 길 따라 걷기)
+    public void Resume()
+    {
+        _isMoving = true;
+        enabled = true;
+
+        if (_anim != null)
+            _anim.SetFloat("Speed", 0f);
+    }
 }

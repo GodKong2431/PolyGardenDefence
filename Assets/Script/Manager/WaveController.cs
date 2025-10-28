@@ -144,9 +144,7 @@ public class WaveController : MonoBehaviour
     {
         // Update 루프의 키 입력과 동일하게 처리하고 싶다면,
         // 여기서도 보너스 계산/지급 로직을 호출해야 함.
-        // 간단히 구현하려면: InterStageWaitWithManual 내에서 플래그를 보고 분기하는 구조로 변경 가능.
-        // 현재는 키 입력만 지원하므로, 필요 시 UI 경로도 추가 구현.
-        // (간단한 방법: 버튼 클릭 시 전역 플래그를 true로 만들어두고 InterStageWaitWithManual에서 체크)
+        // 현재는 키 입력만 지원하므로, 필요 시 UI 경로 추가 구현
         Debug.Log("[WaveController] OnClickNextWave pressed (UI).");
     }
 }
