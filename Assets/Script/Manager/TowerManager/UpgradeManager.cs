@@ -12,25 +12,25 @@ public class UpgradeManager : SingleTon<UpgradeManager>
         return newTower;
     }
 
-    public GameObject UpgradeTower(GameObject tower)//기존 타워 업그레이드 매서드.
-    {
-        GameObject newTower = null;
-        TowerBase towerBase = tower.GetComponent<TowerBase>();
-        TowerType type = towerBase.type;
-        int level = towerBase.level; 
-        switch (level)
-        {
-            case 0:
-                newTower = Instantiate(TowerStorage.Instance.AdvancedTowers[type]);
-                Destroy(tower);
-                return newTower;
-            case 1:
-                newTower = Instantiate(TowerStorage.Instance.FinalTowers[type]);
-                Destroy(tower);
-                return newTower;
-            case 2:
-                Debug.Log("이미 최고 레벨인 타워입니다!");
-                return null;
-        }
-    }
+    //public GameObject UpgradeTower(GameObject tower)//기존 타워 업그레이드 매서드.
+    //{
+    //    GameObject newTower = null;
+    //    TowerBase towerBase = tower.GetComponent<TowerBase>();
+    //    TowerType type = towerBase.type;
+    //    int level = towerBase.level; 
+    //    switch (level)
+    //    {
+    //        case 0:
+    //            newTower = Instantiate(TowerStorage.Instance.AdvancedTowers[type]);
+    //            Destroy(tower);
+    //            return newTower;
+    //        case 1:
+    //            newTower = Instantiate(TowerStorage.Instance.FinalTowers[type]);
+    //            Destroy(tower);
+    //            return newTower;
+    //        case 2:
+    //            Debug.Log("이미 최고 레벨인 타워입니다!");
+    //            return null;
+    //    }
+    //}
 }
