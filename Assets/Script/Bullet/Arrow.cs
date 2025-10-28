@@ -24,9 +24,9 @@ public class Arrow : BulletBase
                 OffBullet();
             }
         }
-        else if (!other.gameObject.CompareTag("Bullet"))
-        {
-            OffBullet();
-        }        
+        //else if (!other.gameObject.CompareTag("Bullet"))
+        //{
+        //    OffBullet();
+        //}        
     }
 }

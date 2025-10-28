@@ -19,19 +19,20 @@ public class CannonBall : BulletBase
         _hitEnemies = Physics.OverlapSphere(transform.position, _explosionRadius);        
         foreach (var hit in _hitEnemies)
         {
-            //대포알 스스로는 감지하지 않기
-            if (hit.gameObject.CompareTag("Bullet"))
+            //대포 및 대포알 스스로는 감지하지 않기.
+            if (hit.gameObject.CompareTag("Bullet") || hit.gameObject.CompareTag("Tower"))
             {
                 continue; 
-            }        
+            }
 
             if (hit != null)
             {
                 GiveDamage(hit);
                 Debug.Log("맞은놈 : " + hit.name);
+                OffBullet();
             }
         }
-        OffBullet();
+        
     }
 
     //폭발반경 확인
