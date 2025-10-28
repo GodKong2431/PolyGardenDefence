@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Pause : MonoBehaviour
 {
-    public bool isPaused = false;
+    private bool _isPaused = false;
     void Start()
     {
         
@@ -19,8 +19,8 @@ public class Pause : MonoBehaviour
     }
     public void Paused()
     {
-        isPaused = !isPaused; //반전
-        if (isPaused) //True면 일시정지 
+        _isPaused = !_isPaused; //반전
+        if (_isPaused) //True면 일시정지 
         { Time.timeScale = 0f; }
         else //false면 진행
         { Time.timeScale = 1f; }
