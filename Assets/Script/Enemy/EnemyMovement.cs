@@ -11,7 +11,7 @@ public class EnemyMovement : MonoBehaviour
 {
     [Header("Move Settings")]
     [SerializeField] private float _speed = 2f;
-
+    private float _currentSpeed;
     [Header("Components")]
     [SerializeField] private Animator _anim;  // 직렬화로 연결 권장
 
@@ -26,6 +26,7 @@ public class EnemyMovement : MonoBehaviour
     {
         _path = path;
         _speed = speed;
+        _currentSpeed = _speed;
         _index = 0;
 
         if (_path == null || _path.Points.Count == 0)
@@ -47,6 +48,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void Update()
     {
+
         if (!_isMoving || _path == null)
         {
             return;
@@ -68,7 +70,17 @@ public class EnemyMovement : MonoBehaviour
         var target = _path.Points[_index].position;
         var before = transform.position;
 
-        transform.position = Vector3.MoveTowards(before, target, _speed * Time.deltaTime);
+
+        Vector3 dir = (target - before);
+        dir.y = 0f; // 위아래 방향 회전 방지
+        if (dir.sqrMagnitude > 0.001f)
+        {
+            Quaternion targetRot = Quaternion.LookRotation(dir);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, Time.deltaTime * 8f);
+        }
+
+
+        transform.position = Vector3.MoveTowards(before, target, _currentSpeed * Time.deltaTime);
 
         // 애니메이터 Speed 파라미터 업데이트
         if (_anim != null)
@@ -118,5 +130,22 @@ public class EnemyMovement : MonoBehaviour
         {
             _anim.SetFloat("Speed", 0f);
         }
+    }
+
+    // 이동 재개(공격 끝나고 다시 길 따라 걷기)
+    public void Resume()
+    {
+        _isMoving = true;
+        enabled = true;
+
+        if (_anim != null)
+            _anim.SetFloat("Speed", _speed);
+    }
+
+   
+
+    public void SetSpeed(float newSpeed)
+    {
+        _currentSpeed = newSpeed;
     }
 }
