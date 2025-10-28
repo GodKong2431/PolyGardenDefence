@@ -71,15 +71,23 @@ public class GameManager : SingleTon<GameManager>
     }
     #endregion
 
-
-    public void OnEnemyKilled(int bounty) //°ñµå È¹µæ
+    public void Start()
+    {
+        _currentLife = _maxLife;
+    }
+    public void OnEnemyKilled(int bounty) //Àû Ã³Ä¡½Ã °ñµå È¹µæ
     {
         AddGold(bounty);
     }
 
-    public void AddGold(int add) //OnEnemyKilled ¶û ÇÕÄ¥±î »ý°¢Áß
+    public void AddGold(int add)// °ñµå Áõ°¡
     {
         _gold += add;
+        //ui¿¡¼­ Ãâ·Â
+    }
+    public void SubGold(int sub) //°ñµå ¼Òºñ
+    {
+        _gold -= sub;
         //ui¿¡¼­ Ãâ·Â
     }
 
@@ -117,6 +125,6 @@ public class GameManager : SingleTon<GameManager>
     }
     public void Ending() 
     {
-        
+        //ui Ãâ·Â
     }
 }

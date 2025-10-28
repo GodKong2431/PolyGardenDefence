@@ -15,7 +15,7 @@ public class EnemyTracker : SingleTon<EnemyTracker>
     }
 
     //적 사망시 등록해제
-    public void UnregisterEnemy(EnemyBase enemy)
+    public void Unregister(EnemyBase enemy)
     {
         if (_activeEnemies.Contains(enemy))
             _activeEnemies.Remove(enemy);
