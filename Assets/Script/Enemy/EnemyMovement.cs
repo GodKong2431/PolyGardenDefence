@@ -11,7 +11,7 @@ public class EnemyMovement : MonoBehaviour
 {
     [Header("Move Settings")]
     [SerializeField] private float _speed = 2f;
-
+    private float _currentSpeed;
     [Header("Components")]
     [SerializeField] private Animator _anim;  // 직렬화로 연결 권장
 
@@ -47,6 +47,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void Update()
     {
+
         if (!_isMoving || _path == null)
         {
             return;
@@ -68,7 +69,7 @@ public class EnemyMovement : MonoBehaviour
         var target = _path.Points[_index].position;
         var before = transform.position;
 
-        transform.position = Vector3.MoveTowards(before, target, _speed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(before, target, _currentSpeed * Time.deltaTime);
 
         // 애니메이터 Speed 파라미터 업데이트
         if (_anim != null)
@@ -128,5 +129,12 @@ public class EnemyMovement : MonoBehaviour
 
         if (_anim != null)
             _anim.SetFloat("Speed", 0f);
+    }
+
+   
+
+    public void SetSpeed(float newSpeed)
+    {
+        _currentSpeed = newSpeed;
     }
 }

@@ -236,4 +236,40 @@ public class EnemyBase : MonoBehaviour, IPoolable
             _animator.ResetTrigger("Die");
         }
     }
+
+    private Coroutine _slowCo; // 중첩 방지를 위한 코루틴 참조
+
+    /// <summary>
+    /// 적에게 슬로우 효과 적용
+    /// </summary>
+    /// <param name="slowRate">감속 비율 (예: 0.5f → 50% 속도)</param>
+    /// <param name="duration">지속 시간 (초)</param>
+    public void GetSlow(float slowRate, float duration)
+    {
+        if (_slowCo != null)
+        {
+            StopCoroutine(_slowCo);
+        }
+        _slowCo = StartCoroutine(SlowRoutine(slowRate, duration));
+    }
+
+    private IEnumerator SlowRoutine(float slowRate, float duration)
+    {
+        if (_movement == null)
+            yield break;
+
+        // 원래 속도 저장
+        float originalSpeed = _stats.speed;
+
+        // 감속 적용
+        _movement.SetSpeed(originalSpeed * slowRate);
+
+        // 일정 시간 대기
+        yield return new WaitForSeconds(duration);
+
+        // 원래 속도로 복원
+        _movement.SetSpeed(originalSpeed);
+
+        _slowCo = null;
+    }
 }
