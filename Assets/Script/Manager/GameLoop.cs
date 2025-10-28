@@ -23,11 +23,15 @@ public class GameLoop : SingleTon<GameLoop>
         EnemySpawner.Instance.Spawn(_enemyStats, count: 5, pathId: 0, interval: 0.8f);
         //EnemySpawner의 Spawn작동()안에 있는것은 예시
         yield return new WaitUntil(IsWave);
+        if (GameManager.Instance.CurrentLife <= 0)//라이프 0이되면 코루틴 종료
+        {
+            yield break; 
+        }
         _isloop = false;
     }
     private bool IsWave()
     {
-        return EnemyTracker.Instance != null && EnemyTracker.Instance.ActiveEnemyCount == 0 || GameManager.Instance.CurrentLife <= 0;
-        //EnemyTracker가 존재하고 활성 적이 0이면 true 반환 life 0이되면 반환
+        return EnemyTracker.Instance != null && EnemyTracker.Instance.ActiveEnemyCount == 0;
+        //EnemyTracker가 존재하고 활성 적이 0이면 true 반환
     }
 }

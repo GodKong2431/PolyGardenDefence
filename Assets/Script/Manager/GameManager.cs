@@ -94,15 +94,17 @@ public class GameManager : SingleTon<GameManager>
 
     public void Life(bool sublife, bool isboss = false)
     {
-        if(isboss)
+        if (isboss)//보스 들어오면 게임오버
         {
-            GameOver();
+            GameOver(true);
+            Debug.Log("보스로 인한 사망");
         }
-        if(sublife == true)
+        if (sublife == true)
         {
             if(_currentLife > 0)
             {
                 _currentLife--;
+                Debug.Log("현재 남은 라이프 : " +_currentLife);
                 //ui에서 출력
             }
             else
@@ -114,22 +116,27 @@ public class GameManager : SingleTon<GameManager>
     }
     public void Wave()
     {
-        if (_currentWave <= _maxWave)
+        if (_currentWave == _maxWave)
         {
-            Ending();
+            Ending(true);
         }
         else
         {
             _currentWave++;
+            Debug.Log("현재 웨이브 : " + _currentWave);
         }
     }
 
-    public void GameOver(bool Die = false)
+    public void GameOver(bool Die)
     {
         //ui 출력
+        Debug.Log("게임 오버");
+        Time.timeScale = 0f;
     }
-    public void Ending() 
+    public void Ending(bool end) 
     {
+        Time.timeScale = 0f;
         //ui 출력
+        Debug.Log("엔딩");
     }
 }
