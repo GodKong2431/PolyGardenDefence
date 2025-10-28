@@ -17,22 +17,24 @@ public class CannonTower : TowerBase
         {
             return;
         }
-        _nextShot = Time.time + _shotDelay;
+        GameObject _bullet = BulletManager.Instance.MakeBullet(_bulletType);
 
-        //foreach (var bullet in _bulletPool)
-        //{
-        //    if (bullet.activeSelf == false)
-        //    {
-        //        BE setBulletComponent = bullet.GetComponent<BE>();
-        //
-        //        bullet.transform.position = _firePoint.position;
-        //        bullet.transform.rotation = _firePoint.rotation;
-        //        setBulletComponent.SetDamage(_damage);
-        //        //setBulletComponent.SetRadius(explosionRadius);
-        //        bullet.SetActive(true);
-        //        return;
-        //    }
-        //
-        //}
+        if (_bullet != null)
+        {
+            _bullet.transform.position = _firePoint.position;
+            _bullet.transform.rotation = _firePoint.rotation;
+
+            BulletBase _setBulletComponent = _bullet.GetComponent<BulletBase>();
+            if (_setBulletComponent != null)
+            {
+                _setBulletComponent.SetDamage(_damage);
+                //_setBulletComponent.SetRadius(_explosionRadius);
+            }
+            _nextShot = Time.time + _shotDelay;
+        }
+
+
+        
+
     }
 }

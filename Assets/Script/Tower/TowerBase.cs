@@ -82,40 +82,13 @@ public class TowerBase : MonoBehaviour
             _bullet.transform.rotation = _firePoint.rotation;
 
             BulletBase _setBulletComponent = _bullet.GetComponent<BulletBase>();
-            //if(_setBulletComponent != null)
-            //{
-            //    _setBulletComponent.SetDamage(_damage);
-            //}
+            if(_setBulletComponent != null)
+            {
+                _setBulletComponent.SetDamage(_damage);
+            }
             _nextShot = Time.time + _shotDelay;
         }
-
-        //foreach (var bullet in _bulletPool)
-        //{
-        //    if (bullet.activeSelf == false)
-        //    {
-        //        BulletBase setBulletComponent = bullet.GetComponent<BulletBase>();
-        //
-        //        bullet.transform.position = _firePoint.position;
-        //        bullet.transform.rotation = _firePoint.rotation;
-        //        //setBulletComponent.SetDamage(_damage);
-        //        bullet.SetActive(true);
-        //        return;
-        //    }
-        //
-        //}
     }
-
-    //오브젝트 풀링으로 총알 미리생성, 후에 매니저로 이동
-    //protected void Init()
-    //{
-    //    _bulletPool = new GameObject[_bulletPoolSize];
-    //
-    //    for (int i = 0; i < _bulletPool.Length; i++)
-    //    {
-    //        _bulletPool[i] = Instantiate(_bulletPrefab);
-    //        _bulletPool[i].SetActive(false);
-    //    }
-    //}
 
     //콜라이더로 들어오는 적 순서대로 리스트에 저장
     protected void OnTriggerEnter(Collider other)
