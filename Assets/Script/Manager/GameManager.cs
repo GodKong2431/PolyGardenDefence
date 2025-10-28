@@ -10,6 +10,7 @@ public class GameManager : SingleTon<GameManager>
     //Life 관련 필드
     private int _maxLife = 100;
     private int _currentLife = 0;
+    public int CurrentLife => _currentLife;
 
     //Gold 관련 필드
     private int _gold = 0;
@@ -71,25 +72,39 @@ public class GameManager : SingleTon<GameManager>
     }
     #endregion
 
-
-    public void OnEnemyKilled(int bounty) //골드 획득
+    public void Start()
+    {
+        _currentLife = _maxLife;
+    }
+    public void OnEnemyKilled(int bounty) //적 처치시 골드 획득
     {
         AddGold(bounty);
     }
 
-    public void AddGold(int add) //OnEnemyKilled 랑 합칠까 생각중
+    public void AddGold(int add)// 골드 증가
     {
         _gold += add;
         //ui에서 출력
     }
-
-    public void Life(bool sublife)
+    public void SubGold(int sub) //골드 소비
     {
-        if(sublife == true)
+        _gold -= sub;
+        //ui에서 출력
+    }
+
+    public void Life(bool sublife, bool isboss = false)
+    {
+        if (isboss)//보스 들어오면 게임오버
+        {
+            GameOver(true);
+            Debug.Log("보스로 인한 사망");
+        }
+        if (sublife == true)
         {
             if(_currentLife > 0)
             {
                 _currentLife--;
+                Debug.Log("현재 남은 라이프 : " +_currentLife);
                 //ui에서 출력
             }
             else
@@ -101,22 +116,27 @@ public class GameManager : SingleTon<GameManager>
     }
     public void Wave()
     {
-        if (_currentWave <= _maxWave)
+        if (_currentWave == _maxWave)
         {
-            Ending();
+            Ending(true);
         }
         else
         {
             _currentWave++;
+            Debug.Log("현재 웨이브 : " + _currentWave);
         }
     }
 
     public void GameOver(bool Die)
     {
         //ui 출력
+        Debug.Log("게임 오버");
+        Time.timeScale = 0f;
     }
-    public void Ending() 
+    public void Ending(bool end) 
     {
-        
+        Time.timeScale = 0f;
+        //ui 출력
+        Debug.Log("엔딩");
     }
 }
