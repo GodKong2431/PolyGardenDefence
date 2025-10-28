@@ -39,14 +39,22 @@ public class BulletBase : MonoBehaviour
         _rigidBody.velocity = Vector3.zero;
         _timeCount = _deactiveTime;
     }
+    public void SetDamage(float damage)
+    {
+        _attack = damage;
+    }
 
     protected virtual void OnTriggerEnter(Collider other)//콜라이더에 부딪히면 비활성화.
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
             GiveDamage(other);
+            OffBullet();
+        }
+        else if (!other.gameObject.CompareTag("Bullet"))
+        {
+            OffBullet();
         }        
-        OffBullet();
     }
     private void CountTime()
     {
@@ -76,7 +84,5 @@ public class BulletBase : MonoBehaviour
         {
             enemy.ApplyDamage(_attack);
         }
-    }
-
-    
+    }    
 }
