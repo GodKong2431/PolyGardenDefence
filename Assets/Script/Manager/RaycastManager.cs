@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class RaycastManager : SingleTon<RaycastManager>
 {
+    [SerializeField] private UpgradeUI _upgradeUI;
+
     private int _layerCount;
     private Camera _camera;
     private Ray _ray;
@@ -52,7 +54,7 @@ public class RaycastManager : SingleTon<RaycastManager>
         switch (hit.transform.gameObject.tag)
         {
             case "Tower":
-                Debug.Log("타워 메서드 호출");
+                _upgradeUI.MoveToTower(hit.transform.gameObject);
                 return;
             case "NomalTile":
                 Debug.Log("바닥 메서드 호출");
