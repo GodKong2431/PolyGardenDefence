@@ -4,52 +4,57 @@ using System.Collections;
 
 public class ExpandUI : MonoBehaviour
 {
-    [SerializeField] private RectTransform _panel; // 펼쳐질 UI
-    [SerializeField] private float _expandHeight = 200f; // 펼쳐졌을 때 높이
-    [SerializeField] private float _speed = 5f; // 펼쳐지는 속도
-    [SerializeField] private float _stayTime = 2f; // 펼쳐진 상태 유지 시간
+    [Header("MovePanel")]
+    [SerializeField] private RectTransform _panel;
 
-    private bool _isAnimating = false;
+    [Header("ButtonImage")]
+    [SerializeField] private Image _image;
+    [SerializeField] private Sprite[] _buttonSprites;
 
-    private void Start()
+    [Header("AnimSpeed")]
+    [SerializeField] private float _speed = 5f;
+    [SerializeField] private float _moveDistance = 200f;
+
+    private bool _isOpen = false;
+    private Coroutine _animCoroutine;
+
+    private Vector2 _closedPos;
+    private Vector2 _openedPos;
+
+    private void Awake()
     {
-        StartCoroutine(ExpandAndCollapse());
+        _openedPos = _panel.anchoredPosition;
+        _closedPos = _openedPos + new Vector2(0, _moveDistance);
+        _panel.anchoredPosition = _closedPos;
     }
 
     public void OnButtonClick()
     {
-        _isAnimating = !_isAnimating;
+        _isOpen = !_isOpen;
+
+
+        _image.sprite = _buttonSprites[_isOpen ? 1 : 0];
+
+        if (_animCoroutine != null)
+            StopCoroutine(_animCoroutine);
+
+        _animCoroutine = StartCoroutine(AnimatePanel(_isOpen));
     }
 
-    private IEnumerator ExpandAndCollapse()
+    private IEnumerator AnimatePanel(bool open)
     {
-        _isAnimating = true;
-
-        Vector2 closedSize = new Vector2(_panel.sizeDelta.x, 0f);
-        Vector2 openedSize = new Vector2(_panel.sizeDelta.x, _expandHeight);
-
-        // 펼치기
         float t = 0f;
+        Vector2 start = _panel.anchoredPosition;
+        Vector2 target = open ? _openedPos : _closedPos;
+
         while (t < 1f)
         {
             t += Time.deltaTime * _speed;
-            _panel.sizeDelta = Vector2.Lerp(closedSize, openedSize, t);
+            _panel.anchoredPosition = Vector2.Lerp(start, target, t);
             yield return null;
         }
 
-        // 유지
-        //yield return new WaitUntil(condition);
-
-        // 접기
-        t = 0f;
-        while (t < 1f)
-        {
-            t += Time.deltaTime * _speed;
-            _panel.sizeDelta = Vector2.Lerp(openedSize, closedSize, t);
-            yield return null;
-        }
-
-        _isAnimating = false;
-        //yield return new WaitWhile(condition)
+        _panel.anchoredPosition = target;
+        _animCoroutine = null;
     }
 }

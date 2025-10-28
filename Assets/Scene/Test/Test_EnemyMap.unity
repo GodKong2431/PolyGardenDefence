@@ -746,6 +746,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f72f8f45527ccdb4f8ec5ac598709354, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _pool: {fileID: 271640592}
   _enemyPrefabs:
   - {fileID: 7053431226085811694, guid: 2a16b2ab638b07848ad1a394b7029d6e, type: 3}
   - {fileID: 1895402978943751042, guid: 53da1b1cfa000734d813d34354bf62f2, type: 3}
