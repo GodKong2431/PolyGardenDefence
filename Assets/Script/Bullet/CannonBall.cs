@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CannonBall : BulletBase
 {
-    [SerializeField] float _explosionRadius;
+    private float _explosionRadius;
     float _detectRange = 0;
     
         
@@ -41,6 +41,10 @@ public class CannonBall : BulletBase
         }
     }
 
+    public void SetRadius(float explosionRadius)
+    {
+        _explosionRadius = explosionRadius;
+    }
 
     //폭발반경 확인
     private void OnDrawGizmosSelected()
