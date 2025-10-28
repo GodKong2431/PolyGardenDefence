@@ -4,35 +4,35 @@ using UnityEngine;
 
 public class CannonTower : TowerBase
 {
-    [SerializeField] private float explosionRadius = 3.0f;
+    [SerializeField] private float _explosionRadius = 3.0f;
 
     protected override void Awake()
     {
-        damage = 3f;
+        _damage = 3f;
         base.Awake();
     }
     protected override void AttackTarget()
     {
-        if (target.Count == 0 || Time.time < nextShot)
+        if (_target.Count == 0 || Time.time < _nextShot)
         {
             return;
         }
-        nextShot = Time.time + shotDelay;
+        _nextShot = Time.time + _shotDelay;
 
-        foreach (var bullet in bulletPool)
-        {
-            if (bullet.activeSelf == false)
-            {
-                BE setBulletComponent = bullet.GetComponent<BE>();
-
-                bullet.transform.position = firePoint.position;
-                bullet.transform.rotation = firePoint.rotation;
-                setBulletComponent.SetDamage(damage);
-                //setBulletComponent.SetRadius(explosionRadius);
-                bullet.SetActive(true);
-                return;
-            }
-
-        }
+        //foreach (var bullet in _bulletPool)
+        //{
+        //    if (bullet.activeSelf == false)
+        //    {
+        //        BE setBulletComponent = bullet.GetComponent<BE>();
+        //
+        //        bullet.transform.position = _firePoint.position;
+        //        bullet.transform.rotation = _firePoint.rotation;
+        //        setBulletComponent.SetDamage(_damage);
+        //        //setBulletComponent.SetRadius(explosionRadius);
+        //        bullet.SetActive(true);
+        //        return;
+        //    }
+        //
+        //}
     }
 }

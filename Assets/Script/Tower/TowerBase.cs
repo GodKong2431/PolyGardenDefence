@@ -2,28 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+[RequireComponent(typeof(SphereCollider))]
 public class TowerBase : MonoBehaviour
 {
-    [SerializeField] protected GameObject bulletPrefab;
-    [SerializeField] protected float range;
-    [SerializeField] protected Transform firePoint;
-    [SerializeField] protected string name = "base tower";
-    [SerializeField] protected float damage = 1f;
-    [SerializeField] protected float shotDelay = 0.5f;
+    [SerializeField] protected GameObject _bulletPrefab;
+    [SerializeField] protected float _range;
+    [SerializeField] protected Transform _firePoint;
+    [SerializeField] protected string _name = "base tower";
+    [SerializeField] protected float _damage = 1f;
+    [SerializeField] protected float _shotDelay = 0.5f;
 
-    protected float nextShot = 0;
-    protected List<Transform> target = new List<Transform>();
+    protected float _nextShot = 0;
+    protected List<Transform> _target = new List<Transform>();
 
-    protected SphereCollider sphereCollider;
-    protected GameObject[] bulletPool;
-    [SerializeField] protected int bulletPoolSize = 15;
-
+    protected SphereCollider _sphereCollider;
+    //protected GameObject[] _bulletPool;
+    //[SerializeField] protected int _bulletPoolSize = 15;
+    [SerializeField] protected BulletType _bulletType;
 
 
     protected virtual void Awake()
     {
-        sphereCollider = GetComponent<SphereCollider>();
-        Init();
+        _sphereCollider = GetComponent<SphereCollider>();
+        _sphereCollider.isTrigger = true;
+        //Init();
         SetRange();
     }
 
@@ -35,27 +38,27 @@ public class TowerBase : MonoBehaviour
     //공격범위 설정
     protected void SetRange()
     {
-        if (sphereCollider != null)
+        if (_sphereCollider != null)
         {
-            sphereCollider.radius = range;
+            _sphereCollider.radius = _range;
         }
     }
     protected void SetTarget()
     {
-        for(int i = 0; i < target.Count; i++)
+        for(int i = 0; i < _target.Count; i++)
         {
-            Transform currentTarget = target[i];
+            Transform currentTarget = _target[i];
 
             if(currentTarget == null || currentTarget.gameObject.activeSelf==false)
             {
-                target.RemoveAt(i);
+                _target.RemoveAt(i);
                 i--;
             }
         }
 
-        if (target.Count > 0)
+        if (_target.Count > 0)
         {
-            Transform firstEnemy = target[0];
+            Transform firstEnemy = _target[0];
 
             if (firstEnemy != null)
             {
@@ -67,43 +70,52 @@ public class TowerBase : MonoBehaviour
 
     protected virtual void AttackTarget()
     {
-        if(target.Count == 0)
+        if(_target.Count == 0 || Time.time < _nextShot)
         {
             return;
         }
-        if (Time.time < nextShot)
+        GameObject _bullet = BulletManager.Instance.MakeBullet(_bulletType);
+
+        if(_bullet != null)
         {
-            return;
+            _bullet.transform.position = _firePoint.position;
+            _bullet.transform.rotation = _firePoint.rotation;
+
+            BulletBase _setBulletComponent = _bullet.GetComponent<BulletBase>();
+            //if(_setBulletComponent != null)
+            //{
+            //    _setBulletComponent.SetDamage(_damage);
+            //}
+            _nextShot = Time.time + _shotDelay;
         }
-        nextShot = Time.time + shotDelay;
 
-        foreach (var bullet in bulletPool)
-        {
-            if (bullet.activeSelf == false)
-            {
-                BE setBulletComponent = bullet.GetComponent<BE>();
-
-                bullet.transform.position = firePoint.position;
-                bullet.transform.rotation = firePoint.rotation;
-                setBulletComponent.SetDamage(damage);
-                bullet.SetActive(true);
-                return;
-            }
-
-        }
+        //foreach (var bullet in _bulletPool)
+        //{
+        //    if (bullet.activeSelf == false)
+        //    {
+        //        BulletBase setBulletComponent = bullet.GetComponent<BulletBase>();
+        //
+        //        bullet.transform.position = _firePoint.position;
+        //        bullet.transform.rotation = _firePoint.rotation;
+        //        //setBulletComponent.SetDamage(_damage);
+        //        bullet.SetActive(true);
+        //        return;
+        //    }
+        //
+        //}
     }
 
     //오브젝트 풀링으로 총알 미리생성, 후에 매니저로 이동
-    protected void Init()
-    {
-        bulletPool = new GameObject[bulletPoolSize];
-
-        for (int i = 0; i < bulletPool.Length; i++)
-        {
-            bulletPool[i] = Instantiate(bulletPrefab);
-            bulletPool[i].SetActive(false);
-        }
-    }
+    //protected void Init()
+    //{
+    //    _bulletPool = new GameObject[_bulletPoolSize];
+    //
+    //    for (int i = 0; i < _bulletPool.Length; i++)
+    //    {
+    //        _bulletPool[i] = Instantiate(_bulletPrefab);
+    //        _bulletPool[i].SetActive(false);
+    //    }
+    //}
 
     //콜라이더로 들어오는 적 순서대로 리스트에 저장
     protected void OnTriggerEnter(Collider other)
@@ -112,9 +124,9 @@ public class TowerBase : MonoBehaviour
         {
             Transform enemyTransform = other.transform;
 
-            if (!target.Contains(enemyTransform))
+            if (!_target.Contains(enemyTransform))
             {
-                target.Add(enemyTransform);
+                _target.Add(enemyTransform);
             }
         }
     }
@@ -125,9 +137,9 @@ public class TowerBase : MonoBehaviour
         {
             Transform enemyTransform = other.transform;
 
-            if (target.Contains(enemyTransform))
+            if (_target.Contains(enemyTransform))
             {
-                target.Remove(enemyTransform);
+                _target.Remove(enemyTransform);
             }
         }
     }
