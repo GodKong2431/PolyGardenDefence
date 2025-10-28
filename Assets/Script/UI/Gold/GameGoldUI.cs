@@ -1,18 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
-public class GameGoldUI : MonoBehaviour
+public class GameGoldUI : MonoBehaviour, IGameGoldObserver
 {
-    // Start is called before the first frame update
-    void Start()
+    [Header("GoldUI")]
+    [SerializeField]private TextMeshProUGUI _goldText;
+    private GameManager gameManager;
+    public void OnGameGoldChanged(int Gold)
     {
-        
+        _goldText.text = Gold.ToString() + "G";
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        gameManager = GameManager.Instance;
     }
+
+    private void Awake()
+    {
+        GameManager.Instance.GameGoldObserver.AddObserver(this);
+    }
+
+    private void OnDestroy()
+    {
+
+        if(gameManager == null)
+        {
+            return;
+        }
+
+        Debug.Log("°ñµå Á¦°Å");
+        GameManager.Instance.GameGoldObserver.RemoveObserver(this);
+    }
+
+
 }
