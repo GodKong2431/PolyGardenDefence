@@ -6,7 +6,7 @@ using UnityEngine;
 public class WaveStage
 {
     [Header("Entries")]
-    [SerializeField] private List<WaveEntry> _entries = new List<WaveEntry>(); // s 붙임(자료구조 규칙)
+    [SerializeField] private List<WaveEntry> _entries = new List<WaveEntry>(); 
 
     [Header("Delay")]
     [SerializeField] private float _delayAfter = 3f; // 다음 스테이지로 넘어가기 전 대기(초)

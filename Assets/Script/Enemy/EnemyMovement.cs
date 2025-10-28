@@ -26,6 +26,7 @@ public class EnemyMovement : MonoBehaviour
     {
         _path = path;
         _speed = speed;
+        _currentSpeed = _speed;
         _index = 0;
 
         if (_path == null || _path.Points.Count == 0)
@@ -68,6 +69,16 @@ public class EnemyMovement : MonoBehaviour
     {
         var target = _path.Points[_index].position;
         var before = transform.position;
+
+
+        Vector3 dir = (target - before);
+        dir.y = 0f; // 위아래 방향 회전 방지
+        if (dir.sqrMagnitude > 0.001f)
+        {
+            Quaternion targetRot = Quaternion.LookRotation(dir);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, Time.deltaTime * 8f);
+        }
+
 
         transform.position = Vector3.MoveTowards(before, target, _currentSpeed * Time.deltaTime);
 

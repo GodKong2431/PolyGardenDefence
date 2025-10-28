@@ -5,7 +5,7 @@ using UnityEngine;
 
 
 [RequireComponent(typeof(Collider))]
-public class EnemyBase : MonoBehaviour, IPoolable
+public class EnemyBase : MonoBehaviour, IPoolable//,IDamageable
 {
     [Header("Stats")]
     [SerializeField] private EnemyStatsSO _stats;             // HP/Speed/AttackDamage/AttackDelay 등
@@ -118,7 +118,7 @@ public class EnemyBase : MonoBehaviour, IPoolable
         {
             _movement?.Stop();
             _animator.SetTrigger("Die");
-            StartCoroutine(DespawnAfter(1.0f)); // 예시: 사망 모션 후 1초 뒤 반환
+            StartCoroutine(DespawnAfter(3.0f)); // 예시: 사망 모션 후 1초 뒤 반환
             return;
         }
 
