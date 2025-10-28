@@ -6,7 +6,7 @@ using UnityEngine;
 public class EnemyBase : MonoBehaviour, IPoolable
 {
     [Header("Stats")]
-    [SerializeField] private EnemyStatsSO _stats;
+    [SerializeField] private EnemyStatsSO _stats; // 스탯 SO (스폰 시 주입)
 
     [Header("Components")]
     [SerializeField] private EnemyMovement _movement;
