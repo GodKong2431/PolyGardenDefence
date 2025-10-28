@@ -1786,7 +1786,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bulletManager: {fileID: 133120590}
   _type: 1
-  delay: 0.3
+  delay: 3
 --- !u!1001 &1519954823
 PrefabInstance:
   m_ObjectHideFlags: 0
