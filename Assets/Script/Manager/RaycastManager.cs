@@ -9,23 +9,27 @@ public class RaycastManager : SingleTon<RaycastManager>
     private Ray _ray;
     private RaycastHit hit;
 
+    //싱글톤 Awake도 발동하고 초기화
     protected override void Awake()
     {
         base.Awake();
         Init();
     }
 
+    //업데이트마다 Ray 발사
     private void Update()
     {
         TryObjectSelect();
     }
 
+    //초기화 함수
     private void Init()
     {
         _camera = Camera.main;
         _layerCount = LayerMask.GetMask("InteractionObject");
     }
 
+    //Ray발사하고 레이어 에 맞으면 태그 비교
     private void TryObjectSelect()
     {
         _ray = _camera.ScreenPointToRay(Input.mousePosition);
@@ -42,6 +46,7 @@ public class RaycastManager : SingleTon<RaycastManager>
 
 
 
+    //태그 비교 메서드
     private void InteractionObjectCompareTag()
     {
         switch (hit.transform.gameObject.tag)
