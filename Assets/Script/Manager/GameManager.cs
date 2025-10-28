@@ -10,6 +10,7 @@ public class GameManager : SingleTon<GameManager>
     //Life 관련 필드
     private int _maxLife = 100;
     private int _currentLife = 0;
+    public int CurrentLife => _currentLife;
 
     //Gold 관련 필드
     private int _gold = 0;
@@ -91,8 +92,12 @@ public class GameManager : SingleTon<GameManager>
         //ui에서 출력
     }
 
-    public void Life(bool sublife)
+    public void Life(bool sublife, bool isboss = false)
     {
+        if(isboss)
+        {
+            GameOver();
+        }
         if(sublife == true)
         {
             if(_currentLife > 0)
@@ -119,7 +124,7 @@ public class GameManager : SingleTon<GameManager>
         }
     }
 
-    public void GameOver(bool Die)
+    public void GameOver(bool Die = false)
     {
         //ui 출력
     }

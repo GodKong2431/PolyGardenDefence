@@ -27,7 +27,7 @@ public class GameLoop : SingleTon<GameLoop>
     }
     private bool IsWave()
     {
-        return EnemyTracker.Instance != null && EnemyTracker.Instance.ActiveEnemyCount == 0;
-        //EnemyTracker가 존재하고 활성 적이 0이면 true 반환
+        return EnemyTracker.Instance != null && EnemyTracker.Instance.ActiveEnemyCount == 0 || GameManager.Instance.CurrentLife <= 0;
+        //EnemyTracker가 존재하고 활성 적이 0이면 true 반환 life 0이되면 반환
     }
 }
