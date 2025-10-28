@@ -39,14 +39,22 @@ public class BulletBase : MonoBehaviour
         _rigidBody.velocity = Vector3.zero;
         _timeCount = _deactiveTime;
     }
+    public void SetDamage(float damage)
+    {
+        _attack = damage;
+    }
 
     protected virtual void OnTriggerEnter(Collider other)//콜라이더에 부딪히면 비활성화.
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            //GiveDamage(other.GetComponent<Enemybase>())              
-        }        
-        OffBullet();
+            GiveDamage(other);
+            OffBullet();
+        }
+        else if (!other.gameObject.CompareTag("Bullet") && !other.gameObject.CompareTag("Tower"))
+        {
+            OffBullet();
+        }
     }
     private void CountTime()
     {
@@ -68,10 +76,13 @@ public class BulletBase : MonoBehaviour
         gameObject.SetActive(false);        
     }    
 
-    protected void GiveDamage(EnemyBase enemy)
+    protected void GiveDamage(Collider other)
     {
-        enemy.ApplyDamage(_attack);
-    }
+        IDamageable enemy = other.GetComponent<IDamageable>();
 
-    
+        if (enemy != null)
+        {
+            enemy.ApplyDamage(_attack);
+        }
+    }    
 }

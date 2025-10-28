@@ -4,45 +4,43 @@ using UnityEngine;
 
 public class CatapultTower : TowerBase
 {
-    [SerializeField] private float criticalChance = 0.2f; //치명타 확률
-    [SerializeField] private float criticalMultiplier = 2.0f; //치명타 배율
+    [SerializeField] private float _criticalChance = 0.2f; //치명타 확률
+    [SerializeField] private float _criticalMultiplier = 2.0f; //치명타 배율
     
     
     protected override void Awake()
     {
-        damage = 5f;
-        range = 10f;
+        _damage = 5f;
+        _range = 10f;
         base.Awake();
     }
     protected override void AttackTarget()
     {
-        if(target.Count==0 || Time.time < nextShot)
+        if(_target.Count==0 || Time.time < _nextShot)
         {
             return;
         }
 
-        nextShot = Time.time + shotDelay;
+        float criticalDamage = _damage;
 
-        float criticalDamage = damage;
-
-        if (Random.value < criticalChance)
+        if (Random.value < _criticalChance)
         {
-            criticalDamage *= criticalMultiplier;
+            criticalDamage *= _criticalMultiplier;
         }
 
-        foreach (var bullet in bulletPool)
+        GameObject _bullet = BulletManager.Instance.MakeBullet(_bulletType);
+
+        if (_bullet != null)
         {
-            if (bullet.activeSelf == false)
+            _bullet.transform.position = _firePoint.position;
+            _bullet.transform.rotation = _firePoint.rotation;
+
+            BulletBase _setBulletComponent = _bullet.GetComponent<BulletBase>();
+            if (_setBulletComponent != null)
             {
-                BE setBulletComponent = bullet.GetComponent<BE>();
-
-                bullet.transform.position = firePoint.position;
-                bullet.transform.rotation = firePoint.rotation;
-                setBulletComponent.SetDamage(criticalDamage);
-                bullet.SetActive(true);
-                return;
+                _setBulletComponent.SetDamage(criticalDamage);
             }
-
+            _nextShot = Time.time + _shotDelay;
         }
     }
 }
