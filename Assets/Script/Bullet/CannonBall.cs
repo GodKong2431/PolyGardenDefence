@@ -22,12 +22,11 @@ public class CannonBall : BulletBase
             if (hit.gameObject == gameObject)
             {
                 continue; 
-            }
-            EnemyBase enemy = hit.GetComponent<EnemyBase>();
+            }           
 
-            if (enemy != null)
+            if (hit != null)
             {
-                //GiveDamage(enemy);
+                GiveDamage(hit);
                 Debug.Log("¸ÂÀº³ð : " + hit.name);
             }
         }

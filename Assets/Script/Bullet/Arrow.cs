@@ -19,15 +19,14 @@ public class Arrow : BulletBase
         {
             _penetCount = Mathf.Max(_penetCount - 1, 0);         
             if (_penetCount == 0)
-            {               
-                //GiveDamage()
+            {
+                GiveDamage(other);
                 OffBullet();
             }
         }
         else
         {
             OffBullet();
-        }
-        
+        }        
     }
 }

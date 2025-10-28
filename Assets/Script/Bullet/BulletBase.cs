@@ -44,7 +44,7 @@ public class BulletBase : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            //GiveDamage(other.GetComponent<Enemybase>())              
+            GiveDamage(other);
         }        
         OffBullet();
     }
@@ -68,9 +68,14 @@ public class BulletBase : MonoBehaviour
         gameObject.SetActive(false);        
     }    
 
-    protected void GiveDamage(EnemyBase enemy)
+    protected void GiveDamage(Collider other)
     {
-        enemy.ApplyDamage(_attack);
+        IDamageable enemy = other.GetComponent<IDamageable>();
+
+        if (enemy != null)
+        {
+            enemy.ApplyDamage(_attack);
+        }
     }
 
     
