@@ -20,7 +20,7 @@ public class GameLoop : SingleTon<GameLoop>
 
         GameManager.Instance.Wave(); //GameManager 웨이브 작동
         _isloop = true;
-        EnemySpawner.Instance.Spawn(_enemyStats, count: 5, pathId: 0, interval: 0.8f);
+        //EnemySpawner.Instance.Spawn(_enemyStats, count: 5, pathId: 0, interval: 0.8f);
         //EnemySpawner의 Spawn작동()안에 있는것은 예시
         yield return new WaitUntil(IsWave);
         if (GameManager.Instance.CurrentLife <= 0)//라이프 0이되면 코루틴 종료
