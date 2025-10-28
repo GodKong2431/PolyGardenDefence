@@ -10,8 +10,7 @@ public class CatapultTower : TowerBase
     
     protected override void Awake()
     {
-        _damage = 5f;
-        _range = 10f;
+        
         base.Awake();
     }
     protected override void AttackTarget()

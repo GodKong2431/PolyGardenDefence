@@ -12,25 +12,21 @@ public class TowerBase : MonoBehaviour
     [SerializeField] protected string _name = "base tower";
     [SerializeField] protected float _damage = 1f;
     [SerializeField] protected float _shotDelay = 0.5f;
+    [SerializeField] protected BulletType _bulletType;
 
     protected float _nextShot = 0;
     protected List<Transform> _target = new List<Transform>();
-
     protected SphereCollider _sphereCollider;
-    //protected GameObject[] _bulletPool;
-    //[SerializeField] protected int _bulletPoolSize = 15;
-    [SerializeField] protected BulletType _bulletType;
-
-
+    
     protected virtual void Awake()
     {
         _sphereCollider = GetComponent<SphereCollider>();
         _sphereCollider.isTrigger = true;
-        //Init();
         SetRange();
+        
     }
 
-    protected void Update()
+    protected virtual void Update()
     {
         SetTarget();
         AttackTarget();
@@ -43,16 +39,17 @@ public class TowerBase : MonoBehaviour
             _sphereCollider.radius = _range;
         }
     }
-    protected void SetTarget()
+    //첫번째 적을 추적하게하는 메서드
+    protected virtual void SetTarget()
     {
-        for(int i = 0; i < _target.Count; i++)
+        for(int i=_target.Count-1;i>=0;i--)
         {
             Transform currentTarget = _target[i];
 
             if(currentTarget == null || currentTarget.gameObject.activeSelf==false)
             {
                 _target.RemoveAt(i);
-                i--;
+                
             }
         }
 
@@ -67,7 +64,7 @@ public class TowerBase : MonoBehaviour
         }
        
     }
-
+    //적 공격
     protected virtual void AttackTarget()
     {
         if(_target.Count == 0 || Time.time < _nextShot)
@@ -89,9 +86,11 @@ public class TowerBase : MonoBehaviour
             _nextShot = Time.time + _shotDelay;
         }
     }
+  
+
 
     //콜라이더로 들어오는 적 순서대로 리스트에 저장
-    protected void OnTriggerEnter(Collider other)
+    protected virtual void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Enemy"))
         {
@@ -104,7 +103,7 @@ public class TowerBase : MonoBehaviour
         }
     }
     //콜라이더 나가는 순서대로 제거
-    protected void OnTriggerExit(Collider other)
+    protected virtual void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Enemy"))
         {
