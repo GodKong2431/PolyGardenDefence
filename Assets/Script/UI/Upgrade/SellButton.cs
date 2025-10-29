@@ -12,6 +12,6 @@ public class SellButton : MonoBehaviour
 
     public void OnClickSell()
     {
-        UpgradeManager.SellTower(_selectTower);
+        UpgradeManager.Instance.SellTower(_selectTower);
     }
 }

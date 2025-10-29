@@ -12,7 +12,7 @@ public class UpgradeButton : MonoBehaviour
 
     public void OnClickUpgrade()
     {
-        UpgradeManager.SellTower(_selectTower);
+        UpgradeManager.Instance.SellTower(_selectTower);
     }
 
 }
