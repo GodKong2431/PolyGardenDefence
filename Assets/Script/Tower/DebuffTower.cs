@@ -9,17 +9,18 @@ public class DebuffTower : TowerBase
 
     protected override void Awake()
     {
+        _damage = 0f;
         base.Awake();
     }
-    protected override void AttackTarget()
+    protected override void Update()
     {
-        if (_target.Count == 0 || Time.time < _nextShot)
+        SetTarget();
+
+        if(_target.Count == 0 || Time.time < _nextShot)
         {
             return;
         }
-
         GiveDebuffs();
-
         _nextShot = Time.time + _shotDelay;
     }
 
@@ -33,7 +34,7 @@ public class DebuffTower : TowerBase
 
             if(_enemy != null)
             {
-                //_enemy.GetSlow(_slowAmount, _slowDuration);
+                _enemy.GetSlow(_slowAmount, _slowDuration);
             }
         }
     }

@@ -13,17 +13,22 @@ public class TowerBase : MonoBehaviour
     [SerializeField] protected float _damage = 1f;
     [SerializeField] protected float _shotDelay = 0.5f;
     [SerializeField] protected BulletType _bulletType;
+    [SerializeField] protected TowerType _towerType;
+    protected int _level = 1; 
 
     protected float _nextShot = 0;
     protected List<Transform> _target = new List<Transform>();
     protected SphereCollider _sphereCollider;
-    
+
+    protected float _baseShotDelay;
+    protected Coroutine _buffCoroutine = null;
+
     protected virtual void Awake()
     {
         _sphereCollider = GetComponent<SphereCollider>();
         _sphereCollider.isTrigger = true;
         SetRange();
-        
+        _baseShotDelay = _shotDelay;
     }
 
     protected virtual void Update()
@@ -87,7 +92,25 @@ public class TowerBase : MonoBehaviour
         }
     }
   
+    public void ApplyAttackSpeedBuff(float amount,float duration)
+    {
+        if(_buffCoroutine != null)
+        {
+            StopCoroutine(_buffCoroutine);
+            _shotDelay = _baseShotDelay;
+        }
+        _buffCoroutine = StartCoroutine(AttackSpeedBuffCoroutine(amount, duration));
+    }
 
+    private IEnumerator AttackSpeedBuffCoroutine(float amount,float duration)
+    {
+        _shotDelay *= (1f - amount);
+
+        yield return new WaitForSeconds(duration);
+
+        _shotDelay = _baseShotDelay;
+        _buffCoroutine = null;
+    }
 
     //콜라이더로 들어오는 적 순서대로 리스트에 저장
     protected virtual void OnTriggerEnter(Collider other)
