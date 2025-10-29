@@ -3,7 +3,25 @@ guid: b065e1725ff8ceb4f947ba07c7cfb857
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - _ballista_0: {fileID: 7273488379710004139, guid: 7dd13eef020792f4ea783ab31b79e97b, type: 3}
+  - _ballista_1: {fileID: 3422831829848846478, guid: 960d175739b05d44ab2d833e9ebc8657, type: 3}
+  - _ballista_2: {fileID: 5712933853330186810, guid: cc6133f662240844d9f334faf5a1f653, type: 3}
+  - _catapult_0: {fileID: 3023112102604257652, guid: 2ffd65936d07ea4499e414b76ff6880f, type: 3}
+  - _catapult_1: {fileID: 3230802428745258760, guid: 16c177547398d6544ae1d8df739378bb, type: 3}
+  - _catapult_2: {fileID: 3233523395663802781, guid: 55fd07032578aff40bcd343cdc9662b1, type: 3}
+  - _cannon_0: {fileID: 8228973561434313529, guid: 10b07c1fd9be3a946aa4113d3999f683, type: 3}
+  - _cannon_1: {fileID: 109756009125635728, guid: bc08e117a02681348a276309432128e8, type: 3}
+  - _cannon_2: {fileID: 8770559366614404539, guid: 33f5127da427eb544ac2cef5e5076663, type: 3}
+  - _turret_0: {fileID: 4157162762982468139, guid: f7fc84f8d18890e498fb6fecb83f9875, type: 3}
+  - _turret_1: {fileID: 6416569057282262969, guid: 4976d2b78438c9e47a6c02ae686ef0b2, type: 3}
+  - _turret_2: {fileID: 4540790993349670325, guid: f3c72d15b9e6b254fb6f1fc645c7d20f, type: 3}
+  - _buffTower_0: {fileID: 8782565293362844914, guid: a202e64e743d02944ba61871e3a46b6f, type: 3}
+  - _buffTower_1: {fileID: 4973900656286488843, guid: d43cbbf00d0746648afd768fde4ef8a7, type: 3}
+  - _buffTower_2: {fileID: 2042557349225014752, guid: 0e8db22439cfc414588fa42d7de999c5, type: 3}
+  - _debuffTower_0: {fileID: 2524239775673632260, guid: b2fe554e00e885c4dbbf0fe195580463, type: 3}
+  - _debuffTower_1: {fileID: 3941987733637026091, guid: 2ad361d647ab2e74f80948d53666728d, type: 3}
+  - _debuffTower_2: {fileID: 340464066393074259, guid: 548ca5d32af623b4196a7b731a665849, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
