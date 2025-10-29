@@ -104,18 +104,24 @@ public class TowerBase : MonoBehaviour
         {
             return;
         }
+        Transform targetEnemy = _target[0];
+        if (targetEnemy == null||!targetEnemy.gameObject.activeSelf) return;
+
+        Vector3 dirToEnemy = (targetEnemy.position - _firePoint.position).normalized;
+        Quaternion targetRotation = Quaternion.LookRotation(dirToEnemy);
 
         GameObject _bullet = BulletManager.Instance.MakeBullet(_bulletType);
 
         if(_bullet != null)
         {
             _bullet.transform.position = _firePoint.position;
-            _bullet.transform.rotation = _firePoint.rotation;
+            _bullet.transform.rotation = targetRotation;
 
             BulletBase _setBulletComponent = _bullet.GetComponent<BulletBase>();
             if(_setBulletComponent != null)
             {
                 _setBulletComponent.SetDamage(_damage);
+                _setBulletComponent.Shoot();
             }
             _nextShot = Time.time + _shotDelay;
         }

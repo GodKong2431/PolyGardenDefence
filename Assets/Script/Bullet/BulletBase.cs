@@ -26,7 +26,7 @@ public class BulletBase : MonoBehaviour
     protected virtual void OnEnable()//활성화하면 날아가기.
     {
         SetBullet();   
-        ShootBullet();        
+        //ShootBullet();        
     }
 
     private void Update()
@@ -65,7 +65,10 @@ public class BulletBase : MonoBehaviour
             OffBullet();
         }
     }
-
+    public void Shoot()
+    {
+        ShootBullet();
+    }
     protected virtual void ShootBullet()//날아가는 매서드.
     {
         _rigidBody.AddForce(transform.forward * _speed, ForceMode.Impulse);        

@@ -30,6 +30,7 @@ public class BallistaTower : TowerBase
             {
                 _setBulletComponent.SetDamage(_damage);
                 _setBulletComponent.SetPiercing(_pierceCount);
+                _setBulletComponent.Shoot();
             }
             _nextShot = Time.time + _shotDelay;
         }
