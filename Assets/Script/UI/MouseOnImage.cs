@@ -7,7 +7,7 @@ public class MouseOnImage : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 {
     [Header("InfoText")]
     [SerializeField] private TextMeshProUGUI _ChangeText;
-    [SerializeField] private List<string> _TowerInfoText = new List<string>();
+    [SerializeField] private List<string> _TowerInfoText;
 
     [Header("PanelController")]
     [SerializeField] private TowerInfoPanelController _panelController;

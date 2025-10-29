@@ -65,10 +65,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: TowerName\t 100G\nTowerInfor
+  m_text: "\uD0C0\uC6CC \uC815\uBCF4\n"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 12f21ab95bf57ec449ed45e6799dcee0, type: 2}
+  m_sharedMaterial: {fileID: 8501028980715604837, guid: 12f21ab95bf57ec449ed45e6799dcee0, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -92,15 +92,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 67.05
+  m_fontSizeBase: 30
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -122,7 +122,7 @@ MonoBehaviour:
   m_isCullingEnabled: 0
   m_horizontalMapping: 0
   m_verticalMapping: 0
-  m_uvLineOffset: 0
+  m_uvLineOffset: 10
   m_geometrySortingOrder: 0
   m_IsTextObjectScaleStatic: 0
   m_VertexBufferAutoSizeReduction: 0
@@ -414,7 +414,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 630ca216352f0e44697635ee141d51cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _infoText: 
+  _ChangeText: {fileID: 1698588815514485089}
+  _TowerInfoText:
+  - "\uD130\uB81B \uD0C0\uC6CC"
+  - 10G
+  - "\uCD1D\uC54C\uC744 \uBC1C\uC0AC\uD574 \uB2E8\uC77C \uD53C\uD574\uB97C \uC90D\uB2C8"
   _panelController: {fileID: 1883186019693286236}
 --- !u!1 &2905757919651510847
 GameObject:
@@ -822,7 +826,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 630ca216352f0e44697635ee141d51cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _infoText: 
+  _ChangeText: {fileID: 1698588815514485089}
+  _TowerInfoText:
+  - "\uBC84\uD504\uD0C0\uC6CC"
+  - 10G
+  - "\uC8FC\uBCC0 \uD0C0\uC6CC\uC5D0 \uACF5\uACA9\uC18D\uB3C4 \uBC84\uD504\uB97C
+    \uC90D\uB2C8\uB2E4"
   _panelController: {fileID: 1883186019693286236}
 --- !u!1 &5011466280697976813
 GameObject:
@@ -926,7 +935,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 630ca216352f0e44697635ee141d51cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _infoText: 
+  _ChangeText: {fileID: 1698588815514485089}
+  _TowerInfoText:
+  - "\uB514\uBC84\uD504 \uD0C0\uC6CC"
+  - 10G
+  - "\uC8FC\uBCC0 \uC801\uC5D0\uAC8C \uC2AC\uB85C\uC6B0 \uB514\uBC84\uD504\uB97C
+    \uAC81\uB2C8\uB2E4"
   _panelController: {fileID: 1883186019693286236}
 --- !u!1 &6062695810564322843
 GameObject:
@@ -1030,7 +1044,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 630ca216352f0e44697635ee141d51cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _infoText: 
+  _ChangeText: {fileID: 1698588815514485089}
+  _TowerInfoText:
+  - "\uCE90\uB17C \uD0C0\uC6CC"
+  - 10G
+  - "\uD3EC\uD0C4\uC744 \uBC1C\uC0AC\uD574 \uBC94\uC704 \uD53C\uD574\uB97C \uC785\uD799\uB2C8\uB2E4"
   _panelController: {fileID: 1883186019693286236}
 --- !u!1 &6785628394003757348
 GameObject:
@@ -1496,7 +1514,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 630ca216352f0e44697635ee141d51cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _infoText: 
+  _ChangeText: {fileID: 1698588815514485089}
+  _TowerInfoText:
+  - "\uCE90\uD130\uD384\uD2B8 \uD0C0\uC6CC"
+  - 10G
+  - "\uAC70\uB300\uD55C \uB3CC\uC744 \uB358\uC838 \uAC15\uB825\uD55C \uD53C\uD574\uB97C
+    \uC785\uD799\uB2C8\uB2E4"
   _panelController: {fileID: 1883186019693286236}
 --- !u!1 &7961210868638858520
 GameObject:
@@ -1738,7 +1761,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b0a0d773ff8768946989549192fa175e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0b914969364ded14d8141403134accf7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1773,5 +1796,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 630ca216352f0e44697635ee141d51cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _infoText: 
+  _ChangeText: {fileID: 1698588815514485089}
+  _TowerInfoText:
+  - "\uBC1C\uB9AC\uC2A4\uD0C0 \uD0C0\uC6CC"
+  - 10G
+  - "\uD654\uC0B4\uC744 \uBC1C\uC0AC\uD574 \uC801\uC744 \uAD00\uD1B5\uD558\uC5EC
+    \uACF5\uACA9\uD569\uB2C8\uB2E4"
   _panelController: {fileID: 1883186019693286236}

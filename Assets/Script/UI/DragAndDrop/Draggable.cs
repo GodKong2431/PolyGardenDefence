@@ -87,7 +87,5 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
                 dropZone.OnTowerImageDrop(this); // 원하는 UI가 드롭됨
             }
         }
-
-        
     }
 }
