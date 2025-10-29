@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
-public class ExpandUI : MonoBehaviour
+public class TowerPanelOpenButton : MonoBehaviour
 {
     [Header("MovePanel")]
     [SerializeField] private RectTransform _panel;
