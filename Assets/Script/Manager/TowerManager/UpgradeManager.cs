@@ -18,33 +18,33 @@ public class UpgradeManager : SingleTon<UpgradeManager>
     {
         GameObject newTower = BuildTower();
         newTower.transform.position = position;
-        //GameManager.Instance.subGold(newTower.GetComponent<TowerBase>._price);
+        GameManager.Instance.SubGold(newTower.GetComponent<TowerBase>().Price);
     }
 
-    //public GameObject UpgradeTower(GameObject tower)//기존 타워 업그레이드 매서드.
-    //{
-    //    GameObject upgradedTower = null;
-    //    TowerBase towerBase = tower.GetComponent<TowerBase>();
-    //    TowerType type = towerBase._type;
-    //    //int level = towerBase._level;
-    //    switch (_level)
-    //    {
-    //        case 0:
-    //            upgradedTower = Instantiate(TowerStorage.Instance.AdvancedTowers[type], tower.transform.position, tower.transform.rotation);
-    //            break;
-    //        case 1:
-    //            upgradedTower = Instantiate(TowerStorage.Instance.FinalTowers[type], tower.transform.position, tower.transform.rotation);
-    //            break;
-    //        case 2:
-    //            Debug.Log("이미 최고 레벨인 타워입니다!");
-    //            return null;
-    //        default:
-    //            Debug.Log("잘못된 타워 레벨 설정입니다.");
-    //            return null;
-    //    }
-    //    Destroy(tower);
-    //    return upgradedTower;
-    //}
+    public GameObject UpgradeTower(GameObject tower)//기존 타워 업그레이드 매서드.
+    {
+        GameObject upgradedTower = null;
+        TowerBase towerBase = tower.GetComponent<TowerBase>();
+        TowerType type = towerBase.TowerType;
+        int level = towerBase.Level;
+        switch (level)
+        {
+            case 0:
+                upgradedTower = Instantiate(TowerStorage.Instance.AdvancedTowers[type], tower.transform.position, tower.transform.rotation);
+                break;
+            case 1:
+                upgradedTower = Instantiate(TowerStorage.Instance.FinalTowers[type], tower.transform.position, tower.transform.rotation);
+                break;
+            case 2:
+                Debug.Log("이미 최고 레벨인 타워입니다!");
+                return null;
+            default:
+                Debug.Log("잘못된 타워 레벨 설정입니다.");
+                return null;
+        }
+        Destroy(tower);
+        return upgradedTower;
+    }
 
     public void SellTower(GameObject tower)
     {
@@ -52,7 +52,7 @@ public class UpgradeManager : SingleTon<UpgradeManager>
         if (towerBase != null)
         {
             Destroy(tower);
-            //GameManager.Instance.AddGold(towerBase._price);
+            GameManager.Instance.AddGold(towerBase.Price);
         }
     }
 }
