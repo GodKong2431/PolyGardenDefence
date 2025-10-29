@@ -6,8 +6,8 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class UpgradeUI : MonoBehaviour
 {
-    private GameObject _selectTower;
-    public GameObject SelectTower
+    private TowerBase _selectTower;
+    public TowerBase SelectTower
     {
         get;
     }
@@ -28,7 +28,7 @@ public class UpgradeUI : MonoBehaviour
             gameObject.SetActive(false);
     }
 
-    public void MoveToTower(GameObject selectTower)
+    public void MoveToTower(TowerBase selectTower)
     {
         _selectTower = selectTower;
         Vector3 movePos = selectTower.transform.position;
