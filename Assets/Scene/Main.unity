@@ -139,6 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba21b037576522a41b3ad2a247551811, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _selectTowerType: 4
 --- !u!1 &477231716 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5532852914383694569, guid: 74d98bee4d0d34c4c90d1daa844ad5a3, type: 3}
@@ -156,6 +157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba21b037576522a41b3ad2a247551811, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _selectTowerType: 5
 --- !u!1 &656081780
 GameObject:
   m_ObjectHideFlags: 0
@@ -346,6 +348,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba21b037576522a41b3ad2a247551811, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _selectTowerType: 3
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -466,9 +469,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1428714467}
   - component: {fileID: 1428714466}
+  - component: {fileID: 1428714470}
   - component: {fileID: 1428714465}
   - component: {fileID: 1428714468}
   - component: {fileID: 1428714464}
+  - component: {fileID: 1428714469}
   m_Layer: 10
   m_Name: Cube
   m_TagString: Tower
@@ -574,6 +579,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf2a40547bfb3dd43b8f59a01f88c12c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!135 &1428714469
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1428714463}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1428714470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1428714463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dc92bef439521f4189be7ae51ec6baa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bulletPrefab: {fileID: 0}
+  _range: 0
+  _firePoint: {fileID: 0}
+  _name: base tower
+  _damage: 1
+  _shotDelay: 0.5
+  _bulletType: 0
+  _towerType: 0
+  _pierceCount: 2
 --- !u!1 &1499232238 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4776517917262019691, guid: 74d98bee4d0d34c4c90d1daa844ad5a3, type: 3}
@@ -591,6 +638,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba21b037576522a41b3ad2a247551811, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _selectTowerType: 0
 --- !u!1 &1653337817
 GameObject:
   m_ObjectHideFlags: 0
@@ -653,6 +701,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba21b037576522a41b3ad2a247551811, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _selectTowerType: 1
 --- !u!1 &1970526730 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5465079258532307151, guid: 74d98bee4d0d34c4c90d1daa844ad5a3, type: 3}
@@ -670,6 +719,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba21b037576522a41b3ad2a247551811, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _selectTowerType: 2
 --- !u!1001 &995003802121430107
 PrefabInstance:
   m_ObjectHideFlags: 0
