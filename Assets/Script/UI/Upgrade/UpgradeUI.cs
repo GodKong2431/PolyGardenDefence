@@ -1,11 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class UpgradeUI : MonoBehaviour
 {
+    private GameObject _selectTower;
+    public GameObject SelectTower
+    {
+        get;
+    }
+
+
     private Camera _camera;
+
     Vector3 currentSelectCameraPos;
     private void Awake()
     {
@@ -15,13 +24,14 @@ public class UpgradeUI : MonoBehaviour
     //!(Input.GetAxis("Mouse ScrollWheel") == 0)
     private void Update()
     {
-        if (gameObject.activeSelf && (Input.anyKeyDown || currentSelectCameraPos != _camera.transform.position))
+        if (gameObject.activeSelf && (currentSelectCameraPos != _camera.transform.position))
             gameObject.SetActive(false);
     }
 
-    public void MoveToTower(GameObject _selectTower)
+    public void MoveToTower(GameObject selectTower)
     {
-        Vector3 movePos = _selectTower.transform.position;
+        _selectTower = selectTower;
+        Vector3 movePos = selectTower.transform.position;
         currentSelectCameraPos = _camera.transform.position;
         transform.position = _camera.WorldToScreenPoint(movePos);
         gameObject.SetActive(true);
