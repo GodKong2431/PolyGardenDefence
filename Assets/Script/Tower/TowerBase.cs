@@ -13,8 +13,27 @@ public class TowerBase : MonoBehaviour
     [SerializeField] protected float _damage = 1f;
     [SerializeField] protected float _shotDelay = 0.5f;
     [SerializeField] protected BulletType _bulletType;
-    [SerializeField] protected TowerType _towerType;
-    protected int _level = 1; 
+    [SerializeField] private TowerType _towerType;
+    private int _level = 1;
+    private int _price = 10;
+
+    public TowerType TowerType
+    {
+        get { return _towerType; }
+        set { _towerType = value; }
+    }
+    public int Price
+    {
+        get { return _price; }
+        set { _price = value; }
+    }
+    public int Level
+    {
+        get { return _level; }
+        set { _level = value; }
+    }
+
+
 
     protected float _nextShot = 0;
     protected List<Transform> _target = new List<Transform>();

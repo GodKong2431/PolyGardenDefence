@@ -24,11 +24,11 @@ public class CannonTower : TowerBase
             _bullet.transform.position = _firePoint.position;
             _bullet.transform.rotation = _firePoint.rotation;
 
-            BulletBase _setBulletComponent = _bullet.GetComponent<BulletBase>();
+            CannonBall _setBulletComponent = _bullet.GetComponent<CannonBall>();
             if (_setBulletComponent != null)
             {
                 _setBulletComponent.SetDamage(_damage);
-                //_setBulletComponent.SetRadius(_explosionRadius);
+                _setBulletComponent.SetRadius(_explosionRadius);
             }
             _nextShot = Time.time + _shotDelay;
         }

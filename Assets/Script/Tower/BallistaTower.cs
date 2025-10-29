@@ -25,11 +25,11 @@ public class BallistaTower : TowerBase
             _bullet.transform.position = _firePoint.position;
             _bullet.transform.rotation = _firePoint.rotation;
 
-            BulletBase _setBulletComponent = _bullet.GetComponent<BulletBase>();
+            Arrow _setBulletComponent = _bullet.GetComponent<Arrow>();
             if (_setBulletComponent != null)
             {
                 _setBulletComponent.SetDamage(_damage);
-                //_setBulletComponent.SetPiercing(_pierceCount);
+                _setBulletComponent.SetPiercing(_pierceCount);
             }
             _nextShot = Time.time + _shotDelay;
         }
