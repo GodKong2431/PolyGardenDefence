@@ -5,13 +5,10 @@ using UnityEngine;
 public class SellButton : MonoBehaviour
 {
     TowerBase _selectTower;
-    private void Awake()
-    {
-        _selectTower = GetComponentInParent<UpgradeUI>().SelectTower;
-    }
 
     public void OnClickSell()
     {
+        _selectTower = GetComponentInParent<UpgradeUI>().SelectTower;
         UpgradeManager.Instance.SellTower(_selectTower);
     }
 }
