@@ -133,6 +133,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!224 &619100951 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4614626816631888338, guid: 256aa6707e502aa4488263ae373c9452, type: 3}
+  m_PrefabInstance: {fileID: 7052062207295792612}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &656081780
 GameObject:
   m_ObjectHideFlags: 0
@@ -306,6 +311,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba6f6d6f24034f442b821d04805ec6f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &897871002 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2133896437393612529, guid: 256aa6707e502aa4488263ae373c9452, type: 3}
+  m_PrefabInstance: {fileID: 7052062207295792612}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -442,6 +458,7 @@ GameObject:
   - component: {fileID: 1428714468}
   - component: {fileID: 1428714464}
   - component: {fileID: 1428714469}
+  - component: {fileID: 1428714471}
   m_Layer: 10
   m_Name: Cube
   m_TagString: Tower
@@ -589,6 +606,33 @@ MonoBehaviour:
   _bulletType: 0
   _towerType: 0
   _pierceCount: 2
+--- !u!54 &1428714471
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1428714463}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!114 &1437853486 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5406702478139592205, guid: 4ac829034ebf37e4da70bb2d06a8cbcd, type: 3}
@@ -665,6 +709,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2111686339 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7164015803913645116, guid: 256aa6707e502aa4488263ae373c9452, type: 3}
+  m_PrefabInstance: {fileID: 7052062207295792612}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2361d8864a7127449bdcf6f0417e65c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &995003802121430107
@@ -892,10 +947,42 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 963194227}
+    - target: {fileID: 6542775771207033960, guid: 256aa6707e502aa4488263ae373c9452, type: 3}
+      propertyPath: _panelController
+      value: 
+      objectReference: {fileID: 2111686339}
+    - target: {fileID: 7164015803913645116, guid: 256aa6707e502aa4488263ae373c9452, type: 3}
+      propertyPath: _panel
+      value: 
+      objectReference: {fileID: 619100951}
+    - target: {fileID: 7164015803913645116, guid: 256aa6707e502aa4488263ae373c9452, type: 3}
+      propertyPath: _infoText
+      value: 
+      objectReference: {fileID: 897871002}
     - target: {fileID: 7772318774852621261, guid: 256aa6707e502aa4488263ae373c9452, type: 3}
       propertyPath: m_Name
       value: TowerPlacementCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 7854649141614088226, guid: 256aa6707e502aa4488263ae373c9452, type: 3}
+      propertyPath: _panelController
+      value: 
+      objectReference: {fileID: 2111686339}
+    - target: {fileID: 8087057816813548313, guid: 256aa6707e502aa4488263ae373c9452, type: 3}
+      propertyPath: _panelController
+      value: 
+      objectReference: {fileID: 2111686339}
+    - target: {fileID: 8534236190703202033, guid: 256aa6707e502aa4488263ae373c9452, type: 3}
+      propertyPath: _panelController
+      value: 
+      objectReference: {fileID: 2111686339}
+    - target: {fileID: 8790633845849918728, guid: 256aa6707e502aa4488263ae373c9452, type: 3}
+      propertyPath: _panelController
+      value: 
+      objectReference: {fileID: 2111686339}
+    - target: {fileID: 9158654174561458269, guid: 256aa6707e502aa4488263ae373c9452, type: 3}
+      propertyPath: _panelController
+      value: 
+      objectReference: {fileID: 2111686339}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
