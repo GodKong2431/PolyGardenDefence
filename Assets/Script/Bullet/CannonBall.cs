@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class CannonBall : BulletBase
 {
-    private float _explosionRadius;
-    float _detectRange = 0;
-    
+    private float _explosionRadius;    
         
     protected override void OnTriggerEnter(Collider other)
     {
