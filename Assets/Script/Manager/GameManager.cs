@@ -84,11 +84,13 @@ public class GameManager : SingleTon<GameManager>
     public void AddGold(int add)// 골드 증가
     {
         _gold += add;
+        NotifyGoldUpdate();
         //ui에서 출력
     }
     public void SubGold(int sub) //골드 소비
     {
         _gold -= sub;
+        NotifyGoldUpdate();
         //ui에서 출력
     }
 
@@ -104,6 +106,7 @@ public class GameManager : SingleTon<GameManager>
             if(_currentLife > 0)
             {
                 _currentLife--;
+                NotifyLifeUpdate();
                 Debug.Log("현재 남은 라이프 : " +_currentLife);
                 //ui에서 출력
             }
@@ -123,6 +126,7 @@ public class GameManager : SingleTon<GameManager>
         else
         {
             _currentWave++;
+            NotifyWaveUpdate();
             Debug.Log("현재 웨이브 : " + _currentWave);
         }
     }
