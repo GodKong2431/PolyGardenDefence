@@ -38,6 +38,7 @@ public class CatapultTower : TowerBase
             if (_setBulletComponent != null)
             {
                 _setBulletComponent.SetDamage(criticalDamage);
+                _setBulletComponent.Shoot();
             }
             _nextShot = Time.time + _shotDelay;
         }

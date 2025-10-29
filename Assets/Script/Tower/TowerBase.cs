@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
+// 꼭 있어야하는 컴포넌트들
 [RequireComponent(typeof(SphereCollider))]
+[RequireComponent(typeof(Rigidbody))]
 public class TowerBase : MonoBehaviour
 {
     [SerializeField] protected GameObject _bulletPrefab;
@@ -17,6 +18,8 @@ public class TowerBase : MonoBehaviour
     private int _level = 1;
     private int _price = 10;
 
+
+    //프로퍼티들
     public TowerType TowerType
     {
         get { return _towerType; }
@@ -38,7 +41,7 @@ public class TowerBase : MonoBehaviour
     protected float _nextShot = 0;
     protected List<Transform> _target = new List<Transform>();
     protected SphereCollider _sphereCollider;
-
+    protected Rigidbody _rb;
     protected float _baseShotDelay;
     protected Coroutine _buffCoroutine = null;
 
@@ -46,6 +49,11 @@ public class TowerBase : MonoBehaviour
     {
         _sphereCollider = GetComponent<SphereCollider>();
         _sphereCollider.isTrigger = true;
+
+        _rb = GetComponent<Rigidbody>();
+        _rb.isKinematic = true;
+        _rb.useGravity = false;
+
         SetRange();
         _baseShotDelay = _shotDelay;
     }
@@ -55,6 +63,7 @@ public class TowerBase : MonoBehaviour
         SetTarget();
         AttackTarget();
     }
+    
     //공격범위 설정
     protected void SetRange()
     {
@@ -95,17 +104,24 @@ public class TowerBase : MonoBehaviour
         {
             return;
         }
+        Transform targetEnemy = _target[0];
+        if (targetEnemy == null||!targetEnemy.gameObject.activeSelf) return;
+
+        Vector3 dirToEnemy = (targetEnemy.position - _firePoint.position).normalized;
+        Quaternion targetRotation = Quaternion.LookRotation(dirToEnemy);
+
         GameObject _bullet = BulletManager.Instance.MakeBullet(_bulletType);
 
         if(_bullet != null)
         {
             _bullet.transform.position = _firePoint.position;
-            _bullet.transform.rotation = _firePoint.rotation;
+            _bullet.transform.rotation = targetRotation;
 
             BulletBase _setBulletComponent = _bullet.GetComponent<BulletBase>();
             if(_setBulletComponent != null)
             {
                 _setBulletComponent.SetDamage(_damage);
+                _setBulletComponent.Shoot();
             }
             _nextShot = Time.time + _shotDelay;
         }
