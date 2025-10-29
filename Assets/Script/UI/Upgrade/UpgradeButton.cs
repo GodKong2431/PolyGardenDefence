@@ -5,14 +5,11 @@ using UnityEngine;
 public class UpgradeButton : MonoBehaviour
 {
     TowerBase _selectTower;
-    private void Awake()
-    {
-        _selectTower = GetComponentInParent<UpgradeUI>().SelectTower;
-    }
 
     public void OnClickUpgrade()
     {
-        UpgradeManager.Instance.SellTower(_selectTower);
+        _selectTower = GetComponentInParent<UpgradeUI>().SelectTower;
+        UpgradeManager.Instance.UpgradeTower(_selectTower);
     }
 
 }
