@@ -5,20 +5,21 @@ using UnityEngine;
 
 public class UpgradeManager : SingleTon<UpgradeManager>
 {
-    
+    GameObject CurrentTower { get; set; }
     public GameObject BuildTower(TowerType type) // 타입에 맞는 타워 생성 후 비활성화
     {
         GameObject newTower = null;
         newTower = Instantiate(TowerStorage.Instance.BasicTowers[type]);
-        newTower.SetActive(false);        
+        newTower.SetActive(false);
+        CurrentTower = newTower;
         return newTower;
     }
 
-    public void PlaceTower(GameObject tower, Vector3 position) //위치값 받아서 타워 배치 후 활성화.
+    public void PlaceTower(Vector3 position) //위치값 받아서 타워 배치 후 활성화.
     {
-        GameObject newTower = tower;
-        newTower.transform.position = position;
-        newTower.SetActive(true);
+        CurrentTower.SetActive(true);
+        CurrentTower.transform.position = position;
+        //GameManager.Instance.subGold(CurrentTower.GetComponent<TowerBase>._price);
     }
 
     //public GameObject UpgradeTower(GameObject tower)//기존 타워 업그레이드 매서드.
@@ -52,7 +53,7 @@ public class UpgradeManager : SingleTon<UpgradeManager>
         if (towerBase != null)
         {
             Destroy(tower);
-            //GameManager.Instance.SubGold(towerBase._price);
+            //GameManager.Instance.AddGold(towerBase._price);
         }
     }
 }
