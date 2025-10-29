@@ -5,7 +5,7 @@ using UnityEngine;
 
 
 [RequireComponent(typeof(Collider))]
-public class EnemyBase : MonoBehaviour, IPoolable//,IDamageable
+public class EnemyBase : MonoBehaviour, IPoolable,IDamageable
 {
     [Header("Stats")]
     [SerializeField] private EnemyStatsSO _stats;             // HP/Speed/AttackDamage/AttackDelay µî
