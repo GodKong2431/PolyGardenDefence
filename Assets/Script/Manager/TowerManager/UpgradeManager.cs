@@ -5,18 +5,17 @@ using UnityEngine;
 using System.Linq;
 
 public class UpgradeManager : SingleTon<UpgradeManager>
-{
-    TowerType SelectedType { get; set; }
-    public GameObject BuildTower() // 타입에 맞는 타워 생성.
+{    
+    public GameObject BuildTower(TowerType selectedType) // 타입에 맞는 타워 생성.
     {        
         GameObject newTower = null;
-        newTower = Instantiate(TowerStorage.Instance.BasicTowers[SelectedType]);        
+        newTower = Instantiate(TowerStorage.Instance.BasicTowers[selectedType]);        
         return newTower;
     }
 
-    public void PlaceTower(Vector3 position) //위치값 받아서 타워 배치.
+    public void PlaceTower(TowerType type, Vector3 position) //위치값 받아서 타워 배치.
     {
-        GameObject newTower = BuildTower();
+        GameObject newTower = BuildTower(type);
         newTower.transform.position = position;
         GameManager.Instance.SubGold(newTower.GetComponent<TowerBase>().Price);
     }

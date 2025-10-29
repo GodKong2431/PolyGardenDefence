@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UIElements;
 
 public class DropZone : MonoBehaviour
 {
@@ -9,8 +10,6 @@ public class DropZone : MonoBehaviour
         Debug.Log($"{gameObject.name}에 {droppedUI.name}이 드롭됨!");
 
 
-
-        //메서드 실행
-        //UpgradeManager.Placement();
+        UpgradeManager.Instance.PlaceTower(droppedUI.SelectTowerType, gameObject.transform.position);
     }
 }

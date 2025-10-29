@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using static UnityEditor.Experimental.GraphView.GraphView;
@@ -9,7 +10,7 @@ public class UpgradeUI : MonoBehaviour
     private TowerBase _selectTower;
     public TowerBase SelectTower
     {
-        get;
+        get { return _selectTower; }
     }
 
 
@@ -28,9 +29,9 @@ public class UpgradeUI : MonoBehaviour
             gameObject.SetActive(false);
     }
 
-    public void MoveToTower(TowerBase selectTower)
+    public void MoveToTower(GameObject selectTower)
     {
-        _selectTower = selectTower;
+        _selectTower = selectTower.GetComponent<TowerBase>();
         Vector3 movePos = selectTower.transform.position;
         currentSelectCameraPos = _camera.transform.position;
         transform.position = _camera.WorldToScreenPoint(movePos);

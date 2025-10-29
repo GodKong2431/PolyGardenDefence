@@ -55,7 +55,7 @@ public class RaycastManager : SingleTon<RaycastManager>
         {
             case "Tower":
                 TowerBase selectTower = hit.collider.GetComponent<TowerBase>();
-                _upgradeUI.MoveToTower(selectTower);
+                _upgradeUI.MoveToTower(hit.transform.gameObject);
                 return;
             case "NomalTile":
                 Debug.Log("바닥 메서드 호출");

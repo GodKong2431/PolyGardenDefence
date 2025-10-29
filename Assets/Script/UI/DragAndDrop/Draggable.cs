@@ -3,11 +3,27 @@ using UnityEngine.EventSystems;
 
 public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
+    [SerializeField] private TowerType _selectTowerType;
     private Canvas _canvas;
     private RectTransform _rectTransform;
     private CanvasGroup _canvasGroup;
 
     private Vector2 _originalPosition;
+
+
+
+    public TowerType SelectTowerType
+    {
+        get { return _selectTowerType; }
+    }
+
+
+
+
+
+
+
+
 
     private void Awake()
     {
@@ -50,6 +66,8 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     // 드래그가 끝났을 떄
     public void OnEndDrag(PointerEventData eventData)
     {
+        // 드랍이 끝났으면 자신의 위치로 복귀
+        _rectTransform.anchoredPosition = _originalPosition;
         // 그룹이 있다면 상호작용 및 투명도 원상복구
         if (_canvasGroup != null)
         {
@@ -70,7 +88,6 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
             }
         }
 
-        // 드랍이 끝났으면 자신의 위치로 복귀
-        _rectTransform.anchoredPosition = _originalPosition;
+        
     }
 }
