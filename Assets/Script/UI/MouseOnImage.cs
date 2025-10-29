@@ -1,10 +1,13 @@
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class MouseOnImage : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [Header("InfoText")]
-    [SerializeField] private string _infoText;
+    [SerializeField] private TextMeshProUGUI _ChangeText;
+    [SerializeField] private List<string> _TowerInfoText = new List<string>();
 
     [Header("PanelController")]
     [SerializeField] private TowerInfoPanelController _panelController;
@@ -13,7 +16,8 @@ public class MouseOnImage : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     public void OnPointerEnter(PointerEventData eventData)
     {
         Debug.Log($"{gameObject.name} 에 마우스 올라감");
-        _panelController.ShowPanel(_infoText);
+        _ChangeText.text = $"<size=33>{_TowerInfoText[0]}\t{_TowerInfoText[1]}</size>\n<size=27>{_TowerInfoText[2]}</size>";
+        _panelController.ShowPanel(_ChangeText.text);
     }
 
     //마우스가 내려갔을 때 실행
