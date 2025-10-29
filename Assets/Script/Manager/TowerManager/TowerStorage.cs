@@ -8,21 +8,32 @@ public class TowerStorage : SingleTon<TowerStorage>
     public Dictionary<TowerType, GameObject> AdvancedTowers { get; private set; }
     public Dictionary<TowerType, GameObject> FinalTowers { get; private set; }
 
+    [Header("Ballista Towers")]
     [SerializeField] GameObject _ballista_0;
     [SerializeField] GameObject _ballista_1;
     [SerializeField] GameObject _ballista_2;
+
+    [Header("Catapult Towers")]
     [SerializeField] GameObject _catapult_0;
     [SerializeField] GameObject _catapult_1;
     [SerializeField] GameObject _catapult_2;
+
+    [Header("Cannon Towers")]
     [SerializeField] GameObject _cannon_0;
     [SerializeField] GameObject _cannon_1;
     [SerializeField] GameObject _cannon_2;
+
+    [Header("Turret Towers")]
     [SerializeField] GameObject _turret_0;
     [SerializeField] GameObject _turret_1;
     [SerializeField] GameObject _turret_2;
+
+    [Header("Buff Towers")]
     [SerializeField] GameObject _buffTower_0;
     [SerializeField] GameObject _buffTower_1;
     [SerializeField] GameObject _buffTower_2;
+
+    [Header("Debuff Towers")]
     [SerializeField] GameObject _debuffTower_0;
     [SerializeField] GameObject _debuffTower_1;
     [SerializeField] GameObject _debuffTower_2;
