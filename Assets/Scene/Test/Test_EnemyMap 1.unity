@@ -751,6 +751,8 @@ MonoBehaviour:
   - {fileID: 7053431226085811694, guid: 2a16b2ab638b07848ad1a394b7029d6e, type: 3}
   - {fileID: 1895402978943751042, guid: 53da1b1cfa000734d813d34354bf62f2, type: 3}
   _usePartialNameMatch: 1
+  _enemyHpBarCanvas: {fileID: 8363355658070216102, guid: ed182b8364ec40449a73a6575d656dfa, type: 3}
+  _enemyHpBarPrefab: {fileID: 6698230739867222961, guid: 3a1072c1a4d69384295e4a071c28c798, type: 3}
 --- !u!1 &577789396
 GameObject:
   m_ObjectHideFlags: 0
@@ -1421,7 +1423,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7ece6e25113f7f4790f656e3482e1e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isOccupied: 0
   _placeOffset: {x: 0, y: 0, z: 0}
 --- !u!65 &954370049
 BoxCollider:
@@ -1997,7 +1998,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7ece6e25113f7f4790f656e3482e1e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isOccupied: 0
   _placeOffset: {x: 0, y: 0, z: 0}
 --- !u!65 &1322480921
 BoxCollider:
@@ -2445,12 +2445,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1534367705}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06c54a404f977114a8cf2d45f894ed15, type: 3}
+  m_Script: {fileID: 11500000, guid: b03cc2fe1d2bedb4589b53ecad4f0809, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _lives: 100
-  _coins: 100
-  _score: 0
+  _maxLife: 100
+  _gold: 0
 --- !u!1001 &1539051683
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2777,12 +2776,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemySpawner: {fileID: 556769379}
   _sequence: {fileID: 11400000, guid: b49f9900bdeaa1a42a8e7d3347538193, type: 2}
-  _autoStartDelay: 5
   _manualKey: 9
   _rushBonusPerSecond: 5
-  _onRushBonus:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1001 &1742873696
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2893,7 +2888,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7ece6e25113f7f4790f656e3482e1e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isOccupied: 0
   _placeOffset: {x: 0, y: 0, z: 0}
 --- !u!65 &1812202034
 BoxCollider:
@@ -3337,7 +3331,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7ece6e25113f7f4790f656e3482e1e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isOccupied: 0
   _placeOffset: {x: 0, y: 0, z: 0}
 --- !u!65 &2116271074
 BoxCollider:
