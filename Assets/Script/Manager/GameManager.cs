@@ -9,8 +9,8 @@ using UnityEngine.SceneManagement;
 public class GameManager : SingleTon<GameManager>
 {
     //Life 관련 필드
-    private int _maxLife = 100;
-    [SerializeField]private int _currentLife = 0;
+    [SerializeField] private int _maxLife = 100;
+    private int _currentLife = 0;
     public int CurrentLife => _currentLife;
 
     //Gold 관련 필드
@@ -73,9 +73,10 @@ public class GameManager : SingleTon<GameManager>
     }
     #endregion
 
-    public void Start()
+    protected override void Awake()
     {
-        _currentLife = 1;
+        base.Awake();
+        _currentLife = _maxLife;
     }
     public void OnEnemyKilled(int bounty) //적 처치시 골드 획득
     {
@@ -105,7 +106,7 @@ public class GameManager : SingleTon<GameManager>
         }
         if (sublife == true)
         {
-            if(_currentLife <= 0)
+            if(_currentLife >= 0)
             {
                 _currentLife--;
                 NotifyLifeUpdate();
@@ -116,7 +117,6 @@ public class GameManager : SingleTon<GameManager>
             {
                 GameOver();
             }
-            
         }
     }
     public void Wave()
@@ -154,5 +154,17 @@ public class GameManager : SingleTon<GameManager>
         {
             SceneManager.LoadScene("Title");
         }
+    }
+
+    // 퍼센트 0~100 보정해서 저장
+    public void SetWaveProgressPercent(float percent)
+    {
+        _progress = Mathf.Clamp(percent, 0f, 100f);
+    }
+
+    // 매 프레임 UI 푸시
+    private void Update()
+    {
+        NotifyWaveUpdate();
     }
 }

@@ -14,7 +14,7 @@ public class GameLifeUI : MonoBehaviour, IGameLifeObserver
     public void OnGameLifeChanged(int currentLife, int maxLife)
     {
         _lifeText.text = currentLife.ToString() + "/" + maxLife.ToString();
-        _lifebar.fillAmount = currentLife / maxLife;
+        _lifebar.fillAmount = (float)currentLife / maxLife;
     }
 
     private void Start()
