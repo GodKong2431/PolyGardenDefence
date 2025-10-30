@@ -17,7 +17,7 @@ public class UpgradeManager : SingleTon<UpgradeManager>
     public void PlaceTower(TowerType type, GameObject tile) //타일 받아서 타워 배치.
     {
         TowerSpot spot = tile.GetComponent<TowerSpot>();
-        if (spot.IsOccupied)
+        if (!spot.IsOccupied)
         {
             GameObject newTower = BuildTower(type);
             newTower.transform.position = tile.transform.position;
