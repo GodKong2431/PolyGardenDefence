@@ -60,6 +60,9 @@ public class WaveController : MonoBehaviour
                 continue;
             }
 
+            GameManager.Instance.Wave();                      // 현재 웨이브 +1
+            //GameManager.Instance.SetWaveProgressPercent(0f);  // 진행도 0% 초기화
+
             // 1) 스테이지 스폰(순차)
             yield return SpawnStage(stage);
 
@@ -77,6 +80,7 @@ public class WaveController : MonoBehaviour
     /// </summary>
     private IEnumerator SpawnStage(WaveStage stage)
     {
+        // 1) 스폰 지시
         foreach (var entry in stage.Entries)
         {
             if (entry == null || entry.Stats == null)
@@ -96,6 +100,30 @@ public class WaveController : MonoBehaviour
             // yield return new WaitForSeconds(0.1f);
         }
 
+        // 2) 시간 기준 진행도 계산
+        float stageSeconds = 0f;
+        foreach (var e in stage.Entries)
+        {
+            if (e == null) continue;
+            int count = Mathf.Max(0, e.Count);
+            float interval = Mathf.Max(0f, e.Interval);
+            // 첫 마리는 t=0에 나오므로 (count-1) * interval 이 실제 소요 시간
+            stageSeconds += Mathf.Max(0, count - 1) * interval;
+        }
+        if (stageSeconds <= 0f) stageSeconds = 1f; // 최소 보정
+
+        // 3) 0→100% 매 프레임 전송
+        float elapsed = 0f;
+        while (elapsed < stageSeconds)
+        {
+            float percent = (elapsed / stageSeconds) * 100f;
+            GameManager.Instance.SetWaveProgressPercent(percent); // ★ 매 프레임
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        // 4) 마무리 보정
+        GameManager.Instance.SetWaveProgressPercent(100f);
         yield return null;
     }
 
