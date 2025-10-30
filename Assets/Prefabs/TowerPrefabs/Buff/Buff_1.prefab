@@ -67,8 +67,30 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2b321bf1f3f26fa4ea657d68b6f41a2b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6591825043644520599}
   m_SourcePrefab: {fileID: 100100000, guid: 2b321bf1f3f26fa4ea657d68b6f41a2b, type: 3}
+--- !u!1 &1205187128915499704 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 2b321bf1f3f26fa4ea657d68b6f41a2b, type: 3}
+  m_PrefabInstance: {fileID: 2051608016853968873}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6591825043644520599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1205187128915499704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8262dd65cf639444a9b74a08ba0d6a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _orbitSpeed: 50
+  _fixedCrystal: {fileID: 5642175700098712497}
 --- !u!4 &2013812593777557506 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2b321bf1f3f26fa4ea657d68b6f41a2b, type: 3}
@@ -204,17 +226,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bee6c5fedcce6e644ab5e97bc3920a2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _bulletManager: {fileID: 0}
   _bulletPrefab: {fileID: 0}
   _firePoint: {fileID: 0}
-  _buffEffectPrefab: {fileID: 0}
-  _level: 2
-  _price: 10
+  _bulletType: 0
   _range: 5
-  _name: BuffTower_Lv1
   _damage: 1
   _shotDelay: 0.5
-  _bulletType: 0
+  _level: 2
+  _price: 10
+  _name: BuffTower_Lv1
   _towerType: 4
+  _buffEffectPrefab: {fileID: 0}
+  _effectLocalRotation: {x: 0, y: 0, z: 0}
+  _yOffset: 0.5
   _buffAmount: 0.5
   _buffDuration: 2
   _buffDelay: 3
@@ -260,7 +285,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 2b321bf1f3f26fa4ea657d68b6f41a2b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.333
+      value: 0.404
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2b321bf1f3f26fa4ea657d68b6f41a2b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -268,7 +293,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2b321bf1f3f26fa4ea657d68b6f41a2b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.325
+      value: -0.103
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2b321bf1f3f26fa4ea657d68b6f41a2b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -317,10 +342,32 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2b321bf1f3f26fa4ea657d68b6f41a2b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8641649878092099165}
   m_SourcePrefab: {fileID: 100100000, guid: 2b321bf1f3f26fa4ea657d68b6f41a2b, type: 3}
 --- !u!4 &7302928411470460432 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2b321bf1f3f26fa4ea657d68b6f41a2b, type: 3}
   m_PrefabInstance: {fileID: 7121193558906802683}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7931654910334839978 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 2b321bf1f3f26fa4ea657d68b6f41a2b, type: 3}
+  m_PrefabInstance: {fileID: 7121193558906802683}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8641649878092099165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7931654910334839978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8262dd65cf639444a9b74a08ba0d6a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _orbitSpeed: 50
+  _fixedCrystal: {fileID: 5642175700098712497}
