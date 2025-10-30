@@ -13,20 +13,15 @@ public class Arrow : BulletBase
 
     protected override void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Bullet") || other.gameObject.CompareTag("Tower"))
+        if (other.CompareTag("Enemy"))
         {
-            return;
-        }
-        else if (other.CompareTag("Enemy"))
-        {
-            _pierceCount = Mathf.Max(_pierceCount - 1, 0);         
+            _pierceCount = Mathf.Max(_pierceCount - 1, 0);
             if (_pierceCount == 0)
             {
                 GiveDamage(other);
                 OffBullet();
             }
         }
-        
     }
 
     public void SetPiercing(int pierceCount)

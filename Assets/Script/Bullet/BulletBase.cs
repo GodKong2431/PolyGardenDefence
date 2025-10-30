@@ -25,7 +25,7 @@ public class BulletBase : MonoBehaviour
 
     protected virtual void OnEnable()//활성화하면 날아가기.
     {
-        SetBullet();   
+        SetBullet();
         //ShootBullet();        
     }
 
@@ -46,13 +46,9 @@ public class BulletBase : MonoBehaviour
 
     protected virtual void OnTriggerEnter(Collider other)//콜라이더에 부딪히면 비활성화.
     {
-        if (other.gameObject.CompareTag("Enemy"))
+        if (other.CompareTag("Enemy"))
         {
             GiveDamage(other);
-            OffBullet();
-        }
-        else if (!other.gameObject.CompareTag("Bullet") && !other.gameObject.CompareTag("Tower") && !other.gameObject.CompareTag("TowerPlacementTile"))
-        {
             OffBullet();
         }
     }
@@ -71,13 +67,13 @@ public class BulletBase : MonoBehaviour
     }
     protected virtual void ShootBullet()//날아가는 매서드.
     {
-        _rigidBody.AddForce(transform.forward * _speed, ForceMode.Impulse);        
+        _rigidBody.AddForce(transform.forward * _speed, ForceMode.Impulse);
     }
-    
+
     protected void OffBullet()//비활성화 매서드.
-    {        
-        gameObject.SetActive(false);        
-    }    
+    {
+        gameObject.SetActive(false);
+    }
 
     protected void GiveDamage(Collider other)
     {
@@ -87,5 +83,5 @@ public class BulletBase : MonoBehaviour
         {
             enemy.ApplyDamage(_attack);
         }
-    }    
+    }
 }

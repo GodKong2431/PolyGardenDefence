@@ -53,8 +53,16 @@ PrefabInstance:
       value: Catapult_1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 1b6601356bdf9434c91df48defb39313, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1b6601356bdf9434c91df48defb39313, type: 3}
       propertyPath: m_TagString
       value: Tower
+      objectReference: {fileID: 0}
+    - target: {fileID: 5685563458787931510, guid: 1b6601356bdf9434c91df48defb39313, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5685563458787931510, guid: 1b6601356bdf9434c91df48defb39313, type: 3}
       propertyPath: m_TagString
@@ -66,13 +74,101 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1b6601356bdf9434c91df48defb39313, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2370238192213673810}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1b6601356bdf9434c91df48defb39313, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6791589062639199086}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1b6601356bdf9434c91df48defb39313, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5521849197253968418}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1b6601356bdf9434c91df48defb39313, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1986433677498644520}
   m_SourcePrefab: {fileID: 100100000, guid: 1b6601356bdf9434c91df48defb39313, type: 3}
 --- !u!4 &2854663265850805682 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1b6601356bdf9434c91df48defb39313, type: 3}
   m_PrefabInstance: {fileID: 2312444893183191641}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &3230802428745258760 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 1b6601356bdf9434c91df48defb39313, type: 3}
+  m_PrefabInstance: {fileID: 2312444893183191641}
+  m_PrefabAsset: {fileID: 0}
+--- !u!135 &6791589062639199086
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3230802428745258760}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &5521849197253968418
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3230802428745258760}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &1986433677498644520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3230802428745258760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f87d2e6097d20fc4e8d18e8eadc92e74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bulletPrefab: {fileID: 3758551196865717507, guid: bc6db73e53841394e94c0cd3dc95501e, type: 3}
+  _firePoint: {fileID: 2370238192213673810}
+  _buffEffectPrefab: {fileID: 0}
+  _level: 2
+  _price: 10
+  _range: 5
+  _name: base tower
+  _damage: 1
+  _shotDelay: 0.5
+  _bulletType: 2
+  _towerType: 2
+  _criticalChance: 0.2
+  _criticalMultiplier: 2
+  _animator: {fileID: 1251393661351624594}
 --- !u!1001 &2841347428400537785
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -126,22 +222,25 @@ PrefabInstance:
       value: weapon-catapult_1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 0a2e37f017306e94cb40e7432b9a94a7, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0a2e37f017306e94cb40e7432b9a94a7, type: 3}
       propertyPath: m_TagString
       value: Tower
+      objectReference: {fileID: 0}
+    - target: {fileID: 2756023688691497951, guid: 0a2e37f017306e94cb40e7432b9a94a7, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2829518461224114169, guid: 0a2e37f017306e94cb40e7432b9a94a7, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0a2e37f017306e94cb40e7432b9a94a7, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8718661184884447861}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0a2e37f017306e94cb40e7432b9a94a7, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 5210868857225879266}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0a2e37f017306e94cb40e7432b9a94a7, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 659902512630269748}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0a2e37f017306e94cb40e7432b9a94a7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1251393661351624594}
@@ -156,77 +255,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 0a2e37f017306e94cb40e7432b9a94a7, type: 3}
   m_PrefabInstance: {fileID: 2841347428400537785}
   m_PrefabAsset: {fileID: 0}
---- !u!135 &8718661184884447861
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3147760775763172840}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &5210868857225879266
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3147760775763172840}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!114 &659902512630269748
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3147760775763172840}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f87d2e6097d20fc4e8d18e8eadc92e74, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _bulletPrefab: {fileID: 3758551196865717507, guid: bc6db73e53841394e94c0cd3dc95501e, type: 3}
-  _range: 5
-  _firePoint: {fileID: 2370238192213673810}
-  _name: Catapult_Lv2
-  _damage: 1
-  _shotDelay: 0.5
-  _bulletType: 2
-  _towerType: 2
-  _criticalChance: 0.2
-  _criticalMultiplier: 2
-  _animator: {fileID: 1251393661351624594}
 --- !u!95 &1251393661351624594
 Animator:
   serializedVersion: 5
