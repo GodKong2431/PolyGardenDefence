@@ -16,16 +16,17 @@ public class GameWaveUI : MonoBehaviour, IGameWaveObserver
         _waveText.text = currentWave.ToString() +"/"+ maxWave.ToString();
         _wavebar.fillAmount = progress / 100;
     }
+    private void Awake()
+    {
+        GameManager.Instance.GameWaveObserver.AddObserver(this);
+    }
 
     private void Start()
     {
         gameManager = GameManager.Instance;
     }
 
-    private void Awake()
-    {
-        GameManager.Instance.GameWaveObserver.AddObserver(this);
-    }
+    
 
     private void OnDestroy()
     {

@@ -3,10 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneChanger : MonoBehaviour
+public enum SceneType
 {
-    public void SceneChange()
+    Title,
+    StageSelect,
+    Stage1,
+    Stage2,
+    Stage3
+}
+public class SceneChanger : SingleTon<SceneChanger>
+{
+    public void SceneChange(SceneType scene)
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(scene.ToString());
     }
 }
