@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4d76311d27f29244967e40f73ceef06, type: 3}
   m_Name: WaveSequence_
   m_EditorClassIdentifier: 
+  StartDelay: 5
   _stages:
   - _entries:
     - _stats: {fileID: 11400000, guid: 8f9605447efe76b4aa64311b36764a4f, type: 2}
@@ -32,4 +33,4 @@ MonoBehaviour:
       _count: 5
       _interval: 0.5
       _pathId: 0
-    _delayAfter: 0
+    _delayAfter: 10

@@ -9,6 +9,11 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private List<EnemyBase> _enemyPrefabs = new();
     [SerializeField] private bool _usePartialNameMatch = true;
 
+
+    [Header("HpBar")]
+    [SerializeField] private Transform _enemyHpBarCanvas;
+    [SerializeField] private GameObject _enemyHpBarPrefab;
+
     public void Spawn(EnemyStatsSO stats, int count, int pathId, float interval)
     {
         if (stats == null) { Debug.LogError("[EnemySpawner] stats null"); return; }
@@ -33,6 +38,13 @@ public class EnemySpawner : MonoBehaviour
             enemy.SetPrefabRef(prefab);
             enemy.SetPoolService(_pool);             // 반환 대상 풀 지정
             enemy.Init(stats, path);
+
+            #region
+            GameObject hpBarObj = Instantiate(_enemyHpBarPrefab, _enemyHpBarCanvas);
+            EnemyHpBar hpBar = hpBarObj.GetComponent<EnemyHpBar>();
+
+            enemy.HpBarInit(hpBar);
+            #endregion
             yield return new WaitForSeconds(interval);
         }
     }
