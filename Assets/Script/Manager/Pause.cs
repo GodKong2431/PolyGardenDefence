@@ -5,16 +5,16 @@ using UnityEngine;
 public class Pause : SingleTon<Pause>
 {
     private bool _isPaused = false;
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape)) //Esc 누를시 Paused작동
-        {
-            Paused();
-            //설정 추가
-        }
+    //void Update()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.Escape)) //Esc 누를시 Paused작동
+    //    {
+    //        Paused();
+    //        //설정 추가
+    //    }
 
-        //버튼 혹은 단축키
-    }
+    //    //버튼 혹은 단축키
+    //}
     public void Paused()
     {
         _isPaused = !_isPaused; //반전

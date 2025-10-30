@@ -6,13 +6,13 @@ public class GameLoop : SingleTon<GameLoop>
 {
     private EnemyStatsSO _enemyStats;
     private bool _isloop = false;
+    private WaveController _waveController;
     public void StartLoop()
     {
         if (!_isloop)
         {
             StartCoroutine(Loop());
         }
-        //버튼 누르면 시작
     }
 
     private IEnumerator Loop()
@@ -20,8 +20,7 @@ public class GameLoop : SingleTon<GameLoop>
 
         GameManager.Instance.Wave(); //GameManager 웨이브 작동
         _isloop = true;
-        //EnemySpawner.Instance.Spawn(_enemyStats, count: 5, pathId: 0, interval: 0.8f);
-        //EnemySpawner의 Spawn작동()안에 있는것은 예시
+        _waveController.StartCoroutine("RunSequence");//WaveController 작동
         yield return new WaitUntil(IsWave);
         if (GameManager.Instance.CurrentLife <= 0)//라이프 0이되면 코루틴 종료
         {
