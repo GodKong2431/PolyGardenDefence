@@ -77,29 +77,45 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
 
 
-
-
-
-
-
-
-
-
-
         // 마우스 포지션에서 레이를 발사하고
         // 맞은 오브젝트의 DropZone을 가져와 null이 아니라면
         // Tower이미지가 드랍되었을 때 실행될 메서드를 실행
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit[] hits = Physics.RaycastAll(ray, 1000f);
 
-        if (Physics.Raycast(ray, out RaycastHit hit))
+        if (hits.Length == 0)
         {
-
-            DropZone dropZone = hit.collider.GetComponent<DropZone>();
-            if (dropZone != null)
-            {
-                dropZone.OnTowerImageDrop(this); // 원하는 UI가 드롭됨
-            }
-
+            Debug.Log("아무것도 맞지 않았음");
+            return;
         }
+        foreach (RaycastHit hit in hits)
+        {
+            if (hit.collider.CompareTag("TowerPlacementTile"))
+            {
+                Debug.Log($"찾음: {hit.collider.name} (거리 {hit.distance})");
+
+                DropZone dropZone = hit.collider.GetComponent<DropZone>();
+                if (dropZone != null)
+                {
+                    dropZone.OnTowerImageDrop(this); // 원하는 UI가 드롭됨
+                }
+
+                break;
+            }
+            else
+            {
+                Debug.Log($"무시: {hit.collider.name}");
+            }
+        }
+        //if (Physics.Raycast(ray, out RaycastHit hit))
+        //{
+
+        //    DropZone dropZone = hit.collider.GetComponent<DropZone>();
+        //    if (dropZone != null)
+        //    {
+        //        dropZone.OnTowerImageDrop(this); // 원하는 UI가 드롭됨
+        //    }
+
+        //}
     }
 }
