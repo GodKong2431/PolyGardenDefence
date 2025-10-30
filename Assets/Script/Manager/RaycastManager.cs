@@ -8,8 +8,7 @@ public class RaycastManager : SingleTon<RaycastManager>
 
     private int _layerCount;
     private Camera _camera;
-    private Ray _ray;
-    private RaycastHit hit;
+    
 
     //싱글톤 Awake도 발동하고 초기화
     protected override void Awake()
@@ -21,7 +20,10 @@ public class RaycastManager : SingleTon<RaycastManager>
     //업데이트마다 Ray 발사
     private void Update()
     {
-        TryObjectSelect();
+        if (Input.GetMouseButtonDown(0))
+        {
+            TryObjectSelect();
+        }
     }
 
     //초기화 함수
@@ -34,28 +36,28 @@ public class RaycastManager : SingleTon<RaycastManager>
     //Ray발사하고 레이어 에 맞으면 태그 비교
     private void TryObjectSelect()
     {
-        _ray = _camera.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(_ray, out hit, 1000, _layerCount))
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit[] hits = Physics.RaycastAll(ray, 1000f, _layerCount);
+
+        foreach (RaycastHit hit in hits)
         {
-            
-            Debug.Log(hit.transform.name);
-            if (Input.GetMouseButtonDown(0))
+            if (hit.collider.CompareTag("Tower"))
             {
-                InteractionObjectCompareTag();
+                Debug.Log(hit.transform.name);
+
+                _upgradeUI.MoveToTower(hit.transform.gameObject);
+                return;
             }
         }
     }
 
-
-
     //태그 비교 메서드
-    private void InteractionObjectCompareTag()
+    private void InteractionObjectCompareTag(RaycastHit hit)
     {
         switch (hit.transform.gameObject.tag)
         {
             case "Tower":
-                TowerBase selectTower = hit.collider.GetComponent<TowerBase>();
-                _upgradeUI.MoveToTower(hit.transform.gameObject);
+                
                 return;
             case "NomalTile":
                 Debug.Log("바닥 메서드 호출");
