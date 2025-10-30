@@ -29,6 +29,8 @@ public class TowerBase : MonoBehaviour
 
     [Header("Buff / Visual Effects")]
     [SerializeField] private GameObject _buffEffectPrefab;
+    [SerializeField] private Vector3 _effectLocalRotation = Vector3.zero;
+    [SerializeField] private float _yOffset = 0.5f;
     
     private GameObject _currentBuffEffect = null;
 
@@ -120,13 +122,18 @@ public class TowerBase : MonoBehaviour
     /// <param name="isBuffed"></param>
     protected void ToggleBuffEffect(bool isBuffed)
     {
+        
+
         if (isBuffed)
         {
             if(_buffEffectPrefab != null && _currentBuffEffect == null)
             {
+                Vector3 spawnPosition = transform.position + new Vector3(0, _yOffset, 0);
+                Quaternion _rotation = Quaternion.Euler(_effectLocalRotation);
+
                 _currentBuffEffect = Instantiate(_buffEffectPrefab,
-                                                transform.position,
-                                                Quaternion.identity,
+                                                spawnPosition,
+                                                _rotation,
                                                 transform);
                 
             }
