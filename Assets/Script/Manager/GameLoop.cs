@@ -24,7 +24,7 @@ public class GameLoop : SingleTon<GameLoop>
         yield return new WaitUntil(IsWave);
         if (GameManager.Instance.CurrentLife <= 0)//라이프 0이되면 코루틴 종료
         {
-            yield break; 
+            yield break;
         }
         _isloop = false;
     }

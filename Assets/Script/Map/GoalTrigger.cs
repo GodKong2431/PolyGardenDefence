@@ -20,9 +20,17 @@ public class GoalTrigger : MonoBehaviour
         }
 
         // 보스면 즉시 게임 오버, 아니면 라이프 감소
-        GameManager_Demo.Instance.OnEnemyGoal(enemy.Stats.isBoss);
+        if (enemy.Stats.isBoss == true)
+        {
+            GameManager.Instance.Life(false, enemy.Stats.isBoss);
+        }
+        else
+        {
+            GameManager.Instance.Life(true, false);
+        }
 
         // 적 비활성화 (오브젝트 풀 반납)
         enemy.Despawn();
+        
     }
 }
