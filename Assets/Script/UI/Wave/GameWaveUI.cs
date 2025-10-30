@@ -14,7 +14,7 @@ public class GameWaveUI : MonoBehaviour, IGameWaveObserver
     public void OnGameWaveChanged(int currentWave, float progress)
     {
         _waveText.text = currentWave.ToString();
-        _wavebar.fillAmount = progress;
+        _wavebar.fillAmount = progress / 100;
     }
 
     private void Start()

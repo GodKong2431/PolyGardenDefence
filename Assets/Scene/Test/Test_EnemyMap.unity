@@ -1375,9 +1375,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 347222220204710630, guid: 754063090e9895d4c8d6aacefb3b78d2, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 754063090e9895d4c8d6aacefb3b78d2, type: 3}
       propertyPath: m_Name
       value: tile-spawn-end-round (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 754063090e9895d4c8d6aacefb3b78d2, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 754063090e9895d4c8d6aacefb3b78d2, type: 3}
+      propertyPath: m_TagString
+      value: TowerPlacementTile
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1508,9 +1520,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 347222220204710630, guid: 754063090e9895d4c8d6aacefb3b78d2, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 754063090e9895d4c8d6aacefb3b78d2, type: 3}
       propertyPath: m_Name
       value: tile-spawn-end-round (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 754063090e9895d4c8d6aacefb3b78d2, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 754063090e9895d4c8d6aacefb3b78d2, type: 3}
+      propertyPath: m_TagString
+      value: TowerPlacementTile
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2991,12 +3015,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1534367705}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06c54a404f977114a8cf2d45f894ed15, type: 3}
+  m_Script: {fileID: 11500000, guid: b03cc2fe1d2bedb4589b53ecad4f0809, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _lives: 100
-  _coins: 100
-  _score: 0
 --- !u!1001 &1539051683
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3045,9 +3066,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 347222220204710630, guid: 754063090e9895d4c8d6aacefb3b78d2, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 754063090e9895d4c8d6aacefb3b78d2, type: 3}
       propertyPath: m_Name
       value: tile-spawn-end-round (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 754063090e9895d4c8d6aacefb3b78d2, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 754063090e9895d4c8d6aacefb3b78d2, type: 3}
+      propertyPath: m_TagString
+      value: TowerPlacementTile
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3866,9 +3899,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 347222220204710630, guid: 754063090e9895d4c8d6aacefb3b78d2, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 754063090e9895d4c8d6aacefb3b78d2, type: 3}
       propertyPath: m_Name
       value: tile-spawn-end-round
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 754063090e9895d4c8d6aacefb3b78d2, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 754063090e9895d4c8d6aacefb3b78d2, type: 3}
+      propertyPath: m_TagString
+      value: TowerPlacementTile
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
