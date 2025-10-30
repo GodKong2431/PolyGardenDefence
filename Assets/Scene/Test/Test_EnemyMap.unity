@@ -1143,6 +1143,7 @@ MonoBehaviour:
   _scrollSpeed: 5
   _scrollMinY: 5
   _scrollMaxY: 30
+  _rotationSpeed: 80
 --- !u!1 &747898033
 GameObject:
   m_ObjectHideFlags: 0
