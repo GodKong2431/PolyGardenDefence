@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
-using System.Linq;
+using UnityEngine.UIElements;
 
 public class UpgradeManager : SingleTon<UpgradeManager>
 {    
@@ -13,11 +14,21 @@ public class UpgradeManager : SingleTon<UpgradeManager>
         return newTower;
     }
 
-    public void PlaceTower(TowerType type, Vector3 position) //위치값 받아서 타워 배치.
+    public void PlaceTower(TowerType type, GameObject tile) //타일 받아서 타워 배치.
     {
-        GameObject newTower = BuildTower(type);
-        newTower.transform.position = position;
-        GameManager.Instance.SubGold(newTower.GetComponent<TowerBase>().Price);
+        TowerSpot spot = tile.GetComponent<TowerSpot>();
+        if (spot.IsOccupied)
+        {
+            GameObject newTower = BuildTower(type);
+            newTower.transform.position = tile.transform.position;
+            GameManager.Instance.SubGold(newTower.GetComponent<TowerBase>().Price);
+            spot.Occupy();
+        }
+        else
+        {
+            Debug.Log("이미 타워가 배치된 타일입니다.");
+            //경우에 따라 알림 메시지용 UI 호출.
+        }        
     }
 
     public GameObject UpgradeTower(TowerBase towerBase)//기존 타워 업그레이드 매서드.
@@ -50,6 +61,7 @@ public class UpgradeManager : SingleTon<UpgradeManager>
         {
             Destroy(towerBase.gameObject);
             GameManager.Instance.AddGold(towerBase.Price);
+            //여기서 타워스팟 클리어 해야 함.
         }
     }
 }

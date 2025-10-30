@@ -21,7 +21,7 @@ public class Arrow : BulletBase
                 GiveDamage(other);
                 OffBullet();
             }
-        }        
+        }
     }
 
     public void SetPiercing(int pierceCount)
