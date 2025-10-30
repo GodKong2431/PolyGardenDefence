@@ -75,17 +75,31 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
             _canvasGroup.alpha = 1f;
         }
 
+
+
+
+
+
+
+
+
+
+
+
         // 마우스 포지션에서 레이를 발사하고
         // 맞은 오브젝트의 DropZone을 가져와 null이 아니라면
         // Tower이미지가 드랍되었을 때 실행될 메서드를 실행
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
         if (Physics.Raycast(ray, out RaycastHit hit))
         {
+
             DropZone dropZone = hit.collider.GetComponent<DropZone>();
             if (dropZone != null)
             {
                 dropZone.OnTowerImageDrop(this); // 원하는 UI가 드롭됨
             }
+
         }
     }
 }

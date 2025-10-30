@@ -1217,6 +1217,54 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &780860411
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 780860413}
+  - component: {fileID: 780860412}
+  m_Layer: 0
+  m_Name: BulletManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &780860412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 780860411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea953fc129984bd4a80a016d8eb6e991, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _arrow: {fileID: 3549904583290853265, guid: 05f2eb3f5fb1de84e9d90fcec39fbc0e, type: 3}
+  _ball: {fileID: 4354329200244975398, guid: 8fb21c9769ec2d644942b5149cfdd333, type: 3}
+  _stone: {fileID: 3758551196865717507, guid: bc6db73e53841394e94c0cd3dc95501e, type: 3}
+  _missile: {fileID: 3866625151371722093, guid: 54cc700efa5446147ad61d64c29b9fa6, type: 3}
+--- !u!4 &780860413
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 780860411}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.2581232, y: 2.9117618, z: 0.37577376}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &851347720
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1592,6 +1640,68 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f5a4f532055b2a54d8e1306a42359ecf, type: 3}
   m_PrefabInstance: {fileID: 988442312}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &993339189
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 993339191}
+  - component: {fileID: 993339190}
+  m_Layer: 0
+  m_Name: TowerStorage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &993339190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 993339189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b065e1725ff8ceb4f947ba07c7cfb857, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ballista_0: {fileID: 7273488379710004139, guid: 7dd13eef020792f4ea783ab31b79e97b, type: 3}
+  _ballista_1: {fileID: 3422831829848846478, guid: 960d175739b05d44ab2d833e9ebc8657, type: 3}
+  _ballista_2: {fileID: 5712933853330186810, guid: cc6133f662240844d9f334faf5a1f653, type: 3}
+  _catapult_0: {fileID: 3023112102604257652, guid: 2ffd65936d07ea4499e414b76ff6880f, type: 3}
+  _catapult_1: {fileID: 3230802428745258760, guid: 16c177547398d6544ae1d8df739378bb, type: 3}
+  _catapult_2: {fileID: 3233523395663802781, guid: 55fd07032578aff40bcd343cdc9662b1, type: 3}
+  _cannon_0: {fileID: 8228973561434313529, guid: 10b07c1fd9be3a946aa4113d3999f683, type: 3}
+  _cannon_1: {fileID: 109756009125635728, guid: bc08e117a02681348a276309432128e8, type: 3}
+  _cannon_2: {fileID: 8770559366614404539, guid: 33f5127da427eb544ac2cef5e5076663, type: 3}
+  _turret_0: {fileID: 4157162762982468139, guid: f7fc84f8d18890e498fb6fecb83f9875, type: 3}
+  _turret_1: {fileID: 6416569057282262969, guid: 4976d2b78438c9e47a6c02ae686ef0b2, type: 3}
+  _turret_2: {fileID: 4540790993349670325, guid: f3c72d15b9e6b254fb6f1fc645c7d20f, type: 3}
+  _buffTower_0: {fileID: 8782565293362844914, guid: a202e64e743d02944ba61871e3a46b6f, type: 3}
+  _buffTower_1: {fileID: 4973900656286488843, guid: d43cbbf00d0746648afd768fde4ef8a7, type: 3}
+  _buffTower_2: {fileID: 2042557349225014752, guid: 0e8db22439cfc414588fa42d7de999c5, type: 3}
+  _debuffTower_0: {fileID: 2524239775673632260, guid: b2fe554e00e885c4dbbf0fe195580463, type: 3}
+  _debuffTower_1: {fileID: 3941987733637026091, guid: 2ad361d647ab2e74f80948d53666728d, type: 3}
+  _debuffTower_2: {fileID: 340464066393074259, guid: 548ca5d32af623b4196a7b731a665849, type: 3}
+--- !u!4 &993339191
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 993339189}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.2581232, y: 2.9117618, z: 0.37577376}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &994215904
 GameObject:
   m_ObjectHideFlags: 0
@@ -3843,3 +3953,5 @@ SceneRoots:
   - {fileID: 1473516556}
   - {fileID: 577789401}
   - {fileID: 437841494}
+  - {fileID: 993339191}
+  - {fileID: 780860413}
