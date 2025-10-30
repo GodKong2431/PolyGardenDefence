@@ -67,8 +67,30 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2b321bf1f3f26fa4ea657d68b6f41a2b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8113678201961852162}
   m_SourcePrefab: {fileID: 100100000, guid: 2b321bf1f3f26fa4ea657d68b6f41a2b, type: 3}
+--- !u!1 &7094536987221389974 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 2b321bf1f3f26fa4ea657d68b6f41a2b, type: 3}
+  m_PrefabInstance: {fileID: 7977478151728943047}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8113678201961852162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7094536987221389974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8262dd65cf639444a9b74a08ba0d6a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _orbitSpeed: 50
+  _fixedCrystal: {fileID: 8262451885703777864}
 --- !u!4 &7583792811766655020 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2b321bf1f3f26fa4ea657d68b6f41a2b, type: 3}
@@ -206,17 +228,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bee6c5fedcce6e644ab5e97bc3920a2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _bulletManager: {fileID: 0}
   _bulletPrefab: {fileID: 0}
   _firePoint: {fileID: 0}
-  _buffEffectPrefab: {fileID: 0}
-  _level: 1
-  _price: 10
+  _bulletType: 0
   _range: 5
-  _name: BuffTower_Lv1
   _damage: 1
   _shotDelay: 0.5
-  _bulletType: 0
+  _level: 1
+  _price: 10
+  _name: BuffTower_Lv1
   _towerType: 4
+  _buffEffectPrefab: {fileID: 0}
+  _effectLocalRotation: {x: 0, y: 0, z: 0}
+  _yOffset: 0.5
   _buffAmount: 0.5
   _buffDuration: 2
   _buffDelay: 3
