@@ -38,13 +38,13 @@ public class UpgradeManager : SingleTon<UpgradeManager>
         int level = towerBase.Level;
         switch (level)
         {
-            case 0:
+            case 1:
                 upgradedTower = Instantiate(TowerStorage.Instance.AdvancedTowers[type], towerBase.transform.position, towerBase.transform.rotation);
                 break;
-            case 1:
+            case 2:
                 upgradedTower = Instantiate(TowerStorage.Instance.FinalTowers[type], towerBase.transform.position, towerBase.transform.rotation);
                 break;
-            case 2:
+            case 3:
                 Debug.Log("이미 최고 레벨인 타워입니다!");
                 return null;
             default:
