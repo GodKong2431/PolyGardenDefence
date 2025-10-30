@@ -11,9 +11,9 @@ public class GameWaveUI : MonoBehaviour, IGameWaveObserver
     [SerializeField] private Image _wavebar;
 
     private GameManager gameManager;
-    public void OnGameWaveChanged(int currentWave, float progress)
+    public void OnGameWaveChanged(int currentWave, int maxWave, float progress)
     {
-        _waveText.text = currentWave.ToString();
+        _waveText.text = currentWave.ToString() +"/"+ maxWave.ToString();
         _wavebar.fillAmount = progress / 100;
     }
 
