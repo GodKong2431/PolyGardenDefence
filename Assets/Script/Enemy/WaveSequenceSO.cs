@@ -5,6 +5,9 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "TD/Wave Sequence", fileName = "WaveSequence_")]
 public class WaveSequenceSO : ScriptableObject
 {
+    [Header("Sequence Meta")]
+    public float StartDelay = 0f;
+
     [Header("Stages")]
     [SerializeField] private List<WaveStage> _stages = new List<WaveStage>();
 
