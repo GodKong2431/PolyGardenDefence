@@ -8,7 +8,7 @@ using UnityEngine;
 public class TowerBase : MonoBehaviour
 {
     [Header("Pooling / Manager")]
-    [SerializeField] private BulletManager _bulletManager;
+    [SerializeField] protected BulletManager _bulletManager;
 
     [Header("Projectile Settings")]
     [SerializeField] protected GameObject _bulletPrefab;

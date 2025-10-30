@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class CannonTower : TowerBase
 {
-    [Header("Pooling / Manager")]
-    [SerializeField] private BulletManager _bulletManager;
-
-
     [Header("Cannon Settings")]
     [SerializeField] private float _explosionRadius = 3.0f;
 

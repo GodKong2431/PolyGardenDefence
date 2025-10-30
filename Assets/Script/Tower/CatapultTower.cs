@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class CatapultTower : TowerBase
 {
-    [Header("Pooling / Manager")]
-    [SerializeField] private BulletManager _bulletManager;
 
     [Header("Critical Settings")]
     [SerializeField] private float _criticalChance = 0.2f; //Ä¡¸íÅ¸ È®·ü

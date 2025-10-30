@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class BallistaTower : TowerBase
 {
-    [Header("Pooling / Manager")]
-    [SerializeField] private BulletManager _bulletManager;
+
 
     [Header("Ballista Settings")]
     [SerializeField] private int _pierceCount = 2; //°üÅë È½¼ö
