@@ -147,7 +147,7 @@ public class EnemyBase : MonoBehaviour, IPoolable,IDamageable
             return;
         }
 
-        _poolService.Return(this, _prefabRef);  // ★ 전역이 아니라 "씬 풀"로 반환
+        _poolService.Return(this, _prefabRef);  // 전역이 아니라 "씬 풀"로 반환
     }
 
     // -------- 공격 감지/처리 --------

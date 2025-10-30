@@ -18,11 +18,20 @@ public class WaveController : MonoBehaviour
 
     [Header("Rush Bonus")]
     [SerializeField] private float _rushBonusPerSecond = 5f;      // 초당 보너스 (남은 대기시간 × 이 값)
-    // 예시: 경제/보상 파트로 보너스 전달 (현재 코드에는 없음, 필요 시 연결)
     [SerializeField] private UnityEvent<int> _onRushBonus;
 
     private int _stageIndex;
     private Coroutine _sequenceCo;
+    private float _accumulated;
+
+
+    private bool _isInDelay = false;
+    private bool _rushRequested = false;
+    private float _delayRemain = 0f;
+
+    public bool IsInDelay => _isInDelay;     // UI에서 버튼 활성화 조건으로 사용 가능
+    public float DelayRemain => _delayRemain; // 남은 딜레이 표시용
+
 
     private void Start()
     {
@@ -39,6 +48,7 @@ public class WaveController : MonoBehaviour
 
         _stageIndex = 0;
         _sequenceCo = StartCoroutine(RunSequence());
+        GameManager.Instance.SetMaxWave(_sequence.Stages.Count);
     }
 
     /// <summary>
@@ -61,15 +71,26 @@ public class WaveController : MonoBehaviour
             }
 
             GameManager.Instance.Wave();                      // 현재 웨이브 +1
-            //GameManager.Instance.SetWaveProgressPercent(0f);  // 진행도 0% 초기화
+            GameManager.Instance.SetWaveProgressPercent(0f);  // 진행도 0% 초기화
+
+            //이번 웨이브의 시간 구성 계산
+            float spawnWindow = CalcSpawnWindowSeconds(stage);
+            float delayAfter = Mathf.Max(0f, stage.DelayAfter);
+            float totalStage = spawnWindow + delayAfter;
+            if (totalStage <= 0f) totalStage = 1f; // 최소 보정
+
 
             // 1) 스테이지 스폰(순차)
             yield return SpawnStage(stage);
 
-            // 2) 스테이지 간 대기 (자동 또는 수동 당김)
-            yield return InterStageWaitWithManual(stage.DelayAfter);
+            // 2) "스폰창 구간" 동안 진행도 갱신
+            yield return UpdateProgressOver(spawnWindow, totalStage);
 
-            _stageIndex++;
+            // 3) "딜레이 구간" 동안 진행도 갱신 (+ 수동 러시 지원)
+            yield return InterStageWaitWithManual_Progress(delayAfter, totalStage);
+
+            // 4) 안전 보정(정확히 100% 되도록)
+            GameManager.Instance.SetWaveProgressPercent(100f);
         }
 
         Debug.Log("[WaveController] All stages completed.");
@@ -117,7 +138,7 @@ public class WaveController : MonoBehaviour
         while (elapsed < stageSeconds)
         {
             float percent = (elapsed / stageSeconds) * 100f;
-            GameManager.Instance.SetWaveProgressPercent(percent); // ★ 매 프레임
+            GameManager.Instance.SetWaveProgressPercent(percent); // 매 프레임
             elapsed += Time.deltaTime;
             yield return null;
         }
@@ -127,42 +148,83 @@ public class WaveController : MonoBehaviour
         yield return null;
     }
 
+
+    private float CalcSpawnWindowSeconds(WaveStage stage)
+    {
+        float s = 0f;
+        foreach (var e in stage.Entries)
+        {
+            if (e == null) continue;
+            int count = Mathf.Max(0, e.Count);
+            float interval = Mathf.Max(0f, e.Interval);
+            // 첫 마리는 t=0에 나오므로 (count-1) * interval 이 실제 소요 시간
+            s += Mathf.Max(0, count - 1) * interval;
+        }
+        return s;
+    }
+
+    private IEnumerator UpdateProgressOver(float segmentDuration, float totalDuration)
+    {
+        float d = Mathf.Max(0f, segmentDuration);
+        float t = 0f;
+        while (t < d)
+        {
+            _accumulated += Time.deltaTime;
+            float p = (totalDuration <= 0f) ? 100f : Mathf.Clamp01(_accumulated / totalDuration) * 100f;
+            GameManager.Instance.SetWaveProgressPercent(p);
+            t += Time.deltaTime;
+            yield return null;
+        }
+    }
+
     /// <summary>
     /// 스테이지 사이 대기:
     /// - DelayAfter 만큼 기다리면 자동 진행
     /// - 대기 중 마우스/버튼 입력 시 즉시 다음 스테이지로 넘어가고 보너스 지급
     /// </summary>
-    private IEnumerator InterStageWaitWithManual(float delayAfter)
+    private IEnumerator InterStageWaitWithManual_Progress(float delayAfter, float totalDuration)
     {
         if (delayAfter <= 0f)
-        {
             yield break;
-        }
 
-        float elapsed = 0f;
-        while (elapsed < delayAfter)
+        _isInDelay = true;
+        _rushRequested = false;
+
+        float t = 0f;
+        while (t < delayAfter)
         {
-            // 수동 진행(마우스/버튼)
+            _delayRemain = Mathf.Max(0f, delayAfter - t);
+
+            // (선택) 키 입력도 스킵 허용
             if (Input.GetKeyDown(_manualKey))
+                OnClickNextWave(); // 버튼과 동일 경로로 처리
+
+            // 버튼/키로 스킵 요청
+            if (_rushRequested)
             {
-                // 남은 시간 비례 보너스 계산
-                float remain = Mathf.Max(0f, delayAfter - elapsed);
-                int bonus = Mathf.Max(0, Mathf.RoundToInt(remain * _rushBonusPerSecond));
+                int bonus = Mathf.Max(0, Mathf.RoundToInt(_delayRemain * _rushBonusPerSecond));
+                if (bonus > 0) GameManager.Instance.AddGold(bonus); // 직접 지급
 
-                // 보너스 전달(경제/보상 파트에서 구독)
-                _onRushBonus?.Invoke(bonus);
+                // 진행도 100%로 보정
+                _accumulated = totalDuration;
+                GameManager.Instance.SetWaveProgressPercent(100f);
 
-                // 예시: 보너스를 직접 지급하고 싶다면 GameManager에 API를 추가하여 호출
-                // (현재 코드에는 없음, 필요 시 GameManager_Demo에 메서드 추가)
-                // GameManager_Demo.Instance.AddCoins(bonus);
-
-                // 즉시 다음 스테이지로
+                _isInDelay = false;
+                _rushRequested = false;
                 yield break;
             }
 
-            elapsed += Time.deltaTime;
+            // 진행도(스폰+딜레이 총합 기준) 갱신
+            _accumulated += Time.deltaTime;
+            float p = (totalDuration <= 0f) ? 100f : Mathf.Clamp01(_accumulated / totalDuration) * 100f;
+            GameManager.Instance.SetWaveProgressPercent(p);
+
+            t += Time.deltaTime;
             yield return null;
         }
+
+        _isInDelay = false;
+        _rushRequested = false;
     }
 
     /// <summary>
@@ -170,9 +232,7 @@ public class WaveController : MonoBehaviour
     /// </summary>
     public void OnClickNextWave()
     {
-        // Update 루프의 키 입력과 동일하게 처리하고 싶다면,
-        // 여기서도 보너스 계산/지급 로직을 호출해야 함.
-        // 현재는 키 입력만 지원하므로, 필요 시 UI 경로 추가 구현
-        Debug.Log("[WaveController] OnClickNextWave pressed (UI).");
+        if (!_isInDelay) return;
+        _rushRequested = true;  // 딜레이 루프가 이 플래그를 보고 즉시 종료 + 보너스 지급
     }
 }

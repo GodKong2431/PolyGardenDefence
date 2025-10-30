@@ -22,6 +22,10 @@ public class GameManager : SingleTon<GameManager>
     private float _progress = 0;
 
 
+    // --- Getter ---
+    public int MaxWave => _maxWave;
+    public int CurrentWave => _currentWave;
+
 
     #region Observer LisnerList
     //Gold 可历滚 积己
@@ -166,5 +170,11 @@ public class GameManager : SingleTon<GameManager>
     private void Update()
     {
         NotifyWaveUpdate();
+    }
+
+    public void SetMaxWave(int maxWave)
+    {
+        _maxWave = Mathf.Max(0, maxWave);
+        // NotifyWaveUpdate();
     }
 }
