@@ -13,6 +13,7 @@ public class EnemyBase : MonoBehaviour, IPoolable,IDamageable
     [Header("Components")]
     [SerializeField] private EnemyMovement _movement;         // 직렬화 우선, 누락 시 자동 보정
     [SerializeField] private Animator _animator;              // Attack/Die 트리거 사용(없어도 동작)
+    [SerializeField] private EnemyHpBar _enemyHpBar;          // 몬스터 HP바 컴포넌트
 
     [Header("Attack Detect")]
     [SerializeField] private string _playerTag = "Player";    // 플레이어 감지용 태그
@@ -25,7 +26,7 @@ public class EnemyBase : MonoBehaviour, IPoolable,IDamageable
     public void SetPrefabRef(EnemyBase prefab) => _prefabRef = prefab;
     public void SetPoolService(ScenePoolService svc) => _poolService = svc;
 
-    private float _hp;
+    private float _currentHp;
     private Transform _target;                                // 공격 대상(플레이어)
     private Coroutine _attackCo;
     private Collider _col;                                    // 공격 범위 감지용(Trigger)
@@ -61,7 +62,7 @@ public class EnemyBase : MonoBehaviour, IPoolable,IDamageable
     {
         if (_stats != null)
         {
-            _hp = _stats.hp;
+            _currentHp = _stats.hp;
         }
 
         _target = null;
@@ -85,7 +86,7 @@ public class EnemyBase : MonoBehaviour, IPoolable,IDamageable
         }
 
         _stats = stats;
-        _hp = _stats.hp;
+        _currentHp = _stats.hp;
 
         if (_movement == null)
         {
@@ -101,14 +102,21 @@ public class EnemyBase : MonoBehaviour, IPoolable,IDamageable
         }
     }
 
+    public void HpBarInit(EnemyHpBar enemyHpBar)
+    {
+        _enemyHpBar = enemyHpBar;
+        _enemyHpBar.SetTarget(gameObject.transform);
+    }
+
 
     // -------- 피해/사망 --------
     public void ApplyDamage(float amount)
     {
         if (amount <= 0f) return;
 
-        _hp -= amount;
-        if (_hp > 0f) return;
+        _currentHp -= amount;
+        _enemyHpBar.SetHP(_currentHp / _stats.hp);
+        if (_currentHp > 0f) return;
 
         Die();
     }

@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MonsterHpBar : MonoBehaviour
+public class EnemyHpBar : MonoBehaviour
 {
     [SerializeField] private Image _hpBar;
     [SerializeField] private Vector3 _gab = new Vector3(0, 2f, 0);
 
     private Transform _target;
-    private Camera _mainCam;
+    private Camera _camera;
 
     void Start()
     {
-        _mainCam = Camera.main;
+        _camera = Camera.main;
     }
 
     void LateUpdate()
@@ -24,7 +24,7 @@ public class MonsterHpBar : MonoBehaviour
         transform.position = _target.position + _gab;
 
         // 카메라를 바라보게
-        transform.forward = _mainCam.transform.forward;
+        transform.forward = _camera.transform.forward;
     }
 
     public void SetTarget(Transform target)
