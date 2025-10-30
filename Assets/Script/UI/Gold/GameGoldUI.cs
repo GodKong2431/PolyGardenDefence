@@ -30,8 +30,6 @@ public class GameGoldUI : MonoBehaviour, IGameGoldObserver
         {
             return;
         }
-
-        Debug.Log("°ñµå Á¦°Å");
         GameManager.Instance.GameGoldObserver.RemoveObserver(this);
     }
 
