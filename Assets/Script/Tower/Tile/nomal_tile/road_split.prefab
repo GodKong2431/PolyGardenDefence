@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3290732390551418884}
   - component: {fileID: 7988335111442805477}
   m_Layer: 0
-  m_Name: tile-split (1)
+  m_Name: road_split
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
