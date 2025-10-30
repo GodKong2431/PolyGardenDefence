@@ -8,13 +8,16 @@ using UnityEngine;
 public class TowerBase : MonoBehaviour
 {
     [SerializeField] protected GameObject _bulletPrefab;
-    [SerializeField] protected float _range;
     [SerializeField] protected Transform _firePoint;
+    [SerializeField] private GameObject _buffEffectPrefab;
+    [SerializeField] protected float _range;
     [SerializeField] protected string _name = "base tower";
     [SerializeField] protected float _damage = 1f;
     [SerializeField] protected float _shotDelay = 0.5f;
     [SerializeField] protected BulletType _bulletType;
     [SerializeField] private TowerType _towerType;
+
+    private GameObject _currentBuffEffect = null;
     private int _level = 1;
     private int _price = 10;
 
@@ -36,13 +39,11 @@ public class TowerBase : MonoBehaviour
         set { _level = value; }
     }
 
-
-
     protected float _nextShot = 0;
-    protected List<Transform> _target = new List<Transform>();
+    protected List<Transform> _target = new List<Transform>(); //범위에 들어온 적 담기위한 리스트
     protected SphereCollider _sphereCollider;
     protected Rigidbody _rb;
-    protected float _baseShotDelay;
+    protected float _baseShotDelay; //버프 코루틴이 끝난후 다시 원래 공격속도로 돌아가기위한 필드
     protected Coroutine _buffCoroutine = null;
 
     protected virtual void Awake()
@@ -56,6 +57,7 @@ public class TowerBase : MonoBehaviour
 
         SetRange();
         _baseShotDelay = _shotDelay;
+        _nextShot = 0f;
     }
 
     protected virtual void Update()
@@ -72,7 +74,11 @@ public class TowerBase : MonoBehaviour
             _sphereCollider.radius = _range;
         }
     }
-    //첫번째 적을 추적하게하는 메서드
+    /// <summary>
+    /// 첫번째 적을 타겟으로 설정하기위한 메서드
+    /// 타겟 리스트를 역순으로 돌면서 상대가 죽거나 비활성화된 상태면 리스트에서 제거함
+    /// 아직 적이살아있으면 첫번째로 들어온 적을 바라봄
+    /// </summary>
     protected virtual void SetTarget()
     {
         for(int i=_target.Count-1;i>=0;i--)
@@ -97,7 +103,37 @@ public class TowerBase : MonoBehaviour
         }
        
     }
-    //적 공격
+    /// <summary>
+    /// 버프를 이펙트 켜거나 끄는 메서드
+    /// </summary>
+    /// <param name="isBuffed"></param>
+    protected void ToggleBuffEffect(bool isBuffed)
+    {
+        if (isBuffed)
+        {
+            if(_buffEffectPrefab != null && _currentBuffEffect == null)
+            {
+                _currentBuffEffect = Instantiate(_buffEffectPrefab,
+                                                transform.position,
+                                                Quaternion.identity,
+                                                transform);
+                
+            }
+        }
+        else
+        {
+            if(_currentBuffEffect != null)
+            {
+                Destroy(_currentBuffEffect);
+                _currentBuffEffect = null;
+            }
+        }
+    }
+    /// <summary>
+    /// 적을 공격하는 메서드 버츄얼로 선언해 자식들이 재정의 가능하게만듬
+    /// 적이 죽거나 비활성화 됬는지 한번더 체크하고
+    /// 총알 발사전에 여기서 데미지를 전달해주고 발사함
+    /// </summary>
     protected virtual void AttackTarget()
     {
         if(_target.Count == 0 || Time.time < _nextShot)
@@ -105,7 +141,11 @@ public class TowerBase : MonoBehaviour
             return;
         }
         Transform targetEnemy = _target[0];
-        if (targetEnemy == null||!targetEnemy.gameObject.activeSelf) return;
+        if (targetEnemy == null || !targetEnemy.gameObject.activeSelf)
+        {
+            _target.RemoveAt(0);
+            return;
+        }
 
         Vector3 dirToEnemy = (targetEnemy.position - _firePoint.position).normalized;
         Quaternion targetRotation = Quaternion.LookRotation(dirToEnemy);
@@ -126,7 +166,11 @@ public class TowerBase : MonoBehaviour
             _nextShot = Time.time + _shotDelay;
         }
     }
-  
+    /// <summary>
+    /// 코루틴 시작전에 한번초기화 시켜주고 코루틴실행
+    /// </summary>
+    /// <param name="amount">버프효과</param>
+    /// <param name="duration">지속시간</param>
     public void ApplyAttackSpeedBuff(float amount,float duration)
     {
         if(_buffCoroutine != null)
@@ -136,15 +180,24 @@ public class TowerBase : MonoBehaviour
         }
         _buffCoroutine = StartCoroutine(AttackSpeedBuffCoroutine(amount, duration));
     }
-
+    /// <summary>
+    /// 버프효과만큼 샷딜레이를 줄여서 공격속도 상승시킴
+    /// 지속시간만큼 지속되고 다시 원래공격속도로 돌아감
+    /// </summary>
+    /// <param name="amount">버프효과</param>
+    /// <param name="duration">지속시간</param>
+    /// <returns></returns>
     private IEnumerator AttackSpeedBuffCoroutine(float amount,float duration)
     {
+        ToggleBuffEffect(true);
+
         _shotDelay *= (1f - amount);
 
         yield return new WaitForSeconds(duration);
 
         _shotDelay = _baseShotDelay;
         _buffCoroutine = null;
+        ToggleBuffEffect(false);
     }
 
     //콜라이더로 들어오는 적 순서대로 리스트에 저장

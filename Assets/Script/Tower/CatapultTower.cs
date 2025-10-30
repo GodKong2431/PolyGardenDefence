@@ -6,7 +6,7 @@ public class CatapultTower : TowerBase
 {
     [SerializeField] private float _criticalChance = 0.2f; //치명타 확률
     [SerializeField] private float _criticalMultiplier = 2.0f; //치명타 배율
-    
+    [SerializeField] private Animator _animator;
     
     protected override void Awake()
     {
@@ -15,8 +15,17 @@ public class CatapultTower : TowerBase
     }
     protected override void AttackTarget()
     {
+        
+
         if(_target.Count==0 || Time.time < _nextShot)
         {
+            return;
+        }
+
+        Transform targetEnemy = _target[0];
+        if (targetEnemy == null || !targetEnemy.gameObject.activeSelf)
+        {
+            _target.RemoveAt(0);
             return;
         }
 
@@ -31,6 +40,10 @@ public class CatapultTower : TowerBase
 
         if (_bullet != null)
         {
+            if(_animator != null)
+            {
+                _animator.SetTrigger("Attack");
+            }
             _bullet.transform.position = _firePoint.position;
             _bullet.transform.rotation = _firePoint.rotation;
 
