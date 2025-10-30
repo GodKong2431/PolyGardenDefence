@@ -4,12 +4,27 @@ using UnityEngine;
 
 public class CannonTower : TowerBase
 {
+    [Header("Pooling / Manager")]
+    [SerializeField] private BulletManager _bulletManager;
+
+
+    [Header("Cannon Settings")]
     [SerializeField] private float _explosionRadius = 3.0f;
 
     protected override void Awake()
     {
         _damage = 3f;
         base.Awake();
+
+        // 인스펙터 연결이 비어있으면 한 번 자동 검색
+        if (_bulletManager == null)
+        {
+            _bulletManager = FindFirstObjectByType<BulletManager>();
+            if (_bulletManager == null)
+            {
+                Debug.LogError("[CannonTower] BulletManager reference is missing. Please assign in Inspector.");
+            }
+        }
     }
     protected override void AttackTarget()
     {
@@ -17,7 +32,7 @@ public class CannonTower : TowerBase
         {
             return;
         }
-        GameObject _bullet = BulletManager.Instance.MakeBullet(_bulletType);
+        GameObject _bullet = _bulletManager.MakeBullet(_bulletType);
 
         if (_bullet != null)
         {

@@ -4,14 +4,30 @@ using UnityEngine;
 
 public class CatapultTower : TowerBase
 {
+    [Header("Pooling / Manager")]
+    [SerializeField] private BulletManager _bulletManager;
+
+    [Header("Critical Settings")]
     [SerializeField] private float _criticalChance = 0.2f; //치명타 확률
     [SerializeField] private float _criticalMultiplier = 2.0f; //치명타 배율
+
+    [Header("Visuals")]
     [SerializeField] private Animator _animator;
     
     protected override void Awake()
     {
         
         base.Awake();
+
+        // 인스펙터 연결이 비어있으면 한 번 자동 검색
+        if (_bulletManager == null)
+        {
+            _bulletManager = FindFirstObjectByType<BulletManager>();
+            if (_bulletManager == null)
+            {
+                Debug.LogError("[CatapultTower] BulletManager reference is missing. Please assign in Inspector.");
+            }
+        }
     }
     protected override void AttackTarget()
     {
@@ -36,7 +52,7 @@ public class CatapultTower : TowerBase
             criticalDamage *= _criticalMultiplier;
         }
 
-        GameObject _bullet = BulletManager.Instance.MakeBullet(_bulletType);
+        GameObject _bullet = _bulletManager.MakeBullet(_bulletType);
 
         if (_bullet != null)
         {

@@ -7,18 +7,29 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class TowerBase : MonoBehaviour
 {
+    [Header("Pooling / Manager")]
+    [SerializeField] private BulletManager _bulletManager;
+
+    [Header("Projectile Settings")]
     [SerializeField] protected GameObject _bulletPrefab;
     [SerializeField] protected Transform _firePoint;
-    [SerializeField] private GameObject _buffEffectPrefab;
-    [SerializeField]private int _level = 1;
-    [SerializeField]private int _price = 10;
+    [SerializeField] protected BulletType _bulletType;
+
+    [Header("Tower Stats")]
     [SerializeField] protected float _range;
-    [SerializeField] protected string _name = "base tower";
     [SerializeField] protected float _damage = 1f;
     [SerializeField] protected float _shotDelay = 0.5f;
-    [SerializeField] protected BulletType _bulletType;
+    [SerializeField] private int _level = 1;
+    [SerializeField] private int _price = 10;
+
+    [Header("Tower Info")]
+    [SerializeField] protected string _name = "base tower";
     [SerializeField] private TowerType _towerType;
 
+
+    [Header("Buff / Visual Effects")]
+    [SerializeField] private GameObject _buffEffectPrefab;
+    
     private GameObject _currentBuffEffect = null;
 
 
@@ -150,9 +161,9 @@ public class TowerBase : MonoBehaviour
         Vector3 dirToEnemy = (targetEnemy.position - _firePoint.position).normalized;
         Quaternion targetRotation = Quaternion.LookRotation(dirToEnemy);
 
-        GameObject _bullet = BulletManager.Instance.MakeBullet(_bulletType);
+        GameObject _bullet = _bulletManager.MakeBullet(_bulletType);
 
-        if(_bullet != null)
+        if (_bullet != null)
         {
             _bullet.transform.position = _firePoint.position;
             _bullet.transform.rotation = targetRotation;

@@ -5,7 +5,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(SphereCollider))]
 [RequireComponent(typeof(Rigidbody))]
-public class BulletBase : MonoBehaviour
+public class BulletBase : MonoBehaviour, IPoolable
 {
     public BulletType _type;
     [SerializeField] float _attack;
@@ -83,5 +83,18 @@ public class BulletBase : MonoBehaviour
         {
             enemy.ApplyDamage(_attack);
         }
+    }
+
+    public void OnGetFromPool()   // 풀에서 꺼낼 때
+    {
+        SetBullet();
+        _rigidBody.velocity = Vector3.zero;
+        _timeCount = _deactiveTime;
+    }
+
+    public void OnReturnToPool()  // 풀로 반납 직전
+    {
+        _rigidBody.velocity = Vector3.zero;
+        _timeCount = _deactiveTime;
     }
 }

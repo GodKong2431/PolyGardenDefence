@@ -4,11 +4,25 @@ using UnityEngine;
 
 public class BallistaTower : TowerBase
 {
+    [Header("Pooling / Manager")]
+    [SerializeField] private BulletManager _bulletManager;
+
+    [Header("Ballista Settings")]
     [SerializeField] private int _pierceCount = 2; //관통 횟수
 
     protected override void Awake()
     {
         base.Awake();
+
+        // 인스펙터 연결이 비어있으면 한 번 자동 검색
+        if (_bulletManager == null)
+        {
+            _bulletManager = FindFirstObjectByType<BulletManager>();
+            if (_bulletManager == null)
+            {
+                Debug.LogError("[CatapultTower] BulletManager reference is missing. Please assign in Inspector.");
+            }
+        }
     }
 
     protected override void AttackTarget()
@@ -18,7 +32,7 @@ public class BallistaTower : TowerBase
             return;
         }
 
-        GameObject _bullet = BulletManager.Instance.MakeBullet(_bulletType);
+        GameObject _bullet = _bulletManager.MakeBullet(_bulletType);
 
         if (_bullet != null)
         {
