@@ -113,8 +113,14 @@ public class EnemyMovement : MonoBehaviour
             Debug.LogWarning("[EnemyMovement] EnemyBase not found on goal arrive");
             return;
         }
-
-        GameManager_Demo.Instance.OnEnemyGoal(enemy.Stats.isBoss);
+        if(enemy.Stats.isBoss == true)
+        {
+            GameManager.Instance.Life(false, enemy.Stats.isBoss);
+        }
+        else
+        {
+            GameManager.Instance.Life(true, false);
+        }
         enemy.Despawn();
     }
 

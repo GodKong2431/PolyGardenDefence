@@ -10,11 +10,11 @@ public class GameManager : SingleTon<GameManager>
 {
     //Life 관련 필드
     private int _maxLife = 100;
-    private int _currentLife = 0;
+    [SerializeField]private int _currentLife = 0;
     public int CurrentLife => _currentLife;
 
     //Gold 관련 필드
-    private int _gold = 0;
+    [SerializeField]private int _gold = 0;
 
     //Wave 관련 필드
     private int _currentWave = 0;
@@ -75,7 +75,7 @@ public class GameManager : SingleTon<GameManager>
 
     public void Start()
     {
-        _currentLife = _maxLife;
+        _currentLife = 1;
     }
     public void OnEnemyKilled(int bounty) //적 처치시 골드 획득
     {
@@ -86,6 +86,7 @@ public class GameManager : SingleTon<GameManager>
     {
         _gold += add;
         NotifyGoldUpdate();
+        Debug.Log("골드 증가");
         //ui에서 출력
     }
     public void SubGold(int sub) //골드 소비
@@ -99,12 +100,12 @@ public class GameManager : SingleTon<GameManager>
     {
         if (isboss)//보스 들어오면 게임오버
         {
-            GameOver(true);
+            GameOver();
             Debug.Log("보스로 인한 사망");
         }
         if (sublife == true)
         {
-            if(_currentLife > 0)
+            if(_currentLife <= 0)
             {
                 _currentLife--;
                 NotifyLifeUpdate();
@@ -113,7 +114,7 @@ public class GameManager : SingleTon<GameManager>
             }
             else
             {
-                GameOver(true);
+                GameOver();
             }
             
         }
@@ -122,7 +123,7 @@ public class GameManager : SingleTon<GameManager>
     {
         if (_currentWave == _maxWave)
         {
-            Ending(true);
+            Ending();
         }
         else
         {
@@ -132,18 +133,19 @@ public class GameManager : SingleTon<GameManager>
         }
     }
 
-    public void GameOver(bool Die)
+    public void GameOver()
     {
         //ui 출력
         Debug.Log("게임 오버");
-        Pause.Instance.Paused();
-        SceneManager.LoadScene("");
-        if (Input.anyKeyDown)
-        {
-            SceneManager.LoadScene("Title");
-        }
+        Time.timeScale = 0f;
+        //Pause.Instance.Paused();
+        //SceneManager.LoadScene("");
+        //if (Input.anyKeyDown)
+        //{
+        //    SceneManager.LoadScene("Title");
+        //}
     }
-    public void Ending(bool end)
+    public void Ending()
     {
         Debug.Log("엔딩");
         Pause.Instance.Paused();
