@@ -22,6 +22,7 @@ public class WaveController : MonoBehaviour
 
     [Header("Manual Trigger")]
     [SerializeField] private KeyCode _manualKey = KeyCode.Space; // 수동 진행 입력(스페이스 바)
+    [SerializeField] private GameObject _nextWaveButton; // 다음 웨이브 시작 버튼
 
     [Header("Rush Bonus")]
     [SerializeField] private float _rushBonusPerSecond = 5f;      // 초당 보너스 (남은 대기시간 × 이 값)
@@ -49,6 +50,7 @@ public class WaveController : MonoBehaviour
     #region === 0. Entry: Start → RunSequence ===
     private void Start()
     {
+        _nextWaveButton.SetActive(false);
         if (!ValidateSetup())
         {
             return;
@@ -78,7 +80,6 @@ public class WaveController : MonoBehaviour
         return true;
     }
     #endregion
-
 
     #region === 1. 메인 루프: RunSequence ===
     /// <summary>
@@ -132,7 +133,6 @@ public class WaveController : MonoBehaviour
         _sequenceCo = null;
     }
     #endregion
-
 
     #region === 2. Stage 스폰 ===
     /// <summary>
@@ -189,6 +189,7 @@ public class WaveController : MonoBehaviour
 
         _isInDelay = true;
         _rushRequested = false;
+        _nextWaveButton.SetActive(true);
 
         float endTime = Time.time + delayAfter;
 
@@ -215,6 +216,7 @@ public class WaveController : MonoBehaviour
 
                 _isInDelay = false;
                 _rushRequested = false;
+                _nextWaveButton.SetActive(false);
                 yield break;
             }
 
@@ -228,6 +230,7 @@ public class WaveController : MonoBehaviour
 
         _isInDelay = false;
         _rushRequested = false;
+        _nextWaveButton.SetActive(false);
     }
     #endregion
 
