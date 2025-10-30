@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 
@@ -135,12 +136,21 @@ public class GameManager : SingleTon<GameManager>
     {
         //ui 출력
         Debug.Log("게임 오버");
-        Time.timeScale = 0f;
+        Pause.Instance.Paused();
+        SceneManager.LoadScene("");
+        if (Input.anyKeyDown)
+        {
+            SceneManager.LoadScene("Title");
+        }
     }
-    public void Ending(bool end) 
+    public void Ending(bool end)
     {
-        Time.timeScale = 0f;
-        //ui 출력
         Debug.Log("엔딩");
+        Pause.Instance.Paused();
+        SceneManager.LoadScene("");
+        if (Input.anyKeyDown)
+        {
+            SceneManager.LoadScene("Title");
+        }
     }
 }
