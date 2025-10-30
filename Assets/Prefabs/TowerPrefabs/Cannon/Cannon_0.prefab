@@ -71,96 +71,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e6800652d087cec498f263c91b803602, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8665217978974969416}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e6800652d087cec498f263c91b803602, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6393330199913965069}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e6800652d087cec498f263c91b803602, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8780199991922957298}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6800652d087cec498f263c91b803602, type: 3}
 --- !u!4 &2507163950381348151 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -7314745045437555281, guid: e6800652d087cec498f263c91b803602, type: 3}
   m_PrefabInstance: {fileID: 4087001778569111704}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &3780380080330331593 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e6800652d087cec498f263c91b803602, type: 3}
-  m_PrefabInstance: {fileID: 4087001778569111704}
-  m_PrefabAsset: {fileID: 0}
---- !u!135 &8665217978974969416
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3780380080330331593}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &6393330199913965069
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3780380080330331593}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!114 &8780199991922957298
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3780380080330331593}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3ef37deb9f5c1b46b0e23e26fed73e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _bulletPrefab: {fileID: 4354329200244975398, guid: 8fb21c9769ec2d644942b5149cfdd333, type: 3}
-  _range: 5
-  _firePoint: {fileID: 2507163950381348151}
-  _name: CannonTower_Lv1
-  _damage: 1
-  _shotDelay: 0.5
-  _bulletType: 1
-  _towerType: 1
-  _explosionRadius: 3
 --- !u!4 &4556880911919812467 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e6800652d087cec498f263c91b803602, type: 3}
@@ -271,7 +188,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -299,8 +216,8 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -317,13 +234,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bulletPrefab: {fileID: 4354329200244975398, guid: 8fb21c9769ec2d644942b5149cfdd333, type: 3}
-  _range: 0
-  _firePoint: {fileID: 0}
+  _firePoint: {fileID: 2507163950381348151}
+  _buffEffectPrefab: {fileID: 0}
+  _level: 1
+  _price: 10
+  _range: 5
   _name: base tower
   _damage: 1
   _shotDelay: 0.5
-  _bulletType: 0
-  _towerType: 0
+  _bulletType: 1
+  _towerType: 1
   _explosionRadius: 3
 --- !u!4 &8753026759977322883 stripped
 Transform:

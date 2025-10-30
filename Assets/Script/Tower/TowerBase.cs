@@ -10,6 +10,8 @@ public class TowerBase : MonoBehaviour
     [SerializeField] protected GameObject _bulletPrefab;
     [SerializeField] protected Transform _firePoint;
     [SerializeField] private GameObject _buffEffectPrefab;
+    [SerializeField]private int _level = 1;
+    [SerializeField]private int _price = 10;
     [SerializeField] protected float _range;
     [SerializeField] protected string _name = "base tower";
     [SerializeField] protected float _damage = 1f;
@@ -18,8 +20,6 @@ public class TowerBase : MonoBehaviour
     [SerializeField] private TowerType _towerType;
 
     private GameObject _currentBuffEffect = null;
-    private int _level = 1;
-    private int _price = 10;
 
 
     //프로퍼티들

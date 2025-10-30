@@ -53,8 +53,16 @@ PrefabInstance:
       value: Cannon_1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 1b6601356bdf9434c91df48defb39313, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1b6601356bdf9434c91df48defb39313, type: 3}
       propertyPath: m_TagString
       value: Tower
+      objectReference: {fileID: 0}
+    - target: {fileID: 5685563458787931510, guid: 1b6601356bdf9434c91df48defb39313, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5685563458787931510, guid: 1b6601356bdf9434c91df48defb39313, type: 3}
       propertyPath: m_TagString
@@ -66,8 +74,94 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1b6601356bdf9434c91df48defb39313, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3542805186751272880}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1b6601356bdf9434c91df48defb39313, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6786595847988289103}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1b6601356bdf9434c91df48defb39313, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6536263458859020756}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1b6601356bdf9434c91df48defb39313, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2272508817807634146}
   m_SourcePrefab: {fileID: 100100000, guid: 1b6601356bdf9434c91df48defb39313, type: 3}
+--- !u!1 &109756009125635728 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 1b6601356bdf9434c91df48defb39313, type: 3}
+  m_PrefabInstance: {fileID: 956037815150894017}
+  m_PrefabAsset: {fileID: 0}
+--- !u!135 &6786595847988289103
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 109756009125635728}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &6536263458859020756
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 109756009125635728}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &2272508817807634146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 109756009125635728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3ef37deb9f5c1b46b0e23e26fed73e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bulletPrefab: {fileID: 4354329200244975398, guid: 8fb21c9769ec2d644942b5149cfdd333, type: 3}
+  _firePoint: {fileID: 3232711333088636404}
+  _buffEffectPrefab: {fileID: 0}
+  _level: 2
+  _price: 10
+  _range: 5
+  _name: base tower
+  _damage: 1
+  _shotDelay: 0.5
+  _bulletType: 1
+  _towerType: 1
+  _explosionRadius: 3
 --- !u!4 &778628155644951594 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1b6601356bdf9434c91df48defb39313, type: 3}
@@ -126,22 +220,25 @@ PrefabInstance:
       value: weapon-cannon_1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e6800652d087cec498f263c91b803602, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e6800652d087cec498f263c91b803602, type: 3}
       propertyPath: m_TagString
       value: Tower
+      objectReference: {fileID: 0}
+    - target: {fileID: 7598419493678936200, guid: e6800652d087cec498f263c91b803602, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7739570730815449656, guid: e6800652d087cec498f263c91b803602, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e6800652d087cec498f263c91b803602, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 3452318027451741626}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e6800652d087cec498f263c91b803602, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6249867131569753913}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e6800652d087cec498f263c91b803602, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1860908751782079939}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6800652d087cec498f263c91b803602, type: 3}
 --- !u!4 &3232711333088636404 stripped
 Transform:
@@ -153,77 +250,3 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e6800652d087cec498f263c91b803602, type: 3}
   m_PrefabInstance: {fileID: 3936194412132298843}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &4206716263856655626 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e6800652d087cec498f263c91b803602, type: 3}
-  m_PrefabInstance: {fileID: 3936194412132298843}
-  m_PrefabAsset: {fileID: 0}
---- !u!135 &3452318027451741626
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4206716263856655626}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &6249867131569753913
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4206716263856655626}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!114 &1860908751782079939
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4206716263856655626}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3ef37deb9f5c1b46b0e23e26fed73e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _bulletPrefab: {fileID: 4354329200244975398, guid: 8fb21c9769ec2d644942b5149cfdd333, type: 3}
-  _range: 5
-  _firePoint: {fileID: 3232711333088636404}
-  _name: CannonTower_Lv2
-  _damage: 1
-  _shotDelay: 0.5
-  _bulletType: 1
-  _towerType: 1
-  _explosionRadius: 3

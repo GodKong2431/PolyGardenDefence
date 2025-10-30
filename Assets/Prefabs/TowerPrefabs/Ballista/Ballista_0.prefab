@@ -48,103 +48,32 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -3868710468543803471, guid: 6ec102e5f3081754f9e861c3ea33775b, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6ec102e5f3081754f9e861c3ea33775b, type: 3}
       propertyPath: m_Name
       value: weapon-ballista_0
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6ec102e5f3081754f9e861c3ea33775b, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6635428092505703782, guid: 6ec102e5f3081754f9e861c3ea33775b, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6ec102e5f3081754f9e861c3ea33775b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1065310491376400802}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6ec102e5f3081754f9e861c3ea33775b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 167554237101805296}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6ec102e5f3081754f9e861c3ea33775b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1505022973266063612}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ec102e5f3081754f9e861c3ea33775b, type: 3}
 --- !u!4 &5083836596712237945 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6ec102e5f3081754f9e861c3ea33775b, type: 3}
   m_PrefabInstance: {fileID: 4685945996357962898}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &5604372255692403139 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 6ec102e5f3081754f9e861c3ea33775b, type: 3}
-  m_PrefabInstance: {fileID: 4685945996357962898}
-  m_PrefabAsset: {fileID: 0}
---- !u!135 &1065310491376400802
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5604372255692403139}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &167554237101805296
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5604372255692403139}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!114 &1505022973266063612
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5604372255692403139}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9dc92bef439521f4189be7ae51ec6baa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _bulletPrefab: {fileID: 3549904583290853265, guid: 05f2eb3f5fb1de84e9d90fcec39fbc0e, type: 3}
-  _range: 5
-  _firePoint: {fileID: 6013778046101288496}
-  _name: BallistaTower_Lv1
-  _damage: 1
-  _shotDelay: 0.5
-  _bulletType: 0
-  _towerType: 0
-  _pierceCount: 2
 --- !u!4 &6013778046101288496 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1329380249762036386, guid: 6ec102e5f3081754f9e861c3ea33775b, type: 3}
@@ -199,12 +128,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -47320836429274146, guid: 6f747eaa06a68234dae0cbe001d8a315, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -47320836429274146, guid: 6f747eaa06a68234dae0cbe001d8a315, type: 3}
       propertyPath: m_TagString
       value: Tower
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6f747eaa06a68234dae0cbe001d8a315, type: 3}
       propertyPath: m_Name
       value: Ballista_0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6f747eaa06a68234dae0cbe001d8a315, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6f747eaa06a68234dae0cbe001d8a315, type: 3}
       propertyPath: m_TagString
@@ -216,8 +153,94 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6f747eaa06a68234dae0cbe001d8a315, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5083836596712237945}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6f747eaa06a68234dae0cbe001d8a315, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5226648636143663721}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6f747eaa06a68234dae0cbe001d8a315, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3683041638402300475}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6f747eaa06a68234dae0cbe001d8a315, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5458057643217259950}
   m_SourcePrefab: {fileID: 100100000, guid: 6f747eaa06a68234dae0cbe001d8a315, type: 3}
+--- !u!1 &7273488379710004139 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 6f747eaa06a68234dae0cbe001d8a315, type: 3}
+  m_PrefabInstance: {fileID: 7508053585570490106}
+  m_PrefabAsset: {fileID: 0}
+--- !u!135 &5226648636143663721
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7273488379710004139}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &3683041638402300475
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7273488379710004139}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &5458057643217259950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7273488379710004139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dc92bef439521f4189be7ae51ec6baa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bulletPrefab: {fileID: 3549904583290853265, guid: 05f2eb3f5fb1de84e9d90fcec39fbc0e, type: 3}
+  _firePoint: {fileID: 6013778046101288496}
+  _buffEffectPrefab: {fileID: 0}
+  _level: 1
+  _price: 10
+  _range: 5
+  _name: base tower
+  _damage: 1
+  _shotDelay: 0.5
+  _bulletType: 0
+  _towerType: 0
+  _pierceCount: 2
 --- !u!4 &8051116211170935057 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6f747eaa06a68234dae0cbe001d8a315, type: 3}
