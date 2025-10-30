@@ -31,6 +31,7 @@ public class TowerBase : MonoBehaviour
     [SerializeField] private GameObject _buffEffectPrefab;
     
     private GameObject _currentBuffEffect = null;
+    private GameObject _tile = null;
 
 
     //프로퍼티들
@@ -48,6 +49,12 @@ public class TowerBase : MonoBehaviour
     {
         get { return _level; }
         set { _level = value; }
+    }
+
+    public GameObject Tile
+    {
+        get { return _tile; }
+        set { _tile = value; }
     }
 
     protected float _nextShot = 0;

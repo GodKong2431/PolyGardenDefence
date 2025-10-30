@@ -6,25 +6,25 @@ using UnityEngine.Events;
 [RequireComponent(typeof(BoxCollider))] // 클릭 레이캐스트용 
 public class TowerSpot : MonoBehaviour
 {
-    [SerializeField] private bool _isOccupied = false;   // 현재 타워 설치 여부
+    //[SerializeField] private bool _isOccupied = false;   // 현재 타워 설치 여부
     [SerializeField] private Vector3 _placeOffset = Vector3.zero; // 배치 위치 조정용(선택)
-
-    public bool IsOccupied => _isOccupied;
-
+    public GameObject PlacedTower { get; set; } = null;
+    //public bool IsOccupied => _isOccupied;
+    
     /// <summary>
     /// 현재 이 스팟이 비어 있는지 (설치 가능 여부)
     /// </summary>
-    public bool CanPlace()
-    {
-        return !_isOccupied;
-    }
+    //public bool CanPlace()
+    //{
+    //    return !_isOccupied;
+    //}
 
     /// <summary>
     /// 타워를 설치했을 때 호출
     /// </summary>
-    public void Occupy()
+    public void Occupy(GameObject tower)
     {
-        _isOccupied = true;
+        PlacedTower = tower;        
     }
 
     /// <summary>
@@ -32,7 +32,7 @@ public class TowerSpot : MonoBehaviour
     /// </summary>
     public void Clear()
     {
-        _isOccupied = false;
+        PlacedTower = null;
     }
 
     /// <summary>
@@ -46,7 +46,14 @@ public class TowerSpot : MonoBehaviour
 #if UNITY_EDITOR
     private void OnDrawGizmos()
     {
-        Gizmos.color = _isOccupied ? Color.red : Color.green;
+        if (PlacedTower != null) //타워 설치 가능하면 초록, 불가능은 빨강으로 표시
+        {
+            Gizmos.color = Color.green;
+        }
+        else
+        {
+            Gizmos.color = Color.red;
+        }        
         Gizmos.DrawWireCube(transform.position + Vector3.up * 0.1f, Vector3.one);
     }
 #endif

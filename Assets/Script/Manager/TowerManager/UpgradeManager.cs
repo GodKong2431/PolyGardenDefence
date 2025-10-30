@@ -17,12 +17,12 @@ public class UpgradeManager : SingleTon<UpgradeManager>
     public void PlaceTower(TowerType type, GameObject tile) //타일 받아서 타워 배치.
     {
         TowerSpot spot = tile.GetComponent<TowerSpot>();
-        if (!spot.IsOccupied)
+        if (spot.PlacedTower == null)
         {
             GameObject newTower = BuildTower(type);
-            newTower.transform.position = tile.transform.position;
+            newTower.transform.position = spot.GetPlacePosition();
             GameManager.Instance.SubGold(newTower.GetComponent<TowerBase>().Price);
-            spot.Occupy();
+            spot.Occupy(newTower);
         }
         else
         {
@@ -51,7 +51,8 @@ public class UpgradeManager : SingleTon<UpgradeManager>
                 Debug.Log("잘못된 타워 레벨 설정입니다.");
                 return null;
         }
-        Destroy(towerBase.gameObject);
+        Destroy(towerBase.gameObject);        
+        towerBase.Tile.GetComponent<TowerSpot>().Occupy(upgradedTower);
         return upgradedTower;
     }
 
@@ -61,7 +62,7 @@ public class UpgradeManager : SingleTon<UpgradeManager>
         {
             Destroy(towerBase.gameObject);
             GameManager.Instance.AddGold(towerBase.Price);
-            //여기서 타워스팟 클리어 해야 함.
+            towerBase.Tile = null;
         }
     }
 }
