@@ -22,9 +22,7 @@ public class GameManager : SingleTon<GameManager>
     private float _progress = 0;
 
 
-    // --- Getter ---
-    public int MaxWave => _maxWave;
-    public int CurrentWave => _currentWave;
+
 
 
     #region Observer LisnerList
@@ -72,7 +70,7 @@ public class GameManager : SingleTon<GameManager>
     {
         foreach (IGameWaveObserver waveObserver in _gameWaveObservers.NotifyList)
         {
-            waveObserver.OnGameWaveChanged(_currentWave, _progress);
+            waveObserver.OnGameWaveChanged(_currentWave, _maxWave, _progress);
         }
     }
     #endregion

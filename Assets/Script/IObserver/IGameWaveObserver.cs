@@ -1,4 +1,4 @@
 public interface IGameWaveObserver
 {
-    public void OnGameWaveChanged(int wave, float progress);
+    public void OnGameWaveChanged(int curWave, int maxWave,float progress);
 }
