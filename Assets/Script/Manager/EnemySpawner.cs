@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [Header("Refs")]
-    [SerializeField] private ScenePoolService _pool;   // ★ 인스펙터로 같은 씬의 ScenePoolService 할당
+    [SerializeField] private ScenePoolService _pool;   // 인스펙터로 같은 씬의 ScenePoolService 할당 
     [SerializeField] private List<EnemyBase> _enemyPrefabs = new();
     [SerializeField] private bool _usePartialNameMatch = true;
 
@@ -28,10 +28,10 @@ public class EnemySpawner : MonoBehaviour
 
         for (int i = 0; i < count; i++)
         {
-            var enemy = _pool.Get(prefab);           // ★ 씬 풀에서 꺼냄(재사용)
+            var enemy = _pool.Get(prefab);           // 씬 풀에서 꺼냄(재사용)
             enemy.transform.position = path.Points[0].position;
             enemy.SetPrefabRef(prefab);
-            enemy.SetPoolService(_pool);             // ★ 반환 대상 풀 지정
+            enemy.SetPoolService(_pool);             // 반환 대상 풀 지정
             enemy.Init(stats, path);
             yield return new WaitForSeconds(interval);
         }
