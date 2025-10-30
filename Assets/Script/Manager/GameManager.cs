@@ -92,11 +92,19 @@ public class GameManager : SingleTon<GameManager>
         Debug.Log("골드 증가");
         //ui에서 출력
     }
-    public void SubGold(int sub) //골드 소비
+    public bool SubGold(int sub)
     {
-        _gold -= sub;
-        NotifyGoldUpdate();
-        //ui에서 출력
+        if (_gold > 0)
+        {
+            _gold -= sub;
+            NotifyGoldUpdate();
+            return true;
+        }
+        else
+        {
+            NotifyGoldUpdate();
+            return false;
+        }
     }
 
     public void Life(bool sublife, bool isboss = false)
