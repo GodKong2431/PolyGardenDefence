@@ -143,18 +143,32 @@ public class WaveController : MonoBehaviour
     {
         foreach (var entry in stage.Entries)
         {
-            if (entry == null || entry.Stats == null) continue;
+            if (entry == null || entry.Stats == null)
+            {
+                continue;
+            }
 
-            _enemySpawner.Spawn(
-                entry.Stats,
-                count: entry.Count,
-                pathId: entry.PathId,
-                interval: entry.Interval
-            );
+            //엔트리별 PreDelay wjrdyd : 동시 진행 가능
+            StartCoroutine(SpawnEntryWithPreDelay(entry));
         }
 
         // 스폰 코루틴들이 내부에서 시간차로 진행되므로 한 프레임 양보
         yield return null;
+    }
+
+    private IEnumerator SpawnEntryWithPreDelay(WaveEntry entry)
+    {
+        if (entry.PreDelay > 0f)
+        {
+            yield return new WaitForSeconds(entry.PreDelay);
+        }
+
+        _enemySpawner.Spawn(
+            entry.Stats,
+            count: entry.Count,
+            pathId: entry.PathId,
+            interval: entry.Interval
+        );
     }
     #endregion
 
@@ -240,15 +254,27 @@ public class WaveController : MonoBehaviour
     /// </summary>
     private float CalcSpawnWindowSeconds(WaveStage stage)
     {
-        float s = 0f;
-        foreach (var e in stage.Entries)
+        float maxEnd = 0f;
+        foreach (var entry in stage.Entries)
         {
-            if (e == null) continue;
-            int count = Mathf.Max(0, e.Count);
-            float interval = Mathf.Max(0f, e.Interval);
-            s += Mathf.Max(0, count - 1) * interval; // 첫 마리는 t=0
+            if (entry == null)
+            {
+                continue;
+            }
+
+            int count = Mathf.Max(0, entry.Count);
+            float interval = Mathf.Max(0f, entry.Interval);
+            float preDelay = Mathf.Max(0f, entry.PreDelay);
+
+            // 마지막 스폰 시각(네가 제시한 규칙): PreDelay + Count * Interval
+            float end = preDelay + (count * interval);
+
+            if (end > maxEnd)
+            {
+                maxEnd = end;
+            }
         }
-        return s;
+        return maxEnd;
     }
 
     /// <summary>
