@@ -601,6 +601,14 @@ PrefabInstance:
       propertyPath: _maxLife
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8064579488034052867, guid: 375291c63df245c4cbe5fd5b769a8ee0, type: 3}
+      propertyPath: _victoryCanvas
+      value: 
+      objectReference: {fileID: 2191347282055433339, guid: 6028c47a8fb62ad4ab79e29f7abd94fc, type: 3}
+    - target: {fileID: 8064579488034052867, guid: 375291c63df245c4cbe5fd5b769a8ee0, type: 3}
+      propertyPath: _gameOverCanvas
+      value: 
+      objectReference: {fileID: 3986691939455984640, guid: 1ca09e9cb2e53e44c819e056448c27d8, type: 3}
     - target: {fileID: 8719548807458902684, guid: 375291c63df245c4cbe5fd5b769a8ee0, type: 3}
       propertyPath: m_Name
       value: GameManager
