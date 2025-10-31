@@ -24,6 +24,7 @@ public class UpgradeManager : SingleTon<UpgradeManager>
             if (GameManager.Instance.SubGold(newTower.GetComponentInChildren<TowerBase>().Price) == true)
             {
                 spot.Occupy(newTower);
+                newTower.GetComponentInChildren<TowerBase>().Tile = tile;
             }
             else
             {
@@ -65,8 +66,8 @@ public class UpgradeManager : SingleTon<UpgradeManager>
 
         if (GameManager.Instance.SubGold(cost) == true)
         {
-            Destroy(selectedTower.gameObject);
             selectedTower.Tile.GetComponentInChildren<TowerSpot>().Occupy(upgradedTower);
+            Destroy(selectedTower.gameObject);            
             return upgradedTower;
         }
         else
@@ -80,9 +81,11 @@ public class UpgradeManager : SingleTon<UpgradeManager>
     {        
         if (towerBase != null)
         {
-            Destroy(towerBase.gameObject);
             GameManager.Instance.AddGold(towerBase.Price);
-            towerBase.Tile = null;
+            towerBase.Tile.GetComponent<TowerSpot>().PlacedTower = null;
+            Destroy(towerBase.gameObject);
+
+            
         }
     }
 }
