@@ -5,16 +5,19 @@ using UnityEngine;
 
 public class SoundManager : SingleTon<SoundManager>
 {
-    public AudioSource _title;
-    private AudioSource _main;
-    private AudioSource _gameover;
-    private AudioSource _endig;
-    private AudioSource _clip;
-    public AudioClip _bullet;
-    public AudioClip _arrow;
-    public AudioClip _cannon;
-    public AudioClip _magic;
+    [SerializeField] private AudioSource[] _bgm;
+    [SerializeField] private AudioSource _clip;
+    [SerializeField] public AudioClip[] _clipbgm;
+    [SerializeField] private AudioSource[] _clipstop;
 
+
+    protected override void Awake()
+    {
+        base.Awake();
+        StopBgm();
+        StopClip();
+        DontDestroyOnLoad(gameObject);
+    }
     public void BGM(string name)
     {
         StopBgm(); //모든 Bgm멈춤
@@ -22,18 +25,18 @@ public class SoundManager : SingleTon<SoundManager>
         switch (name.ToLower()) //입력된 Bgm 재생
         {
             case "title":
-                _title.loop = true;
-                _title.Play();
+                _bgm[0].loop = true;
+                _bgm[0].Play();
                 break;
             case "main":
-                _main.loop = true;
-                _main.Play();
+                _bgm[1].loop = true;
+                _bgm[1].Play();
                 break;
             case "gameover":
-                _gameover.Play();
+                _bgm[2].Play();
                 break;
             case "endig":
-                _endig.Play();
+                _bgm[3].Play();
                 break;
             default:
                 break;
@@ -42,29 +45,39 @@ public class SoundManager : SingleTon<SoundManager>
 
     public void StopBgm() //Bgm 중지 함수
     {
-        _title.Stop();
-        _main.Stop();
-        _gameover.Stop();
-        _endig.Stop();
-    }
+        for (int i = 0; i < _bgm.Length; i++)
+        {
+            _bgm[i].Stop();
+        }
 
-    public void Clip(string name)//포탑에서 발사한 오브젝트 선탟
+    }
+    public void StopClip()
+    {
+        for (int i = 0; i < _clipstop.Length; i++)
+        {
+            _clipstop[i].Stop();
+        }
+    }
+    public void Clip(string name)//포탑에서 발사한 오브젝트 사운드 선탟
     {
         AudioClip clip = null;
 
         switch (name.ToLower())
         {
             case "bullet":
-                clip = _bullet;
+                clip = _clipbgm[0];
                 break;
             case "arrow":
-                clip = _arrow;
+                clip = _clipbgm[1];
                 break;
             case "cannon":
-                clip = _cannon;
+                clip = _clipbgm[2];
                 break;
             case "magic":
-                clip = _magic;
+                clip = _clipbgm[3];
+                break;
+            case "magic2":
+                clip = _clipbgm[4];
                 break;
             default:
                 break;
@@ -78,10 +91,10 @@ public class SoundManager : SingleTon<SoundManager>
     public void BgmVolum(float sound)//볼륨조절
     {
         float volume = Mathf.Clamp01(sound); //0~1 안전 범위
-        _title.volume = volume;
-        _main.volume = volume;
-        _gameover.volume = volume;
-        _endig.volume = volume;
+        for (int i = 0; i < _bgm.Length; i++)
+        {
+            _bgm[i].volume = volume;
+        }
         _clip.volume = volume;
     }
 }
