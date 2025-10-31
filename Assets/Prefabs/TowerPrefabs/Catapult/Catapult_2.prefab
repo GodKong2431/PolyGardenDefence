@@ -54,7 +54,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 0a2e37f017306e94cb40e7432b9a94a7, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 0a2e37f017306e94cb40e7432b9a94a7, type: 3}
       propertyPath: m_TagString
@@ -62,11 +62,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2756023688691497951, guid: 0a2e37f017306e94cb40e7432b9a94a7, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2829518461224114169, guid: 0a2e37f017306e94cb40e7432b9a94a7, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -75,6 +75,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0a2e37f017306e94cb40e7432b9a94a7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 9108251240543665432}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0a2e37f017306e94cb40e7432b9a94a7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8538824048177940102}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0a2e37f017306e94cb40e7432b9a94a7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6328701817143606709}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0a2e37f017306e94cb40e7432b9a94a7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2105729898461772472}
   m_SourcePrefab: {fileID: 100100000, guid: 0a2e37f017306e94cb40e7432b9a94a7, type: 3}
 --- !u!1 &1546482903410074232 stripped
 GameObject:
@@ -102,6 +111,83 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!135 &8538824048177940102
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1546482903410074232}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &6328701817143606709
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1546482903410074232}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &2105729898461772472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1546482903410074232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f87d2e6097d20fc4e8d18e8eadc92e74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bulletManager: {fileID: 0}
+  _bulletPrefab: {fileID: 0}
+  _firePoint: {fileID: 2179151426868525250}
+  _bulletType: 2
+  _range: 5
+  _damage: 1
+  _shotDelay: 0.5
+  _level: 3
+  _price: 10
+  _name: base tower
+  _towerType: 2
+  _buffEffectPrefab: {fileID: 0}
+  _effectLocalRotation: {x: 0, y: 0, z: 0}
+  _yOffset: 0.5
+  _criticalChance: 0.2
+  _criticalMultiplier: 2
+  _animator: {fileID: 9108251240543665432}
 --- !u!4 &2179151426868525250 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0a2e37f017306e94cb40e7432b9a94a7, type: 3}
@@ -157,7 +243,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -6113596083927664293, guid: 9f762b14ddc4dbc48b66076b4de1453a, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -6113596083927664293, guid: 9f762b14ddc4dbc48b66076b4de1453a, type: 3}
       propertyPath: m_TagString
@@ -188,9 +274,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9f762b14ddc4dbc48b66076b4de1453a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2791767005215276666}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9f762b14ddc4dbc48b66076b4de1453a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2186338323346023635}
   m_SourcePrefab: {fileID: 100100000, guid: 9f762b14ddc4dbc48b66076b4de1453a, type: 3}
 --- !u!4 &2851931719387638567 stripped
 Transform:
@@ -250,29 +333,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &2186338323346023635
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3233523395663802781}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f87d2e6097d20fc4e8d18e8eadc92e74, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _bulletPrefab: {fileID: 0}
-  _firePoint: {fileID: 2179151426868525250}
-  _buffEffectPrefab: {fileID: 0}
-  _level: 3
-  _price: 10
-  _range: 5
-  _name: base tower
-  _damage: 1
-  _shotDelay: 0.5
-  _bulletType: 2
-  _towerType: 2
-  _criticalChance: 0.2
-  _criticalMultiplier: 2
-  _animator: {fileID: 9108251240543665432}
