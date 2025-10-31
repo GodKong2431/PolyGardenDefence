@@ -105,7 +105,7 @@ public class TowerBase : MonoBehaviour
         {
             Transform currentTarget = _target[i];
 
-            if(currentTarget == null || currentTarget.gameObject.activeSelf==false)
+            if(currentTarget == null || currentTarget.gameObject.activeSelf==false || currentTarget.gameObject.GetComponent<EnemyBase>().IsDead)
             {
                 _target.RemoveAt(i);
                 
@@ -165,7 +165,7 @@ public class TowerBase : MonoBehaviour
             return;
         }
         Transform targetEnemy = _target[0];
-        if (targetEnemy == null || !targetEnemy.gameObject.activeSelf)
+        if (targetEnemy == null || !targetEnemy.gameObject.activeSelf || targetEnemy.gameObject.GetComponent<EnemyBase>().IsDead)
         {
             _target.RemoveAt(0);
             return;
