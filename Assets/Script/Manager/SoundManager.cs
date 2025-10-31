@@ -49,7 +49,7 @@ public class SoundManager : SingleTon<SoundManager>
         }
         foreach (var bgm in _bgm)
         {
-            if (!_bgmDict.ContainsKey(bgm.name.ToLower()))
+            if (!_bgmDict.ContainsKey(bgm.name))
             {
                 _bgmDict.Add(bgm.name, bgm.source);
             }
@@ -64,7 +64,7 @@ public class SoundManager : SingleTon<SoundManager>
         }
         foreach (var info in _clip)
         {
-            if (!_clipDict.ContainsKey(info.name.ToLower()))
+            if (!_clipDict.ContainsKey(info.name))
             {
                 _clipDict.Add(info.name, info.clip);
             }
@@ -75,7 +75,7 @@ public class SoundManager : SingleTon<SoundManager>
     public void Bgm(string name, bool loop = true)
     {
         StopBgm();
-        if (!_bgmDict.TryGetValue(name.ToLower(), out var bgmSource))
+        if (!_bgmDict.TryGetValue(name, out var bgmSource))
         {
             Debug.LogError($"{name} BGM을 찾을 수 없습니다.");
             return;
@@ -94,7 +94,7 @@ public class SoundManager : SingleTon<SoundManager>
     }
     public void Clip(string name)
     {
-        if (!_clipDict.TryGetValue(name.ToLower(), out var clip))
+        if (!_clipDict.TryGetValue(name, out var clip))
         {
             Debug.LogError($"{name} Clip을 찾을 수 없습니다.");
             return;
