@@ -39,6 +39,7 @@ public class BuffTower : TowerBase
                 _friendlyTower.RemoveAt(i);
                 continue;
             }
+            SoundManager.Instance.Clip("magic");
             friendTower.ApplyAttackSpeedBuff(_buffAmount, _buffDuration);
         }
     }

@@ -28,7 +28,7 @@ public class TowerBase : MonoBehaviour
 
 
     [Header("Buff / Visual Effects")]
-    [SerializeField] private GameObject _buffEffectPrefab;
+    //[SerializeField] private GameObject _buffEffectPrefab;
     [SerializeField] private Vector3 _effectLocalRotation = Vector3.zero;
     [SerializeField] private float _yOffset = 0.5f;
     
@@ -129,16 +129,16 @@ public class TowerBase : MonoBehaviour
     /// <param name="isBuffed"></param>
     protected void ToggleBuffEffect(bool isBuffed)
     {
-        
+        Vector3 spawnPosition = transform.position + new Vector3(0, _yOffset, 0);
+        Quaternion _rotation = Quaternion.Euler(_effectLocalRotation);
 
         if (isBuffed)
         {
-            if(_buffEffectPrefab != null && _currentBuffEffect == null)
+            if(_currentBuffEffect == null)
             {
-                Vector3 spawnPosition = transform.position + new Vector3(0, _yOffset, 0);
-                Quaternion _rotation = Quaternion.Euler(_effectLocalRotation);
+                
 
-                _currentBuffEffect = Instantiate(_buffEffectPrefab,
+                _currentBuffEffect = EffectManager.Instance.PlayEffect("BuffEffect",
                                                 spawnPosition,
                                                 _rotation,
                                                 transform);
@@ -174,7 +174,7 @@ public class TowerBase : MonoBehaviour
 
         Vector3 dirToEnemy = (targetEnemy.position - _firePoint.position).normalized;
         Quaternion targetRotation = Quaternion.LookRotation(dirToEnemy);
-
+        SoundManager.Instance.Clip("bullet");
         GameObject _bullet = _bulletManager.MakeBullet(_bulletType);
 
         if (_bullet != null)
