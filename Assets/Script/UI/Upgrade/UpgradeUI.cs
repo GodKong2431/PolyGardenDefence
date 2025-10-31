@@ -31,7 +31,7 @@ public class UpgradeUI : MonoBehaviour
 
     public void MoveToTower(GameObject selectTower)
     {
-        _selectTower = selectTower.GetComponent<TowerBase>();
+        _selectTower = selectTower.GetComponentInChildren<TowerBase>();
         Vector3 movePos = selectTower.transform.position;
         currentSelectCameraPos = _camera.transform.position;
         transform.position = _camera.WorldToScreenPoint(movePos);
