@@ -11,6 +11,7 @@ public class GameManager : SingleTon<GameManager>
     //Life 관련 필드
     [SerializeField] private int _maxLife = 100;
     private int _currentLife = 0;
+
     public int CurrentLife => _currentLife;
 
     //Gold 관련 필드
@@ -28,9 +29,23 @@ public class GameManager : SingleTon<GameManager>
     private int _maxWave = 2;
     private float _progress = 0;
 
+    [SerializeField] private int _aliveEnemies;
+    public int AliveEnemies => _aliveEnemies;
 
+    // 적 스폰 시 +1
+    public void RegisterEnemySpawned()
+    {
+        _aliveEnemies++;
+    }
 
-
+    // 적이 완전히 사라질 때 -1
+    public void RegisterEnemyRemoved()
+    {
+        if (_aliveEnemies > 0)
+        {
+            _aliveEnemies--;
+        }
+    }
 
     #region Observer LisnerList
     //Gold 옵저버 생성
@@ -140,15 +155,10 @@ public class GameManager : SingleTon<GameManager>
     public void Wave()
     {
         _currentWave++;
-        if (_currentWave >= _maxWave) // 변경: 증가 후 >= 비교
-        {
-            Ending();
-        }
-        else
-        {
-            NotifyWaveUpdate();
-            Debug.Log("현재 웨이브 : " + _currentWave);
-        }
+        _currentWave++;
+        // 마지막 웨이브여도 여기서 Ending() 부르지 않음
+        NotifyWaveUpdate();
+        Debug.Log("현재 웨이브 : " + _currentWave);
     }
 
     public void GameOver()
@@ -188,5 +198,33 @@ public class GameManager : SingleTon<GameManager>
     {
         _maxWave = Mathf.Max(0, maxWave);
         // NotifyWaveUpdate();
+    }
+
+    public void Paused()
+    {
+        if (Time.timeScale == 0f) //True면 일시정지 
+        { Time.timeScale = 1f; }
+        else //false면 진행
+        { Time.timeScale = 0f; }
+    }
+
+    public void StartNewRun(int startGold = 0)
+    {
+        // 일시정지 해제(이전 Victory/GameOver에서 멈춰 있었을 수 있음)
+        Time.timeScale = 1f;
+
+        // 코어 상태 초기화
+        _currentLife = _maxLife;
+        _gold = Mathf.Max(0, startGold);
+        _currentWave = 0;
+        _progress = 0f;
+        _aliveEnemies = 0;
+
+        // UI 즉시 갱신
+        NotifyLifeUpdate();
+        NotifyGoldUpdate();
+        NotifyWaveUpdate();
+
+        Debug.Log("[GameManager] StartNewRun: state reset");
     }
 }

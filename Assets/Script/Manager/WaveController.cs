@@ -128,8 +128,15 @@ public class WaveController : MonoBehaviour
 
             _stageIndex++;
         }
-
         Debug.Log("[WaveController] All stages completed.");
+
+        // 7) 마지막 웨이브 이후: 필드에 남은 적이 0마리 될 때까지 대기 → Victory
+        while (GameManager.Instance != null && GameManager.Instance.AliveEnemies > 0)
+        {
+            yield return null; // 한 프레임씩 대기
+        }
+        GameManager.Instance?.Ending();
+
         _sequenceCo = null;
     }
     #endregion

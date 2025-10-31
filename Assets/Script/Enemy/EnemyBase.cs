@@ -169,6 +169,7 @@ public class EnemyBase : MonoBehaviour, IPoolable,IDamageable
 
     public void Despawn()
     {
+        GameManager.Instance?.RegisterEnemyRemoved();
         _movement?.Stop();
 
         if (_enemyHpBar != null)

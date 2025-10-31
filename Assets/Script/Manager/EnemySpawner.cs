@@ -45,6 +45,8 @@ public class EnemySpawner : MonoBehaviour
             enemy.SetPoolService(_pool);             // 반환 대상 풀 지정
             enemy.Init(stats, path);
 
+            GameManager.Instance?.RegisterEnemySpawned();
+
             #region HP Bar
             // 1. 프리팹의 컴포넌트는 '키'로만 사용
             EnemyHpBar hpBarPrefabComp = _enemyHpBarPrefab.GetComponent<EnemyHpBar>();
