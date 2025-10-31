@@ -1,5 +1,67 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8381419180102213827
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1729499719302311647}
+  m_Layer: 0
+  m_Name: BuffPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1729499719302311647
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8381419180102213827}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: -0.7071068}
+  m_LocalPosition: {x: 0, y: 0.47, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4556880911919812467}
+  m_LocalEulerAnglesHint: {x: 270, y: 0, z: 0}
+--- !u!1 &9098507774511208129
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2111435268772671850}
+  m_Layer: 0
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2111435268772671850
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9098507774511208129}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.4, z: 0.4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4556880911919812467}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &4087001778569111704
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -70,7 +132,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: e6800652d087cec498f263c91b803602, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2111435268772671850}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: e6800652d087cec498f263c91b803602, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1729499719302311647}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e6800652d087cec498f263c91b803602, type: 3}
       insertIndex: -1
@@ -82,11 +150,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 7982029589199907203}
   m_SourcePrefab: {fileID: 100100000, guid: e6800652d087cec498f263c91b803602, type: 3}
---- !u!4 &2507163950381348151 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -7314745045437555281, guid: e6800652d087cec498f263c91b803602, type: 3}
-  m_PrefabInstance: {fileID: 4087001778569111704}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &3780380080330331593 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e6800652d087cec498f263c91b803602, type: 3}
@@ -154,8 +217,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bulletManager: {fileID: 0}
   _bulletPrefab: {fileID: 4354329200244975398, guid: 8fb21c9769ec2d644942b5149cfdd333, type: 3}
-  _firePoint: {fileID: 2507163950381348151}
+  _firePoint: {fileID: 2111435268772671850}
   _bulletType: 1
+  _fireEffectName: 
   _range: 5
   _damage: 1
   _shotDelay: 0.5
@@ -163,9 +227,8 @@ MonoBehaviour:
   _price: 10
   _name: base tower
   _towerType: 1
-  _buffEffectPrefab: {fileID: 0}
-  _effectLocalRotation: {x: 0, y: 0, z: 0}
-  _yOffset: 0.5
+  _buffEffectPoint: {fileID: 1729499719302311647}
+  _buffEffectName: 
   _explosionRadius: 3
 --- !u!4 &4556880911919812467 stripped
 Transform:

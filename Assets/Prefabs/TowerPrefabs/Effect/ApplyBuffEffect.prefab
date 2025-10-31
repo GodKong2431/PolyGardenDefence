@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1273710762483042, guid: c219e4dcb49b5844691b241cd5fca2f1, type: 3}
       propertyPath: m_Name
-      value: BuffEffect
+      value: ApplyBuffEffect
       objectReference: {fileID: 0}
     - target: {fileID: 4150377031524958, guid: c219e4dcb49b5844691b241cd5fca2f1, type: 3}
       propertyPath: m_LocalScale.x

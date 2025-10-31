@@ -1,5 +1,67 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2958965333814382843
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3627060475532869433}
+  m_Layer: 10
+  m_Name: BuffPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3627060475532869433
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2958965333814382843}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: -0.7071068}
+  m_LocalPosition: {x: 0, y: 0.276, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8213780899611050567}
+  m_LocalEulerAnglesHint: {x: 270, y: 0, z: 0}
+--- !u!1 &4404296885096894398
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 325925373074459640}
+  m_Layer: 10
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &325925373074459640
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4404296885096894398}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.382, z: 0.486}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8213780899611050567}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2540380641787596255
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -190,7 +252,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -3868710468543803471, guid: 6ec102e5f3081754f9e861c3ea33775b, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6ec102e5f3081754f9e861c3ea33775b, type: 3}
       propertyPath: m_Name
@@ -198,15 +260,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6ec102e5f3081754f9e861c3ea33775b, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6ec102e5f3081754f9e861c3ea33775b, type: 3}
+      propertyPath: m_TagString
+      value: Tower
       objectReference: {fileID: 0}
     - target: {fileID: 6635428092505703782, guid: 6ec102e5f3081754f9e861c3ea33775b, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6ec102e5f3081754f9e861c3ea33775b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3627060475532869433}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6ec102e5f3081754f9e861c3ea33775b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 325925373074459640}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6ec102e5f3081754f9e861c3ea33775b, type: 3}
       insertIndex: -1
@@ -218,11 +290,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 6253957127891185468}
   m_SourcePrefab: {fileID: 100100000, guid: 6ec102e5f3081754f9e861c3ea33775b, type: 3}
---- !u!4 &7207280045435756302 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1329380249762036386, guid: 6ec102e5f3081754f9e861c3ea33775b, type: 3}
-  m_PrefabInstance: {fileID: 8536449161569625516}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8213780899611050567 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6ec102e5f3081754f9e861c3ea33775b, type: 3}
@@ -295,8 +362,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bulletManager: {fileID: 0}
   _bulletPrefab: {fileID: 3549904583290853265, guid: 05f2eb3f5fb1de84e9d90fcec39fbc0e, type: 3}
-  _firePoint: {fileID: 7207280045435756302}
+  _firePoint: {fileID: 325925373074459640}
   _bulletType: 0
+  _fireEffectName: 
   _range: 5
   _damage: 1
   _shotDelay: 0.5
@@ -304,7 +372,6 @@ MonoBehaviour:
   _price: 10
   _name: base tower
   _towerType: 0
-  _buffEffectPrefab: {fileID: 0}
-  _effectLocalRotation: {x: 0, y: 0, z: 0}
-  _yOffset: 0.5
+  _buffEffectPoint: {fileID: 3627060475532869433}
+  _buffEffectName: 
   _pierceCount: 2

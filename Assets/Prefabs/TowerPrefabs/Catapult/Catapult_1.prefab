@@ -1,5 +1,67 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4237477644314485373
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6844950018299186327}
+  m_Layer: 0
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6844950018299186327
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4237477644314485373}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.548, z: -0.185}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2370238192213673810}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4962258238148754623
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4603641439509641824}
+  m_Layer: 0
+  m_Name: BuffPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4603641439509641824
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4962258238148754623}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: -0.7071068}
+  m_LocalPosition: {x: 0, y: 0.404, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2370238192213673810}
+  m_LocalEulerAnglesHint: {x: 270, y: 0, z: 0}
 --- !u!1001 &2312444893183191641
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -210,7 +272,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0a2e37f017306e94cb40e7432b9a94a7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6844950018299186327}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0a2e37f017306e94cb40e7432b9a94a7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4603641439509641824}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0a2e37f017306e94cb40e7432b9a94a7, type: 3}
       insertIndex: -1
@@ -318,7 +386,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bulletManager: {fileID: 0}
   _bulletPrefab: {fileID: 3758551196865717507, guid: bc6db73e53841394e94c0cd3dc95501e, type: 3}
-  _firePoint: {fileID: 2370238192213673810}
+  _firePoint: {fileID: 6844950018299186327}
   _bulletType: 2
   _range: 5
   _damage: 1
@@ -327,9 +395,7 @@ MonoBehaviour:
   _price: 10
   _name: base tower
   _towerType: 2
-  _buffEffectPrefab: {fileID: 0}
-  _effectLocalRotation: {x: 0, y: 0, z: 0}
-  _yOffset: 0.5
+  _buffEffectPoint: {fileID: 4603641439509641824}
   _criticalChance: 0.2
   _criticalMultiplier: 2
   _animator: {fileID: 1251393661351624594}

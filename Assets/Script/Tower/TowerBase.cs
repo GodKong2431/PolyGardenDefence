@@ -14,6 +14,7 @@ public class TowerBase : MonoBehaviour
     [SerializeField] protected GameObject _bulletPrefab;
     [SerializeField] protected Transform _firePoint;
     [SerializeField] protected BulletType _bulletType;
+    [SerializeField] protected string _fireEffectName;
 
     [Header("Tower Stats")]
     [SerializeField] protected float _range;
@@ -28,11 +29,8 @@ public class TowerBase : MonoBehaviour
 
 
     [Header("Buff / Visual Effects")]
-    //[SerializeField] private GameObject _buffEffectPrefab;
-    [SerializeField] private Vector3 _effectLocalRotation = Vector3.zero;
-    [SerializeField] protected float _yOffset = 0.5f;
-    [SerializeField] protected float _xOffset = 0.5f;
-    [SerializeField] protected float _zOffset = 0.1f;
+    [SerializeField] protected Transform _buffEffectPoint;
+    [SerializeField] protected string _buffEffectName;
 
     private GameObject _currentBuffEffect = null;
     private GameObject _tile = null;
@@ -131,8 +129,7 @@ public class TowerBase : MonoBehaviour
     /// <param name="isBuffed"></param>
     protected void ToggleBuffEffect(bool isBuffed)
     {
-        Vector3 spawnPosition = transform.position + new Vector3(0, _yOffset, 0);
-        Quaternion _rotation = Quaternion.Euler(_effectLocalRotation);
+        
 
         if (isBuffed)
         {
@@ -140,9 +137,9 @@ public class TowerBase : MonoBehaviour
             {
                 
 
-                _currentBuffEffect = EffectManager.Instance.PlayEffect("BuffEffect",
-                                                spawnPosition,
-                                                _rotation,
+                _currentBuffEffect = EffectManager.Instance.PlayEffect(_buffEffectName,
+                                                _buffEffectPoint.position,
+                                                _buffEffectPoint.rotation,
                                                 transform);
                 
             }
@@ -173,8 +170,6 @@ public class TowerBase : MonoBehaviour
             _target.RemoveAt(0);
             return;
         }
-        //총구 이펙트 위치설정용 백터값
-        Vector3 fireEffectPosition = _firePoint.position+new Vector3(_xOffset, _yOffset, _zOffset);
 
         //총알 발사용 쿼터니언값
         Vector3 dirToEnemy = (targetEnemy.position - _firePoint.position).normalized;
@@ -184,7 +179,7 @@ public class TowerBase : MonoBehaviour
         SoundManager.Instance.Clip("bullet");
 
         //총알 발사 이펙트 출력
-        EffectManager.Instance.PlayEffect("FireEffect",fireEffectPosition,targetRotation,transform);
+        EffectManager.Instance.PlayEffect(_fireEffectName, _firePoint.position,_firePoint.rotation,transform);
 
 
         GameObject _bullet = _bulletManager.MakeBullet(_bulletType);

@@ -49,6 +49,8 @@ public class CatapultTower : TowerBase
         {
             criticalDamage *= _criticalMultiplier;
         }
+        
+        
         //SoundManager.Instance.Clip("card");
         GameObject _bullet = _bulletManager.MakeBullet(_bulletType);
 
