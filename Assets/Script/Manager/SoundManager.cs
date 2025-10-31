@@ -16,7 +16,7 @@ public class SoundManager : SingleTon<SoundManager>
     [SerializeField] private Dictionary<string, AudioSource> _bgmDict = new Dictionary<string, AudioSource>();
     [SerializeField] private Dictionary<string, AudioClip> _clipDict = new Dictionary<string, AudioClip>();
 
-    //구조체, 이펙트 이름, 프리팹
+    //이름, 사운드/클립
     [System.Serializable]
     public class BgmInfo
     {
@@ -40,7 +40,7 @@ public class SoundManager : SingleTon<SoundManager>
         DontDestroyOnLoad(gameObject);
     }
 
-    //구조체배열에 있는 구조체가 딕셔너리에 없으면 딕셔너리에 구조체정보(프리팹이름,프리팹) 저장
+    //구조체배열에 있는 구조체가 딕셔너리에 없으면 딕셔너리에 구조체정보 저장
     private void MakeBgmDictionary()
     {
         if (_bgm == null)
