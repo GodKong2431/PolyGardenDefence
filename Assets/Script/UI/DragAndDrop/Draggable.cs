@@ -20,11 +20,6 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
 
 
-
-
-
-
-
     private void Awake()
     {
         Init();
@@ -74,8 +69,6 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
             _canvasGroup.blocksRaycasts = true;
             _canvasGroup.alpha = 1f;
         }
-
-
 
         // 마우스 포지션에서 레이를 발사하고
         // 맞은 오브젝트의 DropZone을 가져와 null이 아니라면

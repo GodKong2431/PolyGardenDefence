@@ -1033,6 +1033,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f5a4f532055b2a54d8e1306a42359ecf, type: 3}
   m_PrefabInstance: {fileID: 680669932}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &712978575 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9033413943466255994, guid: 4ac829034ebf37e4da70bb2d06a8cbcd, type: 3}
+  m_PrefabInstance: {fileID: 1010772205}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8612275f2893cad428a6b70df3130252, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &718231473
 GameObject:
   m_ObjectHideFlags: 0
@@ -1143,6 +1154,7 @@ MonoBehaviour:
   _scrollSpeed: 5
   _scrollMinY: 5
   _scrollMaxY: 30
+  _rotationSpeed: 80
 --- !u!1 &747898033
 GameObject:
   m_ObjectHideFlags: 0
@@ -1922,11 +1934,23 @@ PrefabInstance:
     - target: {fileID: 5756150906141929767, guid: 4ac829034ebf37e4da70bb2d06a8cbcd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1718640880}
+      objectReference: {fileID: 712978575}
+    - target: {fileID: 5756150906141929767, guid: 4ac829034ebf37e4da70bb2d06a8cbcd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnClickNextWave
+      objectReference: {fileID: 0}
     - target: {fileID: 6144280331936046532, guid: 4ac829034ebf37e4da70bb2d06a8cbcd, type: 3}
       propertyPath: m_Name
       value: MainCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 9033413943466255994, guid: 4ac829034ebf37e4da70bb2d06a8cbcd, type: 3}
+      propertyPath: _enemySpawner
+      value: 
+      objectReference: {fileID: 556769379}
+    - target: {fileID: 9033413943466255994, guid: 4ac829034ebf37e4da70bb2d06a8cbcd, type: 3}
+      propertyPath: _nextWaveButton
+      value: 
+      objectReference: {fileID: 1765207756}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3323,54 +3347,6 @@ Transform:
   - {fileID: 852075549}
   m_Father: {fileID: 1118412640}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1718640878
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1718640879}
-  - component: {fileID: 1718640880}
-  m_Layer: 0
-  m_Name: WaveController
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1718640879
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1718640878}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.808113, y: 1.4176986, z: 2.378012}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1718640880
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1718640878}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8612275f2893cad428a6b70df3130252, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _enemySpawner: {fileID: 556769379}
-  _sequence: {fileID: 11400000, guid: b49f9900bdeaa1a42a8e7d3347538193, type: 2}
-  _manualKey: 9
-  _rushBonusPerSecond: 5
 --- !u!1001 &1742873696
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3479,6 +3455,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxLife: 100
   _gold: 100
+--- !u!1 &1765207756 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4389778730482013307, guid: 4ac829034ebf37e4da70bb2d06a8cbcd, type: 3}
+  m_PrefabInstance: {fileID: 1010772205}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1812202032 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 754063090e9895d4c8d6aacefb3b78d2, type: 3}
@@ -4131,7 +4112,6 @@ SceneRoots:
   - {fileID: 437841494}
   - {fileID: 1745659212}
   - {fileID: 556769378}
-  - {fileID: 1718640879}
   - {fileID: 993339191}
   - {fileID: 780860413}
   - {fileID: 198810289}

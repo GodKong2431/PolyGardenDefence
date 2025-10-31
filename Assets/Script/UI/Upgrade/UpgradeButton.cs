@@ -11,5 +11,4 @@ public class UpgradeButton : MonoBehaviour
         _selectTower = GetComponentInParent<UpgradeUI>().SelectTower;
         UpgradeManager.Instance.UpgradeTower(_selectTower);
     }
-
 }

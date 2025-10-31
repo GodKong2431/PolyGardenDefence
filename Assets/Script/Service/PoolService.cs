@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScenePoolService : MonoBehaviour
+public class PoolService : MonoBehaviour
 {
     // ÇÁ¸®ÆÕº° Ç®
     private readonly Dictionary<Component, object> _poolMap = new();

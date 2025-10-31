@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [Header("Refs")]
-    [SerializeField] private ScenePoolService _pool;   // 인스펙터로 같은 씬의 ScenePoolService 할당 
+    [SerializeField] private PoolService _pool;   // 인스펙터로 같은 씬의 ScenePoolService 할당 
     [SerializeField] private List<EnemyBase> _enemyPrefabs = new();
     [SerializeField] private bool _usePartialNameMatch = true;
 
@@ -13,6 +13,12 @@ public class EnemySpawner : MonoBehaviour
     [Header("HpBar")]
     [SerializeField] private Transform _enemyHpBarCanvas;
     [SerializeField] private GameObject _enemyHpBarPrefab;
+
+    private void Awake()
+    {
+        if (_pool == null)
+            _pool = FindFirstObjectByType<PoolService>();
+    }
 
     public void Spawn(EnemyStatsSO stats, int count, int pathId, float interval)
     {
@@ -39,11 +45,27 @@ public class EnemySpawner : MonoBehaviour
             enemy.SetPoolService(_pool);             // 반환 대상 풀 지정
             enemy.Init(stats, path);
 
-            #region
-            GameObject hpBarObj = Instantiate(_enemyHpBarPrefab, _enemyHpBarCanvas);
-            EnemyHpBar hpBar = hpBarObj.GetComponent<EnemyHpBar>();
+            #region HP Bar
+            // 1. 프리팹의 컴포넌트는 '키'로만 사용
+            EnemyHpBar hpBarPrefabComp = _enemyHpBarPrefab.GetComponent<EnemyHpBar>();
+            if (hpBarPrefabComp == null)
+            {
+                Debug.LogError("[EnemySpawner] _enemyHpBarPrefab에 EnemyHpBar 컴포넌트가 없습니다.");
+            }
+            else
+            {
+                // 2. 풀에서 '인스턴스'를 꺼내기
+                EnemyHpBar hpBar = _pool.Get(hpBarPrefabComp);
 
-            enemy.HpBarInit(hpBar);
+                // 3. 인스턴스의 부모를 캔버스로 지정
+                hpBar.transform.SetParent(_enemyHpBarCanvas, false);
+
+                // 4. HP바가 자기 풀 정보를 기억하도록 바인딩
+                hpBar.BindPool(_pool, hpBarPrefabComp, _enemyHpBarCanvas);
+
+                // 5. 적 객체에 HP바 연결
+                enemy.HpBarInit(hpBar);
+            }
             #endregion
             yield return new WaitForSeconds(interval);
         }
