@@ -16,21 +16,20 @@ public class UpgradeManager : SingleTon<UpgradeManager>
 
     public void PlaceTower(TowerType type, GameObject tile) //타일 받아서 타워 배치.
     {
+        GameObject newTower = BuildTower(type);
         TowerSpot spot = tile.GetComponentInChildren<TowerSpot>();
         if (spot.PlacedTower == null)
-        {
-            GameObject newTower = BuildTower(type);
-            newTower.transform.position = spot.GetPlacePosition();
+        {            
             if (GameManager.Instance.SubGold(newTower.GetComponentInChildren<TowerBase>().Price) == true)
-            {
+            {                
+                newTower.transform.position = spot.GetPlacePosition();
                 spot.Occupy(newTower);
                 newTower.GetComponentInChildren<TowerBase>().Tile = tile;
             }
             else
             {
                 Debug.Log("타워를 설치할 비용이 부족합니다.");
-                Destroy(newTower.transform.parent.gameObject);
-                
+                RemoveTower(newTower.GetComponentInChildren<TowerBase>());
             }
                 
         }
@@ -64,26 +63,19 @@ public class UpgradeManager : SingleTon<UpgradeManager>
                 Debug.Log("잘못된 타워 레벨 설정입니다.");
                 return null;
         }
-        cost = upgradedTower!.GetComponentInChildren<TowerBase>().Price - selectedTower.Price;
+        cost = upgradedTower.GetComponentInChildren<TowerBase>().Price - selectedTower.Price;
         
         if (GameManager.Instance.SubGold(cost) == true)
         {
             selectedTile.Occupy(upgradedTower);
             upgradedTower.GetComponentInChildren<TowerBase>().Tile = selectedTower.Tile;
-            if (selectedTower.transform.parent != null)
-            {
-                Destroy(selectedTower.transform.parent.gameObject);
-            }
-            else
-            {
-
-                Destroy(selectedTower.gameObject);
-            }
+            RemoveTower(selectedTower);
             return upgradedTower;
         }
         else
         {
             Debug.Log("업그레이드 비용이 부족합니다.");
+            RemoveTower(selectedTower);
             return null;
         }
     }
@@ -94,16 +86,19 @@ public class UpgradeManager : SingleTon<UpgradeManager>
         {
             GameManager.Instance.AddGold(selectedTower.Price);
             selectedTower.Tile.GetComponent<TowerSpot>().PlacedTower = null;
-            if (selectedTower.transform.parent != null)
-            {
-                Destroy(selectedTower.transform.parent.gameObject);
-            }
-            else
-            {
+            RemoveTower(selectedTower);
+        }
+    }
 
-                Destroy(selectedTower.gameObject);
-            }
-            
+    public void RemoveTower(TowerBase tower)
+    {
+        if (tower.transform.parent.gameObject != null)
+        {
+            Destroy(tower.transform.parent.gameObject);
+        }
+        else
+        {
+            Destroy(tower.gameObject);
         }
     }
 }
