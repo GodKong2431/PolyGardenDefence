@@ -6,9 +6,12 @@ using static UnityEngine.GraphicsBuffer;
 [RequireComponent(typeof(SphereCollider))]
 public class BuffTower : TowerBase
 {
+    [Header("BuffTowerSet")]
     [SerializeField] float _buffAmount=0.5f; // 버프효과
     [SerializeField] float _buffDuration=2.0f; // 버프 지속시간
     [SerializeField] float _buffDelay = 3.0f; //버프 적용간격
+    [SerializeField] Transform _EffectPoint;
+    [SerializeField] string _buffTowerEffectName;
     private float _nextBuffTime = 0f;
     private List<TowerBase> _friendlyTower = new List<TowerBase>();
     
@@ -30,8 +33,9 @@ public class BuffTower : TowerBase
     }
     private void GiveBuffs()
     {
-        Vector3 effectSpawnPosition = transform.position + new Vector3(_xOffset, _yOffset, _zOffset);
-        EffectManager.Instance.PlayEffect("BuffTowerEffect", effectSpawnPosition, transform.rotation, transform);
+            EffectManager.Instance.PlayEffect(_buffTowerEffectName, _EffectPoint.position, _EffectPoint.rotation, transform);
+            SoundManager.Instance.Clip("magic");
+        
         for(int i=_friendlyTower.Count-1; i>=0; i--)
         {
             TowerBase friendTower = _friendlyTower[i];
@@ -41,7 +45,6 @@ public class BuffTower : TowerBase
                 _friendlyTower.RemoveAt(i);
                 continue;
             }
-            SoundManager.Instance.Clip("magic");
             friendTower.ApplyAttackSpeedBuff(_buffAmount, _buffDuration);
         }
     }

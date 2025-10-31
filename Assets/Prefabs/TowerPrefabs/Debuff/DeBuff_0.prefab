@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2246107964484130597
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7388055654558587145}
+  m_Layer: 10
+  m_Name: EffectPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7388055654558587145
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2246107964484130597}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.058, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2903755367294966974}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &3442596617599679317
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -66,7 +97,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: bb45eae63ce28ea4f999b58b708e2fa9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7388055654558587145}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: bb45eae63ce28ea4f999b58b708e2fa9, type: 3}
       insertIndex: -1
@@ -143,16 +177,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75ba68ff1449ab049a715775cee5cf3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _bulletManager: {fileID: 0}
   _bulletPrefab: {fileID: 0}
   _firePoint: {fileID: 0}
-  _buffEffectPrefab: {fileID: 0}
-  _level: 1
-  _price: 10
+  _bulletType: 0
+  _fireEffectName: 
   _range: 5
-  _name: DebuffTower_Lv1
   _damage: 0
   _shotDelay: 3
-  _bulletType: 0
+  _level: 1
+  _price: 10
+  _name: DebuffTower_Lv1
   _towerType: 5
+  _buffEffectPoint: {fileID: 0}
+  _buffEffectName: 
   _slowAmount: 0.5
   _slowDuration: 2
+  _DeBuffEffectPoint: {fileID: 7388055654558587145}
+  _DeBuffEffectName: 
+--- !u!4 &2903755367294966974 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: bb45eae63ce28ea4f999b58b708e2fa9, type: 3}
+  m_PrefabInstance: {fileID: 3442596617599679317}
+  m_PrefabAsset: {fileID: 0}

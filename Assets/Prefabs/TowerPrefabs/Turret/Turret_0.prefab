@@ -1,5 +1,67 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6262670782948050137
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5130680518538703023}
+  m_Layer: 0
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5130680518538703023
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6262670782948050137}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.4, z: 0.4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1901282276849380732}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &9057458639678906116
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7373387942819663988}
+  m_Layer: 0
+  m_Name: BuffPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7373387942819663988
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9057458639678906116}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: -0.7071068}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1901282276849380732}
+  m_LocalEulerAnglesHint: {x: 270, y: 0, z: 0}
 --- !u!1001 &2154989280381307543
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -70,7 +132,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 48af3664ccf27bf439a97f7ab863b179, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5130680518538703023}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 48af3664ccf27bf439a97f7ab863b179, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7373387942819663988}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 48af3664ccf27bf439a97f7ab863b179, type: 3}
       insertIndex: -1
@@ -82,11 +150,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 3908914105134339201}
   m_SourcePrefab: {fileID: 100100000, guid: 48af3664ccf27bf439a97f7ab863b179, type: 3}
---- !u!4 &546274175417997112 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -7314745045437555281, guid: 48af3664ccf27bf439a97f7ab863b179, type: 3}
-  m_PrefabInstance: {fileID: 2154989280381307543}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1236632293366970310 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 48af3664ccf27bf439a97f7ab863b179, type: 3}
@@ -154,8 +217,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bulletManager: {fileID: 0}
   _bulletPrefab: {fileID: 3866625151371722093, guid: 54cc700efa5446147ad61d64c29b9fa6, type: 3}
-  _firePoint: {fileID: 546274175417997112}
+  _firePoint: {fileID: 5130680518538703023}
   _bulletType: 3
+  _fireEffectName: FireEffect
   _range: 5
   _damage: 1
   _shotDelay: 0.5
@@ -163,9 +227,8 @@ MonoBehaviour:
   _price: 10
   _name: base tower
   _towerType: 3
-  _buffEffectPrefab: {fileID: 0}
-  _effectLocalRotation: {x: 0, y: 0, z: 0}
-  _yOffset: 0.5
+  _buffEffectPoint: {fileID: 7373387942819663988}
+  _buffEffectName: 
 --- !u!4 &1901282276849380732 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 48af3664ccf27bf439a97f7ab863b179, type: 3}
