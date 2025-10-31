@@ -33,7 +33,7 @@ public class UpgradeManager : SingleTon<UpgradeManager>
 
     public GameObject UpgradeTower(TowerBase towerBase)//기존 타워 업그레이드 매서드.
     {
-        GameObject upgradedTower = null;        
+        GameObject upgradedTower = null;
         TowerType type = towerBase.TowerType;
         int level = towerBase.Level;
         switch (level)
