@@ -23,7 +23,7 @@ MonoBehaviour:
     - _stats: {fileID: 11400000, guid: d021282e7d4126742b488b47f8716ea8, type: 2}
       _count: 5
       _interval: 0.5
-      _pathId: 0
+      _pathId: 1
       _preDelay: 0
     _delayAfter: 10
   - _entries:
