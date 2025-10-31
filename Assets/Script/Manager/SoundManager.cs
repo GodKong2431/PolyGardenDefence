@@ -76,6 +76,9 @@ public class SoundManager : SingleTon<SoundManager>
             case "magic":
                 clip = _clipbgm[3];
                 break;
+            case "magic2":
+                clip = _clipbgm[4];
+                break;
             default:
                 break;
         }
