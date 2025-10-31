@@ -599,7 +599,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8064579488034052867, guid: 375291c63df245c4cbe5fd5b769a8ee0, type: 3}
       propertyPath: _maxLife
-      value: 1
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8064579488034052867, guid: 375291c63df245c4cbe5fd5b769a8ee0, type: 3}
       propertyPath: _victoryCanvas

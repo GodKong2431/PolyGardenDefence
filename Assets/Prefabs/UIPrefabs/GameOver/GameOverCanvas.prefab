@@ -115,6 +115,7 @@ GameObject:
   - component: {fileID: 2426046321932674674}
   - component: {fileID: 6502338136255892731}
   - component: {fileID: 8985500538038617075}
+  - component: {fileID: 5974628397445001159}
   m_Layer: 5
   m_Name: TitleButton
   m_TagString: Untagged
@@ -223,7 +224,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6502338136255892731}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5974628397445001159}
+        m_TargetAssemblyTypeName: GameEndButton, Assembly-CSharp
+        m_MethodName: OnClickTitleButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &5974628397445001159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3836373515786653694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 066972b387018344e95690e39b9b3657, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4200551996133750034
 GameObject:
   m_ObjectHideFlags: 0
@@ -236,6 +261,7 @@ GameObject:
   - component: {fileID: 2865017949186524138}
   - component: {fileID: 139998079641058364}
   - component: {fileID: 5582540358710697590}
+  - component: {fileID: 1236831091049076670}
   m_Layer: 5
   m_Name: RestartButton
   m_TagString: Untagged
@@ -344,7 +370,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 139998079641058364}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1236831091049076670}
+        m_TargetAssemblyTypeName: GameEndButton, Assembly-CSharp
+        m_MethodName: OnClickRestartButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1236831091049076670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4200551996133750034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 066972b387018344e95690e39b9b3657, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5230201694906376539
 GameObject:
   m_ObjectHideFlags: 0
@@ -864,6 +914,7 @@ GameObject:
   - component: {fileID: 2684467282524601383}
   - component: {fileID: 33873170905628453}
   - component: {fileID: 285293630155140374}
+  - component: {fileID: 2241340992904834552}
   m_Layer: 5
   m_Name: ExitButton
   m_TagString: Untagged
@@ -972,7 +1023,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 33873170905628453}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2241340992904834552}
+        m_TargetAssemblyTypeName: GameEndButton, Assembly-CSharp
+        m_MethodName: OnClickExitButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2241340992904834552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9146742585202748329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 066972b387018344e95690e39b9b3657, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4318511781187566058
 PrefabInstance:
   m_ObjectHideFlags: 0

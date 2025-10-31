@@ -1584,7 +1584,7 @@ MonoBehaviour:
   _pool: {fileID: 805262696}
   _enemyPrefabs:
   - {fileID: 1895402978943751042, guid: 53da1b1cfa000734d813d34354bf62f2, type: 3}
-  - {fileID: 7053431226085811694, guid: 2a16b2ab638b07848ad1a394b7029d6e, type: 3}
+  - {fileID: 2326836832462381059, guid: 9f0e8252feee9f6419b40d473549c342, type: 3}
   _usePartialNameMatch: 1
   _enemyHpBarCanvas: {fileID: 1915643653}
   _enemyHpBarPrefab: {fileID: 6698230739867222961, guid: 3a1072c1a4d69384295e4a071c28c798, type: 3}
