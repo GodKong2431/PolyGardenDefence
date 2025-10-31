@@ -16,9 +16,16 @@ public class GameManager : SingleTon<GameManager>
     //Gold 관련 필드
     [SerializeField]private int _gold = 0;
 
+
+    [Header("GameEndCanvas")]
+    [SerializeField] private Canvas _victoryCanvas;
+    [SerializeField] private Canvas _gameOverCanvas;
+
+
+
     //Wave 관련 필드
     private int _currentWave = 0;
-    private int _maxWave = 10;
+    private int _maxWave = 2;
     private float _progress = 0;
 
 
@@ -121,10 +128,10 @@ public class GameManager : SingleTon<GameManager>
                 NotifyLifeUpdate();
                 Debug.Log("현재 남은 라이프 : " +_currentLife);
                 //ui에서 출력
-            }
-            else
-            {
-                GameOver();
+                if(_currentLife == 0)
+                {
+                    GameOver();
+                }
             }
         }
     }
@@ -146,6 +153,7 @@ public class GameManager : SingleTon<GameManager>
     {
         //ui 출력
         Debug.Log("게임 오버");
+        Instantiate(_gameOverCanvas);
         Time.timeScale = 0f;
         //Pause.Instance.Paused();
         //SceneManager.LoadScene("");
@@ -157,11 +165,9 @@ public class GameManager : SingleTon<GameManager>
     public void Ending()
     {
         Debug.Log("엔딩");
+    
         Pause.Instance.Paused();
-        if (Input.anyKeyDown)
-        {
-            SceneManager.LoadScene("Title");
-        }
+        Instantiate(_victoryCanvas);
     }
 
     // 퍼센트 0~100 보정해서 저장

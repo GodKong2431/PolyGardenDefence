@@ -408,22 +408,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2060962513069892105, guid: 937953150075bb547a85490418862a89, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 7032605354936935942}
-    - target: {fileID: 2060962513069892105, guid: 937953150075bb547a85490418862a89, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnClickStage1Button
-      objectReference: {fileID: 0}
-    - target: {fileID: 2060962513069892105, guid: 937953150075bb547a85490418862a89, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: StageButton, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 2060962513069892105, guid: 937953150075bb547a85490418862a89, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 2069068048435690037, guid: 937953150075bb547a85490418862a89, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -447,22 +431,6 @@ PrefabInstance:
     - target: {fileID: 2069068048435690037, guid: 937953150075bb547a85490418862a89, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2199767588400481462, guid: 937953150075bb547a85490418862a89, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 7032605354936935941}
-    - target: {fileID: 2199767588400481462, guid: 937953150075bb547a85490418862a89, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnClickStage2Button
-      objectReference: {fileID: 0}
-    - target: {fileID: 2199767588400481462, guid: 937953150075bb547a85490418862a89, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: StageButton, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 2199767588400481462, guid: 937953150075bb547a85490418862a89, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 3259475536250692821, guid: 937953150075bb547a85490418862a89, type: 3}
       propertyPath: m_AnchorMax.y
@@ -491,22 +459,6 @@ PrefabInstance:
     - target: {fileID: 7875213726550256526, guid: 937953150075bb547a85490418862a89, type: 3}
       propertyPath: m_Name
       value: StageSelectCanvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 8664273974845627005, guid: 937953150075bb547a85490418862a89, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 7032605354936935940}
-    - target: {fileID: 8664273974845627005, guid: 937953150075bb547a85490418862a89, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnClickStage3Button
-      objectReference: {fileID: 0}
-    - target: {fileID: 8664273974845627005, guid: 937953150075bb547a85490418862a89, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: StageButton, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 8664273974845627005, guid: 937953150075bb547a85490418862a89, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8816763589915467816, guid: 937953150075bb547a85490418862a89, type: 3}
       propertyPath: m_Pivot.x
@@ -591,68 +543,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7991868903228624792, guid: 937953150075bb547a85490418862a89, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7032605354936935942}
-    - targetCorrespondingSourceObject: {fileID: 3368880147747248881, guid: 937953150075bb547a85490418862a89, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7032605354936935941}
-    - targetCorrespondingSourceObject: {fileID: 5414456990427214859, guid: 937953150075bb547a85490418862a89, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7032605354936935940}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 937953150075bb547a85490418862a89, type: 3}
---- !u!1 &7032605354936935937 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5414456990427214859, guid: 937953150075bb547a85490418862a89, type: 3}
-  m_PrefabInstance: {fileID: 7032605354936935936}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &7032605354936935938 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3368880147747248881, guid: 937953150075bb547a85490418862a89, type: 3}
-  m_PrefabInstance: {fileID: 7032605354936935936}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &7032605354936935939 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7991868903228624792, guid: 937953150075bb547a85490418862a89, type: 3}
-  m_PrefabInstance: {fileID: 7032605354936935936}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &7032605354936935940
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7032605354936935937}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2a3aa9dc63b6954eb2c054a948429ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &7032605354936935941
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7032605354936935938}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2a3aa9dc63b6954eb2c054a948429ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &7032605354936935942
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7032605354936935939}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2a3aa9dc63b6954eb2c054a948429ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

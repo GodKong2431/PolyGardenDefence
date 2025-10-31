@@ -845,6 +845,10 @@ PrefabInstance:
       value: MainCanvas
       objectReference: {fileID: 0}
     - target: {fileID: 9033413943466255994, guid: 4ac829034ebf37e4da70bb2d06a8cbcd, type: 3}
+      propertyPath: _sequence
+      value: 
+      objectReference: {fileID: 11400000, guid: 7759b42e9b326ba45826df62dfe67b75, type: 2}
+    - target: {fileID: 9033413943466255994, guid: 4ac829034ebf37e4da70bb2d06a8cbcd, type: 3}
       propertyPath: _enemySpawner
       value: 
       objectReference: {fileID: 1494961235}

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4d76311d27f29244967e40f73ceef06, type: 3}
-  m_Name: WaveSequence_
+  m_Name: Stage1 Wave
   m_EditorClassIdentifier: 
   StartDelay: 5
   _stages:
@@ -23,17 +23,7 @@ MonoBehaviour:
     - _stats: {fileID: 11400000, guid: d021282e7d4126742b488b47f8716ea8, type: 2}
       _count: 5
       _interval: 0.5
-      _pathId: 1
-      _preDelay: 0
-    - _stats: {fileID: 11400000, guid: 8f9605447efe76b4aa64311b36764a4f, type: 2}
-      _count: 5
-      _interval: 0.5
-      _pathId: 2
-      _preDelay: 0
-    - _stats: {fileID: 11400000, guid: d021282e7d4126742b488b47f8716ea8, type: 2}
-      _count: 5
-      _interval: 0.5
-      _pathId: 3
+      _pathId: 0
       _preDelay: 0
     _delayAfter: 10
   - _entries:
