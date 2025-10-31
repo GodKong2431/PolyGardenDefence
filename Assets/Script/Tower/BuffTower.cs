@@ -30,6 +30,8 @@ public class BuffTower : TowerBase
     }
     private void GiveBuffs()
     {
+        Vector3 effectSpawnPosition = transform.position + new Vector3(_xOffset, _yOffset, _zOffset);
+        EffectManager.Instance.PlayEffect("BuffTowerEffect", effectSpawnPosition, transform.rotation, transform);
         for(int i=_friendlyTower.Count-1; i>=0; i--)
         {
             TowerBase friendTower = _friendlyTower[i];

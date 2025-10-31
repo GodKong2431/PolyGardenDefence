@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class EffectManager : SingleTon<EffectManager>
 {
-    [SerializeField] private EffectPrefabInfo[] _effectPrefabInfo;
+    [SerializeField] private EffectPrefabInfo[] _effectPrefabInfo; //구조체배열
 
+    //구조체 배열 저장해놓을 딕셔너리
     private Dictionary<string,GameObject> _effectPrefabs = new Dictionary<string,GameObject>();
 
+    //구조체, 이펙트 이름, 프리팹
     [System.Serializable]
     public struct EffectPrefabInfo
     {
@@ -32,11 +34,11 @@ public class EffectManager : SingleTon<EffectManager>
             return;
         }
 
-        foreach(var info in _effectPrefabInfo)
+        foreach(var info in _effectPrefabInfo) 
         {
-            if (!_effectPrefabs.ContainsKey(info.effectName))
+            if (!_effectPrefabs.ContainsKey(info.effectName))//구조체 배열속 이름이 딕셔너리에 저장 안되있으면
             {
-                _effectPrefabs.Add(info.effectName, info.prefab);
+                _effectPrefabs.Add(info.effectName, info.prefab);//딕셔너리에 이름(Key),프리팹 넣기(Value)
             }
         }
     }

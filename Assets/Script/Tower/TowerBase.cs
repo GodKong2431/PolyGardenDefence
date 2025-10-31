@@ -30,8 +30,10 @@ public class TowerBase : MonoBehaviour
     [Header("Buff / Visual Effects")]
     //[SerializeField] private GameObject _buffEffectPrefab;
     [SerializeField] private Vector3 _effectLocalRotation = Vector3.zero;
-    [SerializeField] private float _yOffset = 0.5f;
-    
+    [SerializeField] protected float _yOffset = 0.5f;
+    [SerializeField] protected float _xOffset = 0.5f;
+    [SerializeField] protected float _zOffset = 0.1f;
+
     private GameObject _currentBuffEffect = null;
     private GameObject _tile = null;
 
@@ -171,11 +173,20 @@ public class TowerBase : MonoBehaviour
             _target.RemoveAt(0);
             return;
         }
+        //총구 이펙트 위치설정용 백터값
         Vector3 fireEffectPosition = _firePoint.position+new Vector3(_xOffset, _yOffset, _zOffset);
+
+        //총알 발사용 쿼터니언값
         Vector3 dirToEnemy = (targetEnemy.position - _firePoint.position).normalized;
         Quaternion targetRotation = Quaternion.LookRotation(dirToEnemy);
+
+        //사운드 클립 재생
         SoundManager.Instance.Clip("bullet");
+
+        //총알 발사 이펙트 출력
         EffectManager.Instance.PlayEffect("FireEffect",fireEffectPosition,targetRotation,transform);
+
+
         GameObject _bullet = _bulletManager.MakeBullet(_bulletType);
         
         if (_bullet != null)
@@ -253,8 +264,7 @@ public class TowerBase : MonoBehaviour
         }
     }
 
-    [SerializeField] private float _xOffset = 0.5f;
-    [SerializeField] private float _zOffset = 0.1f;
+    
 
 
 
