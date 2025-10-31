@@ -2,99 +2,117 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using static EffectManager;
 
 public class SoundManager : SingleTon<SoundManager>
 {
-    [SerializeField] private AudioSource[] _bgm;
-    [SerializeField] private AudioSource _clip;
-    [SerializeField] public AudioClip[] _clipbgm;
-    [SerializeField] private AudioSource[] _clipstop;
+    //구조체배열
+    [SerializeField] private BgmInfo[] _bgm;  
+    [SerializeField] private ClipInfo[] _clip;
+
+    [SerializeField] private AudioSource _clipPlayer;
+
+    //구조체 배열 저장해놓을 딕셔너리
+    [SerializeField] private Dictionary<string, AudioSource> _bgmDict = new Dictionary<string, AudioSource>();
+    [SerializeField] private Dictionary<string, AudioClip> _clipDict = new Dictionary<string, AudioClip>();
+
+    //구조체, 이펙트 이름, 프리팹
+    [System.Serializable]
+    public class BgmInfo
+    {
+        public string name;
+        public AudioSource source;
+    }
+    [System.Serializable]
+    public class ClipInfo
+    {
+        public string name;
+        public AudioClip clip;
+    }
 
 
     protected override void Awake()
     {
         base.Awake();
         StopBgm();
-        StopClip();
+        MakeBgmDictionary();
+        MakeClipDictionary();
         DontDestroyOnLoad(gameObject);
     }
-    public void BGM(string name)
-    {
-        StopBgm(); //모든 Bgm멈춤
 
-        switch (name.ToLower()) //입력된 Bgm 재생
+    //구조체배열에 있는 구조체가 딕셔너리에 없으면 딕셔너리에 구조체정보(프리팹이름,프리팹) 저장
+    private void MakeBgmDictionary()
+    {
+        if (_bgm == null)
         {
-            case "title":
-                _bgm[0].loop = true;
-                _bgm[0].Play();
-                break;
-            case "main":
-                _bgm[1].loop = true;
-                _bgm[1].Play();
-                break;
-            case "gameover":
-                _bgm[2].Play();
-                break;
-            case "endig":
-                _bgm[3].Play();
-                break;
-            default:
-                break;
+            return;
+        }
+        foreach (var bgm in _bgm)
+        {
+            if (!_bgmDict.ContainsKey(bgm.name.ToLower()))
+            {
+                _bgmDict.Add(bgm.name, bgm.source);
+            }
         }
     }
 
-    public void StopBgm() //Bgm 중지 함수
+    private void MakeClipDictionary()
     {
-        for (int i = 0; i < _bgm.Length; i++)
+        if (_clip == null)
         {
-            _bgm[i].Stop();
+            return;
+        }
+        foreach (var info in _clip)
+        {
+            if (!_clipDict.ContainsKey(info.name.ToLower()))
+            {
+                _clipDict.Add(info.name, info.clip);
+            }
+        }
+    }
+
+
+    public void Bgm(string name, bool loop = true)
+    {
+        StopBgm();
+        if (!_bgmDict.TryGetValue(name.ToLower(), out var bgmSource))
+        {
+            Debug.LogError($"{name} BGM을 찾을 수 없습니다.");
+            return;
+        }
+        //루프 작동
+        bgmSource.loop = loop;
+        bgmSource.Play();
+    }
+
+    public void StopBgm()//Bgm 멈춤
+    {
+        foreach (var bgm in _bgmDict.Values)
+        {
+            bgm.Stop();
+        }
+    }
+    public void Clip(string name)
+    {
+        if (!_clipDict.TryGetValue(name.ToLower(), out var clip))
+        {
+            Debug.LogError($"{name} Clip을 찾을 수 없습니다.");
+            return;
+        }
+        //클립 작동
+        _clipPlayer.PlayOneShot(clip);
+    }
+
+
+    public void BgmVolum(float volume)//볼륨조절
+    {
+        float clamped = Mathf.Clamp01(volume);
+
+        foreach (var bgm in _bgmDict.Values)
+        {
+            bgm.volume = clamped;
         }
 
-    }
-    public void StopClip()
-    {
-        for (int i = 0; i < _clipstop.Length; i++)
-        {
-            _clipstop[i].Stop();
-        }
-    }
-    public void Clip(string name)//포탑에서 발사한 오브젝트 사운드 선탟
-    {
-        AudioClip clip = null;
-
-        switch (name.ToLower())
-        {
-            case "bullet":
-                clip = _clipbgm[0];
-                break;
-            case "arrow":
-                clip = _clipbgm[1];
-                break;
-            case "cannon":
-                clip = _clipbgm[2];
-                break;
-            case "magic":
-                clip = _clipbgm[3];
-                break;
-            case "magic2":
-                clip = _clipbgm[4];
-                break;
-            default:
-                break;
-        }
-        if (clip != null)//선택된 소리 재생
-        {
-            _clip.PlayOneShot(clip);
-        }
-
-    }
-    public void BgmVolum(float sound)//볼륨조절
-    {
-        float volume = Mathf.Clamp01(sound); //0~1 안전 범위
-        for (int i = 0; i < _bgm.Length; i++)
-        {
-            _bgm[i].volume = volume;
-        }
-        _clip.volume = volume;
+        _clipPlayer.volume = clamped;
     }
 }
