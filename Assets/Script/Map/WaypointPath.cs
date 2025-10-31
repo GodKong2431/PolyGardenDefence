@@ -17,15 +17,6 @@ public class WaypointPath : MonoBehaviour
     public int Id => _id;
     public IReadOnlyList<Transform> Points => _points;
 
-    private void OnEnable()
-    {
-        if (MapManager.Instance == null)
-        {
-            return;
-        }
-
-        MapManager.Instance.RegisterPath(this);
-    }
 
 
 

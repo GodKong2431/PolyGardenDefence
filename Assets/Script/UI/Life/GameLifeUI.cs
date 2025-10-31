@@ -20,6 +20,7 @@ public class GameLifeUI : MonoBehaviour, IGameLifeObserver
     private void Start()
     {
         gameManager = GameManager.Instance;
+        GameManager.Instance.StartNewRun();
     }
 
     private void Awake()

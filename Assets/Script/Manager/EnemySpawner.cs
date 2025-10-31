@@ -28,7 +28,7 @@ public class EnemySpawner : MonoBehaviour
 
     private IEnumerator SpawnRoutine(EnemyStatsSO stats, int count, int pathId, float interval)
     {
-        var path = MapManager.Instance.GetPath(pathId);
+        var path = FindFirstObjectByType<MapManager>().GetPath(pathId);
         if (path == null) yield break;
 
         var prefab = FindPrefabFor(stats);

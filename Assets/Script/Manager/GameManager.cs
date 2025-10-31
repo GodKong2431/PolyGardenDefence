@@ -15,8 +15,8 @@ public class GameManager : SingleTon<GameManager>
     public int CurrentLife => _currentLife;
 
     //Gold 관련 필드
-    [SerializeField]private int _gold = 0;
-
+    [SerializeField] private int _gold = 0;
+    [SerializeField] private int _startGold = 100;
 
     [Header("GameEndCanvas")]
     [SerializeField] private Canvas _victoryCanvas;
@@ -155,7 +155,6 @@ public class GameManager : SingleTon<GameManager>
     public void Wave()
     {
         _currentWave++;
-        _currentWave++;
         // 마지막 웨이브여도 여기서 Ending() 부르지 않음
         NotifyWaveUpdate();
         Debug.Log("현재 웨이브 : " + _currentWave);
@@ -178,7 +177,7 @@ public class GameManager : SingleTon<GameManager>
     {
         Debug.Log("엔딩");
     
-        Pause.Instance.Paused();
+        Paused();
         Instantiate(_victoryCanvas);
     }
 
@@ -208,14 +207,14 @@ public class GameManager : SingleTon<GameManager>
         { Time.timeScale = 0f; }
     }
 
-    public void StartNewRun(int startGold = 0)
+    public void StartNewRun()
     {
         // 일시정지 해제(이전 Victory/GameOver에서 멈춰 있었을 수 있음)
         Time.timeScale = 1f;
 
         // 코어 상태 초기화
         _currentLife = _maxLife;
-        _gold = Mathf.Max(0, startGold);
+        _gold = _startGold;
         _currentWave = 0;
         _progress = 0f;
         _aliveEnemies = 0;

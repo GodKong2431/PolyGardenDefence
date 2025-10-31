@@ -2,15 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MapManager : SingleTon<MapManager>
+public class MapManager : MonoBehaviour
 {
     [Header("Paths")]
     [SerializeField] private List<WaypointPath> _paths = new List<WaypointPath>(); // 인스펙터에 등록 or 런타임 등록
     private Dictionary<int, WaypointPath> _pathMap = new Dictionary<int, WaypointPath>();
 
-    protected override void Awake()
+    protected void Awake()
     {
-        base.Awake();
         BuildPathMap();
     }
 
@@ -36,19 +35,22 @@ public class MapManager : SingleTon<MapManager>
         }
     }
 
-    public void RegisterPath(WaypointPath path)
+    public void OnEnable()
     {
-        if (path == null)
+        foreach (var path in _paths)
         {
-            return;
-        }
+            if (path == null)
+            {
+                return;
+            }
 
-        if (_pathMap.ContainsKey(path.Id))
-        {
-            return;
-        }
+            if (_pathMap.ContainsKey(path.Id))
+            {
+                return;
+            }
 
-        _pathMap.Add(path.Id, path);
+            _pathMap.Add(path.Id, path);
+        }
     }
 
     public WaypointPath GetPath(int id)
