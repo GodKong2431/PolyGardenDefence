@@ -94,7 +94,7 @@ public class SoundManager : SingleTon<SoundManager>
     }
     public void Clip(string name)
     {
-        if (!_clipDict.TryGetValue(name.ToLower(), out var clip))
+        if (!_clipDict.TryGetValue(name, out var clip))
         {
             Debug.LogError($"{name} Clip을 찾을 수 없습니다.");
             return;

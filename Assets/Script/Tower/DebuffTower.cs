@@ -29,7 +29,7 @@ public class DebuffTower : TowerBase
     private void GiveDebuffs()
     {
         EffectManager.Instance.PlayEffect(_DeBuffEffectName, _DeBuffEffectPoint.position, _DeBuffEffectPoint.rotation, transform);
-        SoundManager.Instance.Clip("magic");
+        SoundManager.Instance.Clip("Debuff");
 
         for (int i=_target.Count-1; i>=0; i--)
         {

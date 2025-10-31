@@ -233,7 +233,7 @@ MonoBehaviour:
   _name: base tower
   _towerType: 0
   _buffEffectPoint: {fileID: 7210563680187505261}
-  _buffEffectName: 
+  _buffEffectName: ApplyBuffEffect
   _pierceCount: 2
 --- !u!1001 &7508053585570490106
 PrefabInstance:

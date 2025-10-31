@@ -373,5 +373,5 @@ MonoBehaviour:
   _name: base tower
   _towerType: 0
   _buffEffectPoint: {fileID: 3627060475532869433}
-  _buffEffectName: 
+  _buffEffectName: ApplyBuffEffect
   _pierceCount: 2

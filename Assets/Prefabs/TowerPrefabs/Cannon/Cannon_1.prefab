@@ -364,7 +364,7 @@ MonoBehaviour:
   _bulletPrefab: {fileID: 4354329200244975398, guid: 8fb21c9769ec2d644942b5149cfdd333, type: 3}
   _firePoint: {fileID: 4433267193210639801}
   _bulletType: 1
-  _fireEffectName: 
+  _fireEffectName: FireEffect
   _range: 5
   _damage: 1
   _shotDelay: 0.5
@@ -373,5 +373,5 @@ MonoBehaviour:
   _name: base tower
   _towerType: 1
   _buffEffectPoint: {fileID: 7147799839156751511}
-  _buffEffectName: 
+  _buffEffectName: ApplyBuffEffect
   _explosionRadius: 3

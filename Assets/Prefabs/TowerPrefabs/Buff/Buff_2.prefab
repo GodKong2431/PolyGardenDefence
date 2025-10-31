@@ -272,7 +272,7 @@ MonoBehaviour:
   _bulletPrefab: {fileID: 0}
   _firePoint: {fileID: 0}
   _bulletType: 0
-  _fireEffectName: 
+  _fireEffectName: ApplyBuffEffect
   _range: 5
   _damage: 1
   _shotDelay: 0.5
@@ -286,6 +286,7 @@ MonoBehaviour:
   _buffDuration: 2
   _buffDelay: 3
   _EffectPoint: {fileID: 2090637818146343110}
+  _buffTowerEffectName: BuffTowerEffect
 --- !u!54 &1694753275508749046
 Rigidbody:
   m_ObjectHideFlags: 0

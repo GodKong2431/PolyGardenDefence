@@ -252,7 +252,7 @@ MonoBehaviour:
   _name: base tower
   _towerType: 2
   _buffEffectPoint: {fileID: 5375471137357970097}
-  _buffEffectName: 
+  _buffEffectName: ApplyBuffEffect
   _criticalChance: 0.2
   _criticalMultiplier: 2
   _animator: {fileID: 9108251240543665432}
