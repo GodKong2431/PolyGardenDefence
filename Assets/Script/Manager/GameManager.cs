@@ -94,7 +94,7 @@ public class GameManager : SingleTon<GameManager>
     }
     public bool SubGold(int sub)
     {
-        if (_gold > 0)
+        if (_gold >= sub)
         {
             _gold -= sub;
             NotifyGoldUpdate();
@@ -102,7 +102,6 @@ public class GameManager : SingleTon<GameManager>
         }
         else
         {
-            NotifyGoldUpdate();
             return false;
         }
     }
@@ -159,7 +158,6 @@ public class GameManager : SingleTon<GameManager>
     {
         Debug.Log("¿£µù");
         Pause.Instance.Paused();
-        SceneManager.LoadScene("");
         if (Input.anyKeyDown)
         {
             SceneManager.LoadScene("Title");

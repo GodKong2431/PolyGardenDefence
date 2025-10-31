@@ -130,21 +130,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1584227350124109762, guid: b6ca8572a4b03764487ddea1f795736d, type: 3}
+      propertyPath: _sceneChanger
+      value: 
+      objectReference: {fileID: 1762705720}
     - target: {fileID: 3280739227205608728, guid: b6ca8572a4b03764487ddea1f795736d, type: 3}
       propertyPath: m_Name
       value: TitleCanvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 6836492769425923695, guid: b6ca8572a4b03764487ddea1f795736d, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 768455707}
-    - target: {fileID: 6836492769425923695, guid: b6ca8572a4b03764487ddea1f795736d, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnClickPlayButton
-      objectReference: {fileID: 0}
-    - target: {fileID: 6836492769425923695, guid: b6ca8572a4b03764487ddea1f795736d, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: PlayButton, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8291556774578682750, guid: b6ca8572a4b03764487ddea1f795736d, type: 3}
       propertyPath: m_Pivot.x
@@ -226,33 +218,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 920257364219013041, guid: b6ca8572a4b03764487ddea1f795736d, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6823641072815136319, guid: b6ca8572a4b03764487ddea1f795736d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 768455707}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b6ca8572a4b03764487ddea1f795736d, type: 3}
---- !u!1 &768455705 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6823641072815136319, guid: b6ca8572a4b03764487ddea1f795736d, type: 3}
-  m_PrefabInstance: {fileID: 55831664}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &768455707
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 768455705}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a9af823c95d7844aaf6bec6d71719e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _sceneChanger: {fileID: 1762705720}
 --- !u!1 &1529192850
 GameObject:
   m_ObjectHideFlags: 0
@@ -565,6 +535,10 @@ PrefabInstance:
     - target: {fileID: 4504161007630535289, guid: 375291c63df245c4cbe5fd5b769a8ee0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8064579488034052867, guid: 375291c63df245c4cbe5fd5b769a8ee0, type: 3}
+      propertyPath: _gold
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8719548807458902684, guid: 375291c63df245c4cbe5fd5b769a8ee0, type: 3}
       propertyPath: m_Name
