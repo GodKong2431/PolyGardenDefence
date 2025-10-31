@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e83d3594c6bc9284cad69d084b4a727c, type: 3}
-  m_Name: EnemyStats_
+  m_Name: MushroomAngry
   m_EditorClassIdentifier: 
-  enemyName: 
-  hp: 0
-  speed: 0
-  bounty: 0
+  enemyName: MushroomAngry
+  hp: 100
+  speed: 0.5
+  bounty: 15
   isBoss: 0
   attackDamage: 5
   attackDelay: 1.2

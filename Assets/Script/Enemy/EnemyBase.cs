@@ -23,6 +23,9 @@ public class EnemyBase : MonoBehaviour, IPoolable,IDamageable
     [SerializeField] private EnemyBase _prefabRef;           // 어느 프리팹 풀인지
     private PoolService _poolService;                   // 어느 풀 매니저로 돌려보낼지
 
+    [Header("Dead")]
+    [SerializeField] private bool _isDead;
+    public bool IsDead => _isDead;
     public void SetPrefabRef(EnemyBase prefab) => _prefabRef = prefab;
     public void SetPoolService(PoolService svc) => _poolService = svc;
 
@@ -112,19 +115,39 @@ public class EnemyBase : MonoBehaviour, IPoolable,IDamageable
     // -------- 피해/사망 --------
     public void ApplyDamage(float amount)
     {
-        if (amount <= 0f) return;
+        if (amount <= 0f)
+        {
+            return;
+        }
+        if (_isDead) 
+        {
+            return; 
+        }  // ← 이미 사망 상태면 무시
 
         _currentHp -= amount;
-        _enemyHpBar.SetHP(_currentHp / _stats.hp);
-        if (_currentHp > 0f) return;
-
+        if (_enemyHpBar != null)
+        {
+            _enemyHpBar.SetHP(_currentHp / _stats.hp);
+        }
+        if (_currentHp > 0f)
+        {
+            return;
+        }
         Die();
     }
 
     private void Die()
     {
         var enemy = GetComponent<EnemyBase>();
+        _isDead = true;            // ← 사망 플래그 on
         StopAttack();
+
+        // 타워 탐지 차단: 콜라이더 끄기
+        foreach (var col in GetComponentsInChildren<Collider>())
+        {
+            if (col != null) 
+            { col.enabled = false; }
+        }
 
         if (_animator != null)
         {
@@ -245,6 +268,12 @@ public class EnemyBase : MonoBehaviour, IPoolable,IDamageable
     {
         StopAllCoroutines();
         ResetState();
+
+        _isDead = false;  // ← 플래그 복구
+        foreach (var col in GetComponentsInChildren<Collider>())
+        {
+            if (col != null) { col.enabled = true; }
+        }
     }
 
 
