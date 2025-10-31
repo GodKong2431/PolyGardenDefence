@@ -29,7 +29,7 @@ public class CannonTower : TowerBase
             return;
         }
         EffectManager.Instance.PlayEffect(_fireEffectName, _firePoint.position, _firePoint.rotation, transform);
-        SoundManager.Instance.Clip("cannon");
+        SoundManager.Instance.Clip("Cannon");
         GameObject _bullet = _bulletManager.MakeBullet(_bulletType);
         if (_bullet != null)
         {

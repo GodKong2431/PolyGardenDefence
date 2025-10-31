@@ -280,6 +280,7 @@ MonoBehaviour:
   _buffDuration: 2
   _buffDelay: 3
   _EffectPoint: {fileID: 2246519805956552304}
+  _buffTowerEffectName: BuffTowerEffect
 --- !u!54 &1054310420786101933
 Rigidbody:
   m_ObjectHideFlags: 0

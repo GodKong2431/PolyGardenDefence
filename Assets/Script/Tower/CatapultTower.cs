@@ -51,7 +51,7 @@ public class CatapultTower : TowerBase
         }
         
         
-        //SoundManager.Instance.Clip("card");
+        SoundManager.Instance.Clip("Card");
         GameObject _bullet = _bulletManager.MakeBullet(_bulletType);
 
         if (_bullet != null)

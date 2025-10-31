@@ -176,7 +176,7 @@ public class TowerBase : MonoBehaviour
         Quaternion targetRotation = Quaternion.LookRotation(dirToEnemy);
 
         //사운드 클립 재생
-        SoundManager.Instance.Clip("bullet");
+        SoundManager.Instance.Clip("Bullet");
 
         //총알 발사 이펙트 출력
         EffectManager.Instance.PlayEffect(_fireEffectName, _firePoint.position,_firePoint.rotation,transform);

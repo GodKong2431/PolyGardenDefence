@@ -31,7 +31,7 @@ public class BallistaTower : TowerBase
             return;
         }
         //EffectManager.Instance.PlayEffect("ASD",_firePoint.position, _firePoint.rotation,transform);
-        SoundManager.Instance.Clip("arrow");
+        SoundManager.Instance.Clip("Arrow");
         GameObject _bullet = _bulletManager.MakeBullet(_bulletType);
 
         if (_bullet != null)

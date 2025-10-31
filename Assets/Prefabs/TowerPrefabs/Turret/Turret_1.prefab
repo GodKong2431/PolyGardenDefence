@@ -359,6 +359,7 @@ MonoBehaviour:
   _bulletPrefab: {fileID: 3866625151371722093, guid: 54cc700efa5446147ad61d64c29b9fa6, type: 3}
   _firePoint: {fileID: 6034301874418642421}
   _bulletType: 3
+  _fireEffectName: 
   _range: 5
   _damage: 5
   _shotDelay: 0.5
@@ -367,6 +368,7 @@ MonoBehaviour:
   _name: base tower
   _towerType: 3
   _buffEffectPoint: {fileID: 4632198203484823424}
+  _buffEffectName: ApplyBuffEffect
 --- !u!4 &9130206068458193671 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 48af3664ccf27bf439a97f7ab863b179, type: 3}

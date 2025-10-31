@@ -228,7 +228,7 @@ MonoBehaviour:
   _name: base tower
   _towerType: 3
   _buffEffectPoint: {fileID: 7373387942819663988}
-  _buffEffectName: 
+  _buffEffectName: ApplyBuffEffect
 --- !u!4 &1901282276849380732 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 48af3664ccf27bf439a97f7ab863b179, type: 3}

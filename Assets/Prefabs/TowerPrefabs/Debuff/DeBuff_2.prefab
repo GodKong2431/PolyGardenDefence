@@ -198,7 +198,7 @@ MonoBehaviour:
   _slowAmount: 0.5
   _slowDuration: 2
   _DeBuffEffectPoint: {fileID: 8080784034791463196}
-  _DeBuffEffectName: 
+  _DeBuffEffectName: DeBuffEffect
 --- !u!4 &1149054449777684713 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f040c3c910d93574db313e79d1f9f8ff, type: 3}

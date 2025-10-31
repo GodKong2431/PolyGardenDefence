@@ -34,7 +34,7 @@ public class BuffTower : TowerBase
     private void GiveBuffs()
     {
             EffectManager.Instance.PlayEffect(_buffTowerEffectName, _EffectPoint.position, _EffectPoint.rotation, transform);
-            SoundManager.Instance.Clip("magic");
+            SoundManager.Instance.Clip("Buff");
         
         for(int i=_friendlyTower.Count-1; i>=0; i--)
         {
