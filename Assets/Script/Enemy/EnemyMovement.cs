@@ -113,14 +113,8 @@ public class EnemyMovement : MonoBehaviour
             Debug.LogWarning("[EnemyMovement] EnemyBase not found on goal arrive");
             return;
         }
-        if(enemy.Stats.isBoss == true)
-        {
-            GameManager.Instance.Life(false, enemy.Stats.isBoss);
-        }
-        else
-        {
-            GameManager.Instance.Life(true, false);
-        }
+        // 라이프 처리는 GoalTrigger 한 곳에서만 수행하도록 중앙화
+        // 여기서는 단순히 도착 처리(디스폰)만 한다.
         enemy.Despawn();
     }
 
