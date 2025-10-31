@@ -400,6 +400,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TitleImage
       objectReference: {fileID: 0}
+    - target: {fileID: 5385846409262282975, guid: bd67b8c6ba499ee4387cda98c7d030ad, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6e061ebaaa005304090c0712dc233275, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
