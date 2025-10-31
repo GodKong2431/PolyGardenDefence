@@ -37,4 +37,9 @@ public class UpgradeUI : MonoBehaviour
         transform.position = _camera.WorldToScreenPoint(movePos);
         gameObject.SetActive(true);
     }
+
+    public void OnClickAnyButton()
+    {
+        gameObject.SetActive(false);
+    }
 }

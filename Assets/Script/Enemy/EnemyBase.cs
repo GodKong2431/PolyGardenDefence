@@ -21,10 +21,10 @@ public class EnemyBase : MonoBehaviour, IPoolable,IDamageable
 
     [Header("Pooling")]
     [SerializeField] private EnemyBase _prefabRef;           // 어느 프리팹 풀인지
-    private ScenePoolService _poolService;                   // 어느 풀 매니저로 돌려보낼지
+    private PoolService _poolService;                   // 어느 풀 매니저로 돌려보낼지
 
     public void SetPrefabRef(EnemyBase prefab) => _prefabRef = prefab;
-    public void SetPoolService(ScenePoolService svc) => _poolService = svc;
+    public void SetPoolService(PoolService svc) => _poolService = svc;
 
     private float _currentHp;
     private Transform _target;                                // 공격 대상(플레이어)
@@ -147,6 +147,13 @@ public class EnemyBase : MonoBehaviour, IPoolable,IDamageable
     public void Despawn()
     {
         _movement?.Stop();
+
+        if (_enemyHpBar != null)
+        {
+            _enemyHpBar.Despawn();
+            _enemyHpBar = null;
+        }
+
 
         if (_poolService == null || _prefabRef == null)
         {

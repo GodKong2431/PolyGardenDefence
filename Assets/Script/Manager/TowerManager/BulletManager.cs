@@ -15,7 +15,7 @@ public class BulletManager : MonoBehaviour
     }
 
     [Header("Scene-scoped Pool")]
-    [SerializeField] private ScenePoolService _pool;            // 기존 ObjectPool 직접 관리 → ScenePoolService 참조로 변경
+    [SerializeField] private PoolService _pool;            // 기존 ObjectPool 직접 관리 → ScenePoolService 참조로 변경
     [SerializeField] private List<BulletPrefabMap> _prefabs = new(); // Inspector에서 BulletType ↔ 프리팹 연결 리스트
 
     // 풀 캐시 (타입별 ObjectPool 관리)
@@ -26,7 +26,7 @@ public class BulletManager : MonoBehaviour
         // ScenePoolService 자동 탐색 (없으면 수동 드래그 필요)
         if (_pool == null)
         {
-            _pool = FindFirstObjectByType<ScenePoolService>();
+            _pool = FindFirstObjectByType<PoolService>();
         }
 
         // 선택적 예열 (preload)
