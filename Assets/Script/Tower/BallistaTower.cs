@@ -30,7 +30,7 @@ public class BallistaTower : TowerBase
         {
             return;
         }
-
+        SoundManager.Instance.Clip("arrow");
         GameObject _bullet = _bulletManager.MakeBullet(_bulletType);
 
         if (_bullet != null)

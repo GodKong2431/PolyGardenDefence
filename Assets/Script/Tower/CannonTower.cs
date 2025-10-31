@@ -28,8 +28,8 @@ public class CannonTower : TowerBase
         {
             return;
         }
+        SoundManager.Instance.Clip("cannon");
         GameObject _bullet = _bulletManager.MakeBullet(_bulletType);
-
         if (_bullet != null)
         {
             _bullet.transform.position = _firePoint.position;
