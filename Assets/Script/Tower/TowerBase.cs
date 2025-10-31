@@ -171,12 +171,13 @@ public class TowerBase : MonoBehaviour
             _target.RemoveAt(0);
             return;
         }
-
+        Vector3 fireEffectPosition = _firePoint.position+new Vector3(_xOffset, _yOffset, _zOffset);
         Vector3 dirToEnemy = (targetEnemy.position - _firePoint.position).normalized;
         Quaternion targetRotation = Quaternion.LookRotation(dirToEnemy);
         SoundManager.Instance.Clip("bullet");
+        EffectManager.Instance.PlayEffect("FireEffect",fireEffectPosition,targetRotation,transform);
         GameObject _bullet = _bulletManager.MakeBullet(_bulletType);
-
+        
         if (_bullet != null)
         {
             _bullet.transform.position = _firePoint.position;
@@ -251,6 +252,10 @@ public class TowerBase : MonoBehaviour
             }
         }
     }
+
+    [SerializeField] private float _xOffset = 0.5f;
+    [SerializeField] private float _zOffset = 0.1f;
+
 
 
 }

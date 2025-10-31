@@ -309,7 +309,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8262451885703777864, guid: a202e64e743d02944ba61871e3a46b6f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.72
+      value: -1.5
       objectReference: {fileID: 0}
     - target: {fileID: 8262451885703777864, guid: a202e64e743d02944ba61871e3a46b6f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1030,7 +1030,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3673500429586362513, guid: f7fc84f8d18890e498fb6fecb83f9875, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.8
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3673500429586362513, guid: f7fc84f8d18890e498fb6fecb83f9875, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1038,7 +1038,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3673500429586362513, guid: f7fc84f8d18890e498fb6fecb83f9875, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.496
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 3673500429586362513, guid: f7fc84f8d18890e498fb6fecb83f9875, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1073,8 +1073,16 @@ PrefabInstance:
       value: Turret_0
       objectReference: {fileID: 0}
     - target: {fileID: 8194723636570997450, guid: f7fc84f8d18890e498fb6fecb83f9875, type: 3}
+      propertyPath: _xOffset
+      value: -0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8194723636570997450, guid: f7fc84f8d18890e498fb6fecb83f9875, type: 3}
       propertyPath: _yOffset
-      value: 0.7
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8194723636570997450, guid: f7fc84f8d18890e498fb6fecb83f9875, type: 3}
+      propertyPath: _zOffset
+      value: -0.2
       objectReference: {fileID: 0}
     - target: {fileID: 8194723636570997450, guid: f7fc84f8d18890e498fb6fecb83f9875, type: 3}
       propertyPath: _bulletManager
