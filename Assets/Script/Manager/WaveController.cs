@@ -135,8 +135,11 @@ public class WaveController : MonoBehaviour
         {
             yield return null; // 한 프레임씩 대기
         }
-        GameManager.Instance?.Ending();
-
+        if(!(GameManager.Instance.CurrentLife <= 0))
+        {
+            GameManager.Instance?.Ending();
+        }
+            
         _sequenceCo = null;
     }
     #endregion
