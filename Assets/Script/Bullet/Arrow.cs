@@ -16,9 +16,9 @@ public class Arrow : BulletBase
         if (other.CompareTag("Enemy"))
         {
             _pierceCount = Mathf.Max(_pierceCount - 1, 0);
+            GiveDamage(other);
             if (_pierceCount == 0)
-            {
-                GiveDamage(other);
+            {                
                 OffBullet();
             }
         }
