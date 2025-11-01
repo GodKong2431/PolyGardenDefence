@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
 public class BallistaTower : TowerBase
@@ -7,7 +8,10 @@ public class BallistaTower : TowerBase
 
 
     [Header("Ballista Settings")]
-    [SerializeField] private int _pierceCount = 2; //°üÅë È½¼ö
+    [SerializeField] protected TowerBaseStatsSO _ballistaStats;
+    public TowerBaseStatsSO BallistaStats => _ballistaStats;
+
+    //[SerializeField] private int _pierceCount = 2; //°üÅë È½¼ö
 
     protected override void Awake()
     {
@@ -42,11 +46,11 @@ public class BallistaTower : TowerBase
             Arrow _setBulletComponent = _bullet.GetComponent<Arrow>();
             if (_setBulletComponent != null)
             {
-                _setBulletComponent.SetDamage(_damage);
-                _setBulletComponent.SetPiercing(_pierceCount);
+                _setBulletComponent.SetDamage(BallistaStats._damage);
+                _setBulletComponent.SetPiercing(BallistaStats._pierceCount);
                 _setBulletComponent.Shoot();
             }
-            _nextShot = Time.time + _shotDelay;
+            _nextShot = Time.time + BallistaStats._shotDelay;
         }
 
 

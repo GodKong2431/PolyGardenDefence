@@ -7,9 +7,12 @@ using static UnityEngine.GraphicsBuffer;
 public class BuffTower : TowerBase
 {
     [Header("BuffTowerSet")]
-    [SerializeField] float _buffAmount=0.5f; // 버프효과
-    [SerializeField] float _buffDuration=2.0f; // 버프 지속시간
-    [SerializeField] float _buffDelay = 3.0f; //버프 적용간격
+    //[SerializeField] float _buffAmount=0.5f; // 버프효과
+    //[SerializeField] float _buffDuration=2.0f; // 버프 지속시간
+    //[SerializeField] float _buffDelay = 3.0f; //버프 적용간격
+    [SerializeField] protected TowerBaseStatsSO _buffStats;
+    public TowerBaseStatsSO BuffStats => _buffStats;
+
     [SerializeField] Transform _EffectPoint;
     [SerializeField] string _buffTowerEffectName;
     private float _nextBuffTime = 0f;
@@ -18,8 +21,8 @@ public class BuffTower : TowerBase
 
     protected override void Awake()
     {
-        _damage = 0f;
-        _shotDelay = _buffDelay;
+        Stats._damage = 0f;
+        Stats._shotDelay = BuffStats._buffDelay;
         base.Awake();
     }
     protected override void Update()
@@ -28,7 +31,7 @@ public class BuffTower : TowerBase
         if(Time.time >= _nextBuffTime)
         {
             GiveBuffs();
-            _nextBuffTime = Time.time + _buffDelay;
+            _nextBuffTime = Time.time + BuffStats._buffDelay;
         }
     }
     private void GiveBuffs()
@@ -45,7 +48,7 @@ public class BuffTower : TowerBase
                 _friendlyTower.RemoveAt(i);
                 continue;
             }
-            friendTower.ApplyAttackSpeedBuff(_buffAmount, _buffDuration);
+            friendTower.ApplyAttackSpeedBuff(BuffStats._buffAmount, BuffStats._buffDuration);
         }
     }
 
@@ -55,10 +58,9 @@ public class BuffTower : TowerBase
         {
             TowerBase tower = other.GetComponent<TowerBase>();
 
-            if (!_friendlyTower.Contains(tower) && tower != null && tower != this)
+            if (!_friendlyTower.Contains(tower) && tower != null && tower.Stats._towerType != TowerType.Buff && tower.Stats._towerType != TowerType.Debuff)
             {
                 _friendlyTower.Add(tower);
-                
             }
         }
         

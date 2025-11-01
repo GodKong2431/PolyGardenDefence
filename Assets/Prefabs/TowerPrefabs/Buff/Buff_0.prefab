@@ -9,7 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2246519805956552304}
-  m_Layer: 10
+  - component: {fileID: 6149293388404281536}
+  - component: {fileID: 1420861715868077891}
+  - component: {fileID: 4151273287117268524}
+  m_Layer: 0
   m_Name: EffectPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31,6 +34,76 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8262451885703777864}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &6149293388404281536
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3622481180548481127}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &1420861715868077891
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3622481180548481127}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &4151273287117268524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3622481180548481127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bee6c5fedcce6e644ab5e97bc3920a2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bulletManager: {fileID: 0}
+  _bulletPrefab: {fileID: 0}
+  _firePoint: {fileID: 0}
+  _bulletType: 0
+  _fireEffectName: 
+  _buffEffectPoint: {fileID: 0}
+  _buffEffectName: 
+  _buffStats: {fileID: 11400000, guid: ce1489bde50d5ac45829dbf0eb2fe2c8, type: 2}
+  _EffectPoint: {fileID: 2246519805956552304}
+  _buffTowerEffectName: BuffTowerEffect
 --- !u!1001 &7977478151728943047
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -81,7 +154,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -3832846087379811869, guid: 2b321bf1f3f26fa4ea657d68b6f41a2b, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2b321bf1f3f26fa4ea657d68b6f41a2b, type: 3}
       propertyPath: m_Name
@@ -89,7 +162,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2b321bf1f3f26fa4ea657d68b6f41a2b, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2b321bf1f3f26fa4ea657d68b6f41a2b, type: 3}
       propertyPath: m_TagString
@@ -193,7 +266,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8118992756431793148, guid: 0f6c3776b0ba139408843ae179765a1f, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8118992756431793148, guid: 0f6c3776b0ba139408843ae179765a1f, type: 3}
       propertyPath: m_TagString
@@ -212,9 +285,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0f6c3776b0ba139408843ae179765a1f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1521835068647004782}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0f6c3776b0ba139408843ae179765a1f, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 4154418571163228488}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0f6c3776b0ba139408843ae179765a1f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1054310420786101933}
@@ -250,37 +320,6 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4154418571163228488
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8782565293362844914}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bee6c5fedcce6e644ab5e97bc3920a2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _bulletManager: {fileID: 0}
-  _bulletPrefab: {fileID: 0}
-  _firePoint: {fileID: 0}
-  _bulletType: 0
-  _fireEffectName: 
-  _range: 5
-  _damage: 1
-  _shotDelay: 0.5
-  _level: 1
-  _price: 10
-  _name: BuffTower_Lv1
-  _towerType: 4
-  _buffEffectPoint: {fileID: 0}
-  _buffEffectName: 
-  _buffAmount: 0.5
-  _buffDuration: 2
-  _buffDelay: 3
-  _EffectPoint: {fileID: 2246519805956552304}
-  _buffTowerEffectName: BuffTowerEffect
 --- !u!54 &1054310420786101933
 Rigidbody:
   m_ObjectHideFlags: 0

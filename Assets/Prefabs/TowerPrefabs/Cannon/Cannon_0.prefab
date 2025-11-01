@@ -220,16 +220,9 @@ MonoBehaviour:
   _firePoint: {fileID: 2111435268772671850}
   _bulletType: 1
   _fireEffectName: FireEffect
-  _range: 5
-  _damage: 1
-  _shotDelay: 0.5
-  _level: 1
-  _price: 10
-  _name: base tower
-  _towerType: 1
   _buffEffectPoint: {fileID: 1729499719302311647}
   _buffEffectName: ApplyBuffEffect
-  _explosionRadius: 3
+  _cannonStats: {fileID: 11400000, guid: 74b9a45493283c243ac029e4bf5aa2aa, type: 2}
 --- !u!4 &4556880911919812467 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e6800652d087cec498f263c91b803602, type: 3}

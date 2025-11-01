@@ -5,13 +5,16 @@ using UnityEngine;
 public class DebuffTower : TowerBase
 {
     [Header("DeBuffTowerSet")]
-    [SerializeField] float _slowAmount = 0.5f; //이동속도 감소 비율
-    [SerializeField] float _slowDuration = 2f; //슬로우 지속시간
+    //[SerializeField] float _slowAmount = 0.5f; //이동속도 감소 비율
+    //[SerializeField] float _slowDuration = 2f; //슬로우 지속시간
     [SerializeField] Transform _DeBuffEffectPoint;
-    [SerializeField] string _DeBuffEffectName;
+    //[SerializeField] string _DeBuffEffectName;
+    [SerializeField] protected TowerBaseStatsSO _debuffStats;
+    public TowerBaseStatsSO DebuffStats => _debuffStats;
+
     protected override void Awake()
     {
-        _damage = 0f;
+        //Stats.damage = 0f;
         base.Awake();
     }
     protected override void Update()
@@ -23,12 +26,12 @@ public class DebuffTower : TowerBase
             return;
         }
         GiveDebuffs();
-        _nextShot = Time.time + _shotDelay;
+        _nextShot = Time.time + Stats._shotDelay;
     }
 
     private void GiveDebuffs()
     {
-        EffectManager.Instance.PlayEffect(_DeBuffEffectName, _DeBuffEffectPoint.position, _DeBuffEffectPoint.rotation, transform);
+        EffectManager.Instance.PlayEffect(DebuffStats._DeBuffEffectName, _DeBuffEffectPoint.position, _DeBuffEffectPoint.rotation, transform);
         SoundManager.Instance.Clip("Debuff");
 
         for (int i=_target.Count-1; i>=0; i--)
@@ -39,7 +42,7 @@ public class DebuffTower : TowerBase
 
             if(_enemy != null)
             {
-                _enemy.GetSlow(_slowAmount, _slowDuration);
+                _enemy.GetSlow(DebuffStats._slowAmount, DebuffStats._slowDuration);
             }
         }
     }
