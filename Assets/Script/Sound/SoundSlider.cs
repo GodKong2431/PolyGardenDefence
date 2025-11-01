@@ -14,7 +14,13 @@ public class SoundSlider : MonoBehaviour
             (value =>{
             if (SoundManager.Instance != null)
                 SoundManager.Instance.BgmVolum(value);
+            SoundManager.Instance.CurrentVolume = value;
         });
+    }
+
+    private void Start()
+    {
+        _slider.value = SoundManager.Instance.CurrentVolume;
     }
 
 

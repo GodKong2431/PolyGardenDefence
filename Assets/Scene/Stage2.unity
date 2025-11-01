@@ -845,27 +845,15 @@ PrefabInstance:
       value: MainCanvas
       objectReference: {fileID: 0}
     - target: {fileID: 9033413943466255994, guid: 4ac829034ebf37e4da70bb2d06a8cbcd, type: 3}
-      propertyPath: _sequence
-      value: 
-      objectReference: {fileID: 11400000, guid: 7759b42e9b326ba45826df62dfe67b75, type: 2}
-    - target: {fileID: 9033413943466255994, guid: 4ac829034ebf37e4da70bb2d06a8cbcd, type: 3}
       propertyPath: _enemySpawner
       value: 
       objectReference: {fileID: 1494961235}
-    - target: {fileID: 9033413943466255994, guid: 4ac829034ebf37e4da70bb2d06a8cbcd, type: 3}
-      propertyPath: _nextWaveButton
-      value: 
-      objectReference: {fileID: 553181006}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 6085442908206334799, guid: 4ac829034ebf37e4da70bb2d06a8cbcd, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ac829034ebf37e4da70bb2d06a8cbcd, type: 3}
---- !u!1 &553181006 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4389778730482013307, guid: 4ac829034ebf37e4da70bb2d06a8cbcd, type: 3}
-  m_PrefabInstance: {fileID: 553181005}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &553181007 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1878836457454212766, guid: 4ac829034ebf37e4da70bb2d06a8cbcd, type: 3}
