@@ -548,6 +548,13 @@ MonoBehaviour:
   _enemyPrefabs:
   - {fileID: 1895402978943751042, guid: 53da1b1cfa000734d813d34354bf62f2, type: 3}
   - {fileID: 2326836832462381059, guid: 9f0e8252feee9f6419b40d473549c342, type: 3}
+  - {fileID: -5780689517449654918, guid: b04087d5c1fad2b4db01d0ada6a0aa09, type: 3}
+  - {fileID: 210689628446818451, guid: 54060ae5511ee1448922b846ae79bff9, type: 3}
+  - {fileID: 4168819333283339722, guid: bfee8660488e5404799d62d31f51d49d, type: 3}
+  - {fileID: 2611393341382466585, guid: 3563dc6bc0c003748adce71558e0b9f7, type: 3}
+  - {fileID: 1895402978943751042, guid: 53da1b1cfa000734d813d34354bf62f2, type: 3}
+  - {fileID: 3488143195567044909, guid: a39ce20cc20ebab4bb65ca45746caa34, type: 3}
+  - {fileID: 6284554330863294544, guid: 8758efcc79e0d3d4cb2db9b4b5411c7f, type: 3}
   _usePartialNameMatch: 1
   _enemyHpBarCanvas: {fileID: 1853522257}
   _enemyHpBarPrefab: {fileID: 6698230739867222961, guid: 3a1072c1a4d69384295e4a071c28c798, type: 3}
