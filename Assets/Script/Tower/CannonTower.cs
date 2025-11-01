@@ -5,11 +5,13 @@ using UnityEngine;
 public class CannonTower : TowerBase
 {
     [Header("Cannon Settings")]
-    [SerializeField] private float _explosionRadius = 3.0f;
+    [SerializeField] protected TowerBaseStatsSO _cannonStats;
+    public TowerBaseStatsSO CannonStats => _cannonStats;
+    //[SerializeField] private float _explosionRadius = 3.0f;
 
     protected override void Awake()
     {
-        _damage = 3f;
+        //Stats.damage = 3f;
         base.Awake();
 
         // 인스펙터 연결이 비어있으면 한 번 자동 검색
@@ -39,11 +41,11 @@ public class CannonTower : TowerBase
             CannonBall _setBulletComponent = _bullet.GetComponent<CannonBall>();
             if (_setBulletComponent != null)
             {
-                _setBulletComponent.SetDamage(_damage);
-                _setBulletComponent.SetRadius(_explosionRadius);
+                _setBulletComponent.SetDamage(Stats._damage);
+                _setBulletComponent.SetRadius(CannonStats._explosionRadius);
                 _setBulletComponent.Shoot();
             }
-            _nextShot = Time.time + _shotDelay;
+            _nextShot = Time.time + Stats._shotDelay;
         }
 
 

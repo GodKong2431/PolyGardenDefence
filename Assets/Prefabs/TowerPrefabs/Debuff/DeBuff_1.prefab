@@ -9,7 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7082032397498517976}
-  m_Layer: 10
+  - component: {fileID: 5478159991392253692}
+  - component: {fileID: 6686024402070505165}
+  - component: {fileID: 8922368239649440244}
+  m_Layer: 0
   m_Name: EffectPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31,6 +34,75 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4467307333417012113}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &5478159991392253692
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 194115764480080588}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &6686024402070505165
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 194115764480080588}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &8922368239649440244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 194115764480080588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75ba68ff1449ab049a715775cee5cf3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bulletManager: {fileID: 0}
+  _bulletPrefab: {fileID: 0}
+  _firePoint: {fileID: 0}
+  _bulletType: 0
+  _fireEffectName: 
+  _buffEffectPoint: {fileID: 0}
+  _buffEffectName: 
+  _DeBuffEffectPoint: {fileID: 7082032397498517976}
+  _debuffStats: {fileID: 11400000, guid: 2bf41e8a33bd1594c9f4154852c59fbc, type: 2}
 --- !u!1001 &4212459001384594554
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -81,7 +153,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -1226026442696578007, guid: a8eb8d3d737589c4d890a9181de731b9, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a8eb8d3d737589c4d890a9181de731b9, type: 3}
       propertyPath: m_Name
@@ -108,9 +180,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a8eb8d3d737589c4d890a9181de731b9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3669645308463533911}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a8eb8d3d737589c4d890a9181de731b9, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 9175300948457768919}
   m_SourcePrefab: {fileID: 100100000, guid: a8eb8d3d737589c4d890a9181de731b9, type: 3}
 --- !u!1 &3941987733637026091 stripped
 GameObject:
@@ -165,36 +234,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &9175300948457768919
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3941987733637026091}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75ba68ff1449ab049a715775cee5cf3b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _bulletManager: {fileID: 0}
-  _bulletPrefab: {fileID: 0}
-  _firePoint: {fileID: 0}
-  _bulletType: 0
-  _fireEffectName: 
-  _range: 5
-  _damage: 0
-  _shotDelay: 3
-  _level: 2
-  _price: 15
-  _name: DebuffTower_Lv2
-  _towerType: 5
-  _buffEffectPoint: {fileID: 0}
-  _buffEffectName: 
-  _slowAmount: 0.5
-  _slowDuration: 2
-  _DeBuffEffectPoint: {fileID: 7082032397498517976}
-  _DeBuffEffectName: DeBuffEffect
 --- !u!4 &4467307333417012113 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a8eb8d3d737589c4d890a9181de731b9, type: 3}

@@ -359,16 +359,10 @@ MonoBehaviour:
   _bulletPrefab: {fileID: 3866625151371722093, guid: 54cc700efa5446147ad61d64c29b9fa6, type: 3}
   _firePoint: {fileID: 3328768088391210173}
   _bulletType: 3
-  _fireEffectName: FireEffect
-  _range: 0
-  _damage: 1
-  _shotDelay: 0.5
-  _level: 3
-  _price: 20
-  _name: base tower
-  _towerType: 3
+  _fireEffectName: 
   _buffEffectPoint: {fileID: 2196461095777393140}
   _buffEffectName: ApplyBuffEffect
+  _TurretStats: {fileID: 11400000, guid: 8bd9d06c48f10204298303d43bb4422f, type: 2}
 --- !u!4 &4304008841814857001 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 48af3664ccf27bf439a97f7ab863b179, type: 3}

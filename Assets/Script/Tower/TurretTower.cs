@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TurretTower : TowerBase
 {
+    [SerializeField] protected TowerBaseStatsSO _TurretStats;
+    public TowerBaseStatsSO TurretStats => _TurretStats;
     protected override void Awake()
     {
         base.Awake();

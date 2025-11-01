@@ -6,8 +6,10 @@ public class CatapultTower : TowerBase
 {
 
     [Header("Critical Settings")]
-    [SerializeField] private float _criticalChance = 0.2f; //치명타 확률
-    [SerializeField] private float _criticalMultiplier = 2.0f; //치명타 배율
+    [SerializeField] protected TowerBaseStatsSO _catapultStats;
+    public TowerBaseStatsSO CatapultStats => _catapultStats;
+    //[SerializeField] private float _criticalChance = 0.2f; //치명타 확률
+    //[SerializeField] private float _criticalMultiplier = 2.0f; //치명타 배율
 
     [Header("Visuals")]
     [SerializeField] private Animator _animator;
@@ -43,11 +45,11 @@ public class CatapultTower : TowerBase
             return;
         }
 
-        float criticalDamage = _damage;
+        float criticalDamage = Stats._damage;
 
-        if (Random.value < _criticalChance)
+        if (Random.value < CatapultStats._criticalChance)
         {
-            criticalDamage *= _criticalMultiplier;
+            criticalDamage *= CatapultStats._criticalMultiplier;
         }
         
         
@@ -69,7 +71,7 @@ public class CatapultTower : TowerBase
                 _setBulletComponent.SetDamage(criticalDamage);
                 _setBulletComponent.Shoot();
             }
-            _nextShot = Time.time + _shotDelay;
+            _nextShot = Time.time + Stats._shotDelay;
         }
     }
 }

@@ -7,8 +7,12 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class TowerBase : MonoBehaviour
 {
+
     [Header("Pooling / Manager")]
     [SerializeField] protected BulletManager _bulletManager;
+    
+    
+
 
     [Header("Projectile Settings")]
     [SerializeField] protected GameObject _bulletPrefab;
@@ -17,15 +21,18 @@ public class TowerBase : MonoBehaviour
     [SerializeField] protected string _fireEffectName;
 
     [Header("Tower Stats")]
-    [SerializeField] protected float _range;
-    [SerializeField] protected float _damage = 1f;
-    [SerializeField] protected float _shotDelay = 0.5f;
-    [SerializeField] private int _level = 1;
-    [SerializeField] private int _price = 10;
+    protected TowerBaseStatsSO _stats;
+    public TowerBaseStatsSO Stats => _stats;
 
-    [Header("Tower Info")]
-    [SerializeField] protected string _name = "base tower";
-    [SerializeField] private TowerType _towerType;
+    //[SerializeField] protected float _range;
+    //[SerializeField] protected float _damage = 1f;
+    //[SerializeField] protected float _shotDelay = 0.5f;
+    //[SerializeField] private int _level = 1;
+    //[SerializeField] private int _price = 10;
+
+    //[Header("Tower Info")]
+    //[SerializeField] protected string _name = "base tower";
+    //[SerializeField] private TowerType _towerType;
 
 
     [Header("Buff / Visual Effects")]
@@ -37,21 +44,21 @@ public class TowerBase : MonoBehaviour
 
 
     //프로퍼티들
-    public TowerType TowerType
-    {
-        get { return _towerType; }
-        set { _towerType = value; }
-    }
-    public int Price
-    {
-        get { return _price; }
-        set { _price = value; }
-    }
-    public int Level
-    {
-        get { return _level; }
-        set { _level = value; }
-    }
+    //public TowerType TowerType
+    //{
+    //    get { return _towerType; }
+    //    set { _towerType = value; }
+    //}
+    //public int Price
+    //{
+    //    get { return _price; }
+    //    set { _price = value; }
+    //}
+    //public int Level
+    //{
+    //    get { return _level; }
+    //    set { _level = value; }
+    //}
 
     public GameObject Tile
     {
@@ -76,7 +83,7 @@ public class TowerBase : MonoBehaviour
         _rb.useGravity = false;
 
         SetRange();
-        _baseShotDelay = _shotDelay;
+        _baseShotDelay = Stats._shotDelay;
         _nextShot = 0f;
     }
 
@@ -91,7 +98,12 @@ public class TowerBase : MonoBehaviour
     {
         if (_sphereCollider != null)
         {
-            _sphereCollider.radius = _range;
+            Debug.Log("adfas");
+            if(Stats ==null)
+            {
+                Debug.Log("Stats가 널이야~!");
+            }
+            _sphereCollider.radius = Stats._range;
         }
     }
     /// <summary>
@@ -192,10 +204,10 @@ public class TowerBase : MonoBehaviour
             BulletBase _setBulletComponent = _bullet.GetComponent<BulletBase>();
             if(_setBulletComponent != null)
             {
-                _setBulletComponent.SetDamage(_damage);
+                _setBulletComponent.SetDamage(Stats._damage);
                 _setBulletComponent.Shoot();
             }
-            _nextShot = Time.time + _shotDelay;
+            _nextShot = Time.time + Stats._shotDelay;
         }
     }
     /// <summary>
@@ -208,7 +220,7 @@ public class TowerBase : MonoBehaviour
         if(_buffCoroutine != null)
         {
             StopCoroutine(_buffCoroutine);
-            _shotDelay = _baseShotDelay;
+            Stats._shotDelay = _baseShotDelay;
         }
         _buffCoroutine = StartCoroutine(AttackSpeedBuffCoroutine(amount, duration));
     }
@@ -223,11 +235,11 @@ public class TowerBase : MonoBehaviour
     {
         ToggleBuffEffect(true);
 
-        _shotDelay *= (1f - amount);
+        Stats._shotDelay *= (1f - amount);
 
         yield return new WaitForSeconds(duration);
 
-        _shotDelay = _baseShotDelay;
+        Stats._shotDelay = _baseShotDelay;
         _buffCoroutine = null;
         ToggleBuffEffect(false);
     }
