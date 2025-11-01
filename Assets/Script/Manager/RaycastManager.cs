@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RaycastManager : SingleTon<RaycastManager>
+public class RaycastManager : MonoBehaviour
 {
     [SerializeField] private UpgradeUI _upgradeUI;
 
@@ -11,9 +11,8 @@ public class RaycastManager : SingleTon<RaycastManager>
     
 
     //싱글톤 Awake도 발동하고 초기화
-    protected override void Awake()
+    protected  void Awake()
     {
-        base.Awake();
         Init();
     }
 
