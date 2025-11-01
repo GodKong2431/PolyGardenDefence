@@ -43,7 +43,12 @@ public class SoundManager : SingleTon<SoundManager>
     protected override void Awake()
     {
         base.Awake();
+
+        MakeBgmDictionary();
         MakeClipDictionary();
+
+        _bgm[0].source.loop = true;
+        _bgm[0].source.Play();
     }
 
     #region
