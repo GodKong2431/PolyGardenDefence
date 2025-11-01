@@ -213,7 +213,8 @@ public class TowerBase : MonoBehaviour
             if (_setBulletComponent != null)
             {
                 _setBulletComponent.SetDamage(Stats._damage);
-                _setBulletComponent.Shoot();
+                _setBulletComponent.GetTarget(targetEnemy);
+                //_setBulletComponent.Shoot();
             }
             _nextShot = Time.time + _shotDelay;
         }
