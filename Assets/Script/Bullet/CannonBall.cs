@@ -5,6 +5,7 @@ using UnityEngine;
 public class CannonBall : BulletBase
 {
     public float _explosionRadius;    
+    public string _explosionName = "CannonBallExplosion";
         
     protected override void OnTriggerEnter(Collider other)
     {
@@ -23,10 +24,11 @@ public class CannonBall : BulletBase
             if (hit.CompareTag("Enemy"))
             {
                 GiveDamage(hit);
-                Debug.Log("¸ÂÀº³ð : " + hit.name);                
+                //Debug.Log("¸ÂÀº³ð : " + hit.name);
             }            
         }
-        OffBullet();
+        EffectManager.Instance.PlayEffect(_explosionName, transform.position, transform.rotation);
+        OffBullet();        
     }
 
     public void SetRadius(float explosionRadius)
