@@ -13,7 +13,7 @@ public class BulletBase : MonoBehaviour, IPoolable
     [SerializeField] protected float _deactiveTime;
     protected float _timeCount;
     protected Rigidbody _rigidBody;
-
+    Transform _target;
 
 
     protected void Awake() //리지드바디 세팅.
@@ -32,6 +32,7 @@ public class BulletBase : MonoBehaviour, IPoolable
     private void Update()
     {
         CountTime();
+        Shoot();
     }
 
     protected void SetBullet()
@@ -67,7 +68,9 @@ public class BulletBase : MonoBehaviour, IPoolable
     }
     protected virtual void ShootBullet()//날아가는 매서드.
     {
-        _rigidBody.AddForce(transform.forward * _speed, ForceMode.Impulse);
+        transform.LookAt(_target);
+        transform.Translate(Vector3.forward * Time.deltaTime * _speed);
+        //_rigidBody.AddForce(transform.forward * _speed, ForceMode.Impulse);
     }
 
     protected void OffBullet()//비활성화 매서드.
@@ -83,6 +86,11 @@ public class BulletBase : MonoBehaviour, IPoolable
         {
             enemy.ApplyDamage(_attack);
         }
+    }
+
+    public void GetTarget(Transform targetTransform)
+    {
+        _target = targetTransform;
     }
 
     public void OnGetFromPool()   // 풀에서 꺼낼 때
