@@ -26,6 +26,8 @@ public class EnemyBase : MonoBehaviour, IPoolable,IDamageable
     [Header("Dead")]
     [SerializeField] private bool _isDead;
     public bool IsDead => _isDead;
+
+    public Collider Collider => _col;
     public void SetPrefabRef(EnemyBase prefab) => _prefabRef = prefab;
     public void SetPoolService(PoolService svc) => _poolService = svc;
 

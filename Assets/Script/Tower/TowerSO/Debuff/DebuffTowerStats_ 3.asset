@@ -17,7 +17,7 @@ MonoBehaviour:
   _damage: 20
   _range: 5
   _shotDelay: 0.5
-  _level: 2
+  _level: 3
   _towerType: 5
   _criticalChance: 0.2
   _criticalMultiplier: 2

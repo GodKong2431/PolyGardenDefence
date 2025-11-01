@@ -75,8 +75,7 @@ public class UpgradeManager : SingleTon<UpgradeManager>
         }
         else
         {
-            Debug.Log("업그레이드 비용이 부족합니다.");
-            RemoveTower(selectedTower);
+            Debug.Log("업그레이드 비용이 부족합니다.");            
             return null;
         }
     }

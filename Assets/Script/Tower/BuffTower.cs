@@ -23,33 +23,46 @@ public class BuffTower : TowerBase
     {
         Stats = _buffStats;
         Stats._damage = 0f;
-        Stats._shotDelay = BuffStats._buffDelay;
         base.Awake();
     }
     protected override void Update()
     {
         base.Update();
-        if(Time.time >= _nextBuffTime)
+        if(BuffStats._buffDelay >= _nextBuffTime)
+        {
+            
+            _nextBuffTime += Time.deltaTime;
+        }
+        else
         {
             GiveBuffs();
-            _nextBuffTime = Time.time + BuffStats._buffDelay;
+            _nextBuffTime = 0;
         }
     }
     private void GiveBuffs()
     {
             EffectManager.Instance.PlayEffect(_buffTowerEffectName, _EffectPoint.position, _EffectPoint.rotation, transform);
             SoundManager.Instance.Clip("Buff");
-        
-        for(int i=_friendlyTower.Count-1; i>=0; i--)
-        {
-            TowerBase friendTower = _friendlyTower[i];
 
-            if(friendTower == null || friendTower.gameObject.activeSelf==false)
+        //for(int i=_friendlyTower.Count-1; i>=0; i--)
+        //{
+        //    TowerBase friendTower = _friendlyTower[i];
+
+        //    if(friendTower == null || friendTower.gameObject.activeSelf==false)
+        //    {
+        //        _friendlyTower.RemoveAt(i);
+        //        continue;
+        //    }
+        //    friendTower.ApplyAttackSpeedBuff(BuffStats._buffAmount, BuffStats._buffDuration);
+        //}
+
+        //_friendlyTower[0].ApplyAttackSpeedBuff(BuffStats._buffAmount, BuffStats._buffDuration);
+        foreach (var tower in _friendlyTower)
+        {
+            if (tower != null)
             {
-                _friendlyTower.RemoveAt(i);
-                continue;
+                tower.ApplyAttackSpeedBuff(BuffStats._buffAmount, BuffStats._buffDuration);
             }
-            friendTower.ApplyAttackSpeedBuff(BuffStats._buffAmount, BuffStats._buffDuration);
         }
     }
 
