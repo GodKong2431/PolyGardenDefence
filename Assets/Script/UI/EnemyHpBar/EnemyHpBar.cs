@@ -36,7 +36,7 @@ public class EnemyHpBar : MonoBehaviour, IPoolable
         if (_target == null) return;
 
         // 머리 위로 위치 이동
-        transform.position = _target.position + _gab;
+        transform.position = _target.gameObject.GetComponentInChildren<Collider>().bounds.center + _gab;
 
         // 카메라를 바라보게
         transform.forward = _camera.transform.forward;
