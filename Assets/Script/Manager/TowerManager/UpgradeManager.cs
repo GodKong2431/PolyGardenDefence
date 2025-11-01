@@ -16,10 +16,11 @@ public class UpgradeManager : SingleTon<UpgradeManager>
 
     public void PlaceTower(TowerType type, GameObject tile) //타일 받아서 타워 배치.
     {
-        GameObject newTower = BuildTower(type);
+        
         TowerSpot spot = tile.GetComponentInChildren<TowerSpot>();
         if (spot.PlacedTower == null)
         {
+            GameObject newTower = BuildTower(type);
             if (GameManager.Instance.SubGold(newTower.GetComponentInChildren<TowerBase>().Stats._price) == true)
             {
                 newTower.transform.position = spot.GetPlacePosition();
@@ -51,10 +52,10 @@ public class UpgradeManager : SingleTon<UpgradeManager>
         switch (level)
         {
             case 1:
-                upgradedTower = Instantiate(TowerStorage.Instance.AdvancedTowers[type], selectedTile.GetPlacePosition(), selectedTile.transform.rotation);
+                upgradedTower = Instantiate(TowerStorage.Instance.AdvancedTowers[type], selectedTile.GetPlacePosition(), Quaternion.identity);
                 break;
             case 2:
-                upgradedTower = Instantiate(TowerStorage.Instance.FinalTowers[type], selectedTile.GetPlacePosition(), selectedTower.transform.rotation);
+                upgradedTower = Instantiate(TowerStorage.Instance.FinalTowers[type], selectedTile.GetPlacePosition(), Quaternion.identity);
                 break;
             case 3:
                 Debug.Log("이미 최고 레벨인 타워입니다!");

@@ -12,8 +12,9 @@ public class CannonTower : TowerBase
     protected override void Awake()
     {
         //Stats.damage = 3f;
+        Stats = _cannonStats;
         base.Awake();
-
+        
         // 인스펙터 연결이 비어있으면 한 번 자동 검색
         if (_bulletManager == null)
         {

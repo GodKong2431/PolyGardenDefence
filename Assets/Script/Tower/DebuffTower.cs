@@ -15,12 +15,13 @@ public class DebuffTower : TowerBase
     protected override void Awake()
     {
         //Stats.damage = 0f;
+        Stats = _debuffStats;
         base.Awake();
     }
     protected override void Update()
     {
         SetTarget();
-
+        
         if(_target.Count == 0 || Time.time < _nextShot)
         {
             return;

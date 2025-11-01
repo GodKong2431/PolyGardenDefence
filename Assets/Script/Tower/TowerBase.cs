@@ -22,7 +22,11 @@ public class TowerBase : MonoBehaviour
 
     [Header("Tower Stats")]
     protected TowerBaseStatsSO _stats;
-    public TowerBaseStatsSO Stats => _stats;
+    public TowerBaseStatsSO Stats
+    {
+        get { return _stats; }
+        set { _stats = value; }
+    }
 
     //[SerializeField] protected float _range;
     //[SerializeField] protected float _damage = 1f;
@@ -98,11 +102,6 @@ public class TowerBase : MonoBehaviour
     {
         if (_sphereCollider != null)
         {
-            Debug.Log("adfas");
-            if(Stats ==null)
-            {
-                Debug.Log("Stats가 널이야~!");
-            }
             _sphereCollider.radius = Stats._range;
         }
     }

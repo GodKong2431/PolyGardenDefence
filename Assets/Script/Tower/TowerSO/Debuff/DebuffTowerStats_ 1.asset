@@ -28,4 +28,4 @@ MonoBehaviour:
   _buffDelay: 3
   _slowAmount: 0.3
   _slowDuration: 2
-  _DeBuffEffectName: 
+  _DeBuffEffectName: DeBuffEffect

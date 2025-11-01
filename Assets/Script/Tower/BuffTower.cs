@@ -21,6 +21,7 @@ public class BuffTower : TowerBase
 
     protected override void Awake()
     {
+        Stats = _buffStats;
         Stats._damage = 0f;
         Stats._shotDelay = BuffStats._buffDelay;
         base.Awake();
