@@ -5,16 +5,18 @@ public class CameraController : MonoBehaviour
     private bool _isMovement = true;
     private float scroll;
 
-    [Header("MoveSpeed")]
-    [SerializeField] private float _speed = 30f;
+    [Header("Move")]
+    [SerializeField] private float _speed = 5f;
+    [SerializeField] private float _maxMove = 25;
+    [SerializeField] private float _minMove = -25;
 
     [Header("BorderThickness")]
     [SerializeField] private float _borderThickness = 10f;
 
     [Header("Scroll")]
     [SerializeField] private float _scrollSpeed = 5f;
-    [SerializeField] private float _scrollMinY = 5f;
-    [SerializeField] private float _scrollMaxY = 30f;
+    [SerializeField] private float _scrollMinY = 2f;
+    [SerializeField] private float _scrollMaxY = 10f;
 
     [Header("Rotation")]
     [SerializeField] private float _rotationSpeed = 80f;
@@ -91,9 +93,9 @@ public class CameraController : MonoBehaviour
 
         // 최소/최대 높이 제한
         transform.position = new Vector3(
-            transform.position.x,
+            Mathf.Clamp(transform.position.x, _minMove, _maxMove),
             Mathf.Clamp(transform.position.y, _scrollMinY, _scrollMaxY),
-            transform.position.z
+            Mathf.Clamp(transform.position.z, _minMove, _maxMove)
         );
     }
 }

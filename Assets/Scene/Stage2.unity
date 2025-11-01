@@ -229,11 +229,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcfc5d803cb9e7c4d986fb46473b3141, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 30
+  _speed: 5
+  _maxMove: 25
+  _minMove: -25
   _borderThickness: 10
   _scrollSpeed: 5
-  _scrollMinY: 5
-  _scrollMaxY: 30
+  _scrollMinY: 2
+  _scrollMaxY: 10
   _rotationSpeed: 80
 --- !u!81 &100339125
 AudioListener:
