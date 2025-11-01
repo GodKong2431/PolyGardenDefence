@@ -182,8 +182,11 @@ public class TowerBase : MonoBehaviour
             return;
         }
 
+        // EnemyBase/Collider 가져오기
+        var enemyCol = targetEnemy.GetComponentInChildren<Collider>();
+        Vector3 aimPos = (enemyCol != null) ? enemyCol.bounds.center : targetEnemy.position;
         //총알 발사용 쿼터니언값
-        Vector3 dirToEnemy = (targetEnemy.position - _firePoint.position).normalized;
+        Vector3 dirToEnemy = (aimPos - _firePoint.position).normalized;
         Quaternion targetRotation = Quaternion.LookRotation(dirToEnemy);
 
         //사운드 클립 재생
