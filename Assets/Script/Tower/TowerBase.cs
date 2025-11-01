@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
 // 꼭 있어야하는 컴포넌트들
@@ -10,8 +11,8 @@ public class TowerBase : MonoBehaviour
 
     [Header("Pooling / Manager")]
     [SerializeField] protected BulletManager _bulletManager;
-    
-    
+
+
 
 
     [Header("Projectile Settings")]
@@ -28,15 +29,15 @@ public class TowerBase : MonoBehaviour
         set { _stats = value; }
     }
 
-    //[SerializeField] protected float _range;
-    //[SerializeField] protected float _damage = 1f;
-    //[SerializeField] protected float _shotDelay = 0.5f;
-    //[SerializeField] private int _level = 1;
-    //[SerializeField] private int _price = 10;
+    protected float _range;
+    protected float _damage;
+    protected float _shotDelay;
+    private int _level;
+    private int _price;
 
-    //[Header("Tower Info")]
-    //[SerializeField] protected string _name = "base tower";
-    //[SerializeField] private TowerType _towerType;
+    [Header("Tower Info")]
+    [SerializeField] protected string _name = "base tower";
+    [SerializeField] private TowerType _towerType;
 
 
     [Header("Buff / Visual Effects")]
@@ -88,7 +89,12 @@ public class TowerBase : MonoBehaviour
 
         SetRange();
         _baseShotDelay = Stats._shotDelay;
+        _shotDelay = Stats._shotDelay;
         _nextShot = 0f;
+        _range = Stats._range;
+        _damage = Stats._damage;        
+        _level = Stats._level;
+        _price = Stats._price;
     }
 
     protected virtual void Update()
@@ -96,7 +102,7 @@ public class TowerBase : MonoBehaviour
         SetTarget();
         AttackTarget();
     }
-    
+
     //공격범위 설정
     protected void SetRange()
     {
@@ -112,14 +118,14 @@ public class TowerBase : MonoBehaviour
     /// </summary>
     protected virtual void SetTarget()
     {
-        for(int i=_target.Count-1;i>=0;i--)
+        for (int i = _target.Count - 1; i >= 0; i--)
         {
             Transform currentTarget = _target[i];
 
-            if(currentTarget == null || currentTarget.gameObject.activeSelf==false || currentTarget.gameObject.GetComponent<EnemyBase>().IsDead)
+            if (currentTarget == null || currentTarget.gameObject.activeSelf == false || currentTarget.gameObject.GetComponent<EnemyBase>().IsDead)
             {
                 _target.RemoveAt(i);
-                
+
             }
         }
 
@@ -132,7 +138,7 @@ public class TowerBase : MonoBehaviour
                 transform.LookAt(firstEnemy);
             }
         }
-       
+
     }
     /// <summary>
     /// 버프를 이펙트 켜거나 끄는 메서드
@@ -140,24 +146,24 @@ public class TowerBase : MonoBehaviour
     /// <param name="isBuffed"></param>
     protected void ToggleBuffEffect(bool isBuffed)
     {
-        
+
 
         if (isBuffed)
         {
-            if(_currentBuffEffect == null)
+            if (_currentBuffEffect == null)
             {
-                
+
 
                 _currentBuffEffect = EffectManager.Instance.PlayEffect(_buffEffectName,
                                                 _buffEffectPoint.position,
                                                 _buffEffectPoint.rotation,
                                                 transform);
-                
+
             }
         }
         else
         {
-            if(_currentBuffEffect != null)
+            if (_currentBuffEffect != null)
             {
                 Destroy(_currentBuffEffect);
                 _currentBuffEffect = null;
@@ -171,7 +177,7 @@ public class TowerBase : MonoBehaviour
     /// </summary>
     protected virtual void AttackTarget()
     {
-        if(_target.Count == 0 || Time.time < _nextShot)
+        if (_target.Count == 0 || Time.time < _nextShot)
         {
             return;
         }
@@ -193,23 +199,23 @@ public class TowerBase : MonoBehaviour
         SoundManager.Instance.Clip("Bullet");
 
         //총알 발사 이펙트 출력
-        EffectManager.Instance.PlayEffect(_fireEffectName, _firePoint.position,_firePoint.rotation,transform);
+        EffectManager.Instance.PlayEffect(_fireEffectName, _firePoint.position, _firePoint.rotation, transform);
 
 
         GameObject _bullet = _bulletManager.MakeBullet(_bulletType);
-        
+
         if (_bullet != null)
         {
             _bullet.transform.position = _firePoint.position;
             _bullet.transform.rotation = targetRotation;
 
             BulletBase _setBulletComponent = _bullet.GetComponent<BulletBase>();
-            if(_setBulletComponent != null)
+            if (_setBulletComponent != null)
             {
                 _setBulletComponent.SetDamage(Stats._damage);
                 _setBulletComponent.Shoot();
             }
-            _nextShot = Time.time + Stats._shotDelay;
+            _nextShot = Time.time + _shotDelay;
         }
     }
     /// <summary>
@@ -217,12 +223,12 @@ public class TowerBase : MonoBehaviour
     /// </summary>
     /// <param name="amount">버프효과</param>
     /// <param name="duration">지속시간</param>
-    public void ApplyAttackSpeedBuff(float amount,float duration)
+    public void ApplyAttackSpeedBuff(float amount, float duration)
     {
-        if(_buffCoroutine != null)
+        if (_buffCoroutine != null)
         {
             StopCoroutine(_buffCoroutine);
-            Stats._shotDelay = _baseShotDelay;
+            _shotDelay = _baseShotDelay;
         }
         _buffCoroutine = StartCoroutine(AttackSpeedBuffCoroutine(amount, duration));
     }
@@ -233,16 +239,15 @@ public class TowerBase : MonoBehaviour
     /// <param name="amount">버프효과</param>
     /// <param name="duration">지속시간</param>
     /// <returns></returns>
-    private IEnumerator AttackSpeedBuffCoroutine(float amount,float duration)
+    private IEnumerator AttackSpeedBuffCoroutine(float amount, float duration)
     {
         ToggleBuffEffect(true);
 
-        Stats._shotDelay *= (1f - amount);
+        _shotDelay *= (1f - amount);
 
         yield return new WaitForSeconds(duration);
 
-        Stats._shotDelay = _baseShotDelay;
-        _buffCoroutine = null;
+        _shotDelay = _baseShotDelay;
         ToggleBuffEffect(false);
     }
 
@@ -273,7 +278,7 @@ public class TowerBase : MonoBehaviour
         }
     }
 
-    
+
 
 
 
