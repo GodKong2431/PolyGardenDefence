@@ -29,12 +29,12 @@ MonoBehaviour:
       _count: 5
       _interval: 0.5
       _pathId: 0
-      _preDelay: 0
+      _preDelay: 5
     - _stats: {fileID: 11400000, guid: d021282e7d4126742b488b47f8716ea8, type: 2}
       _count: 5
       _interval: 0.5
       _pathId: 1
-      _preDelay: 5
+      _preDelay: 0
     _delayAfter: 10
   - _entries:
     - _stats: {fileID: 11400000, guid: d021282e7d4126742b488b47f8716ea8, type: 2}

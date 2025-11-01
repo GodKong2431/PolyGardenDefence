@@ -359,7 +359,7 @@ MonoBehaviour:
   _bulletPrefab: {fileID: 3866625151371722093, guid: 54cc700efa5446147ad61d64c29b9fa6, type: 3}
   _firePoint: {fileID: 6034301874418642421}
   _bulletType: 3
-  _fireEffectName: 
+  _fireEffectName: FireEffect
   _range: 5
   _damage: 5
   _shotDelay: 0.5
