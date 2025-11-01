@@ -17,6 +17,7 @@ public class DebuffTower : TowerBase
         //Stats.damage = 0f;
         Stats = _debuffStats;
         base.Awake();
+        EffectManager.Instance.PlayEffect(DebuffStats._DeBuffEffectName, _DeBuffEffectPoint.position, _DeBuffEffectPoint.rotation, transform);
     }
     protected override void Update()
     {
@@ -32,7 +33,7 @@ public class DebuffTower : TowerBase
 
     private void GiveDebuffs()
     {
-        EffectManager.Instance.PlayEffect(DebuffStats._DeBuffEffectName, _DeBuffEffectPoint.position, _DeBuffEffectPoint.rotation, transform);
+        
         SoundManager.Instance.Clip("Debuff");
 
         for (int i=_target.Count-1; i>=0; i--)
