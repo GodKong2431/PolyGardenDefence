@@ -72,7 +72,7 @@ public class TowerBase : MonoBehaviour
     }
 
     protected float _nextShot = 0;
-    protected List<Transform> _target = new List<Transform>(); //범위에 들어온 적 담기위한 리스트
+    protected List<Collider> _target = new List<Collider>(); //범위에 들어온 적 담기위한 리스트
     protected SphereCollider _sphereCollider;
     protected Rigidbody _rb;
     protected float _baseShotDelay; //버프 코루틴이 끝난후 다시 원래 공격속도로 돌아가기위한 필드
@@ -120,7 +120,7 @@ public class TowerBase : MonoBehaviour
     {
         for (int i = _target.Count - 1; i >= 0; i--)
         {
-            Transform currentTarget = _target[i];
+            Collider currentTarget = _target[i];
 
             if (currentTarget == null || currentTarget.gameObject.activeSelf == false || currentTarget.gameObject.GetComponent<EnemyBase>().IsDead)
             {
@@ -131,11 +131,11 @@ public class TowerBase : MonoBehaviour
 
         if (_target.Count > 0)
         {
-            Transform firstEnemy = _target[0];
+            Collider firstEnemy = _target[0];
 
             if (firstEnemy != null)
             {
-                transform.LookAt(firstEnemy);
+                transform.LookAt(firstEnemy.transform);
             }
         }
 
@@ -181,7 +181,7 @@ public class TowerBase : MonoBehaviour
         {
             return;
         }
-        Transform targetEnemy = _target[0];
+        Collider targetEnemy = _target[0];
         if (targetEnemy == null || !targetEnemy.gameObject.activeSelf || targetEnemy.gameObject.GetComponent<EnemyBase>().IsDead)
         {
             _target.RemoveAt(0);
@@ -190,7 +190,7 @@ public class TowerBase : MonoBehaviour
 
         // EnemyBase/Collider 가져오기
         var enemyCol = targetEnemy.GetComponentInChildren<Collider>();
-        Vector3 aimPos = (enemyCol != null) ? enemyCol.bounds.center : targetEnemy.position;
+        Vector3 aimPos = (enemyCol != null) ? enemyCol.bounds.center : targetEnemy.transform.position;
         //총알 발사용 쿼터니언값
         Vector3 dirToEnemy = (aimPos - _firePoint.position).normalized;
         Quaternion targetRotation = Quaternion.LookRotation(dirToEnemy);
@@ -214,6 +214,7 @@ public class TowerBase : MonoBehaviour
             {
                 _setBulletComponent.SetDamage(Stats._damage);
                 _setBulletComponent.GetTarget(targetEnemy);
+                SetTarget();
                 //_setBulletComponent.Shoot();
             }
             _nextShot = Time.time + _shotDelay;
@@ -257,7 +258,7 @@ public class TowerBase : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            Transform enemyTransform = other.transform;
+            Collider enemyTransform = other;
 
             if (!_target.Contains(enemyTransform))
             {
@@ -270,7 +271,7 @@ public class TowerBase : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            Transform enemyTransform = other.transform;
+            Collider enemyTransform = other;
 
             if (_target.Contains(enemyTransform))
             {

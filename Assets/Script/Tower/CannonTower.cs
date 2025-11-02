@@ -44,6 +44,7 @@ public class CannonTower : TowerBase
             {
                 _setBulletComponent.SetDamage(Stats._damage);
                 _setBulletComponent.SetRadius(CannonStats._explosionRadius);
+                _setBulletComponent.GetTarget(_target[0]);
                 //_setBulletComponent.Shoot();
             }
             _nextShot = Time.time + Stats._shotDelay;

@@ -38,7 +38,7 @@ public class CatapultTower : TowerBase
             return;
         }
 
-        Transform targetEnemy = _target[0];
+        Collider targetEnemy = _target[0];
         if (targetEnemy == null || !targetEnemy.gameObject.activeSelf)
         {
             _target.RemoveAt(0);
@@ -69,7 +69,8 @@ public class CatapultTower : TowerBase
             if (_setBulletComponent != null)
             {
                 _setBulletComponent.SetDamage(criticalDamage);
-                _setBulletComponent.Shoot();
+                _setBulletComponent.GetTarget(_target[0]);
+                //_setBulletComponent.Shoot();
             }
             _nextShot = Time.time + Stats._shotDelay;
         }
