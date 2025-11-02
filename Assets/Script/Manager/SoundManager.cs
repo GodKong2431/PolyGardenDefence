@@ -21,9 +21,58 @@ public class SoundManager : SingleTon<SoundManager>
     public float CurrentVolume
     {
         get { return _currentVolume; }
-        set { _currentVolume = value; }
+        set { SetVolume(value); }
     }
 
+
+    private bool _isMuted = false;
+    private float _prevVolume = 1f;
+    public float PreviousVolume => _prevVolume;
+
+    public bool IsMuted => _isMuted;
+    public event System.Action<float, bool> OnVolumeChanged; // (volume, isMuted)
+
+    public void SetVolume(float v)
+    {
+        v = Mathf.Clamp01(v);
+        if (v <= 0f)
+        {
+            _isMuted = true;
+        }
+        else
+        {
+            _prevVolume = v;  // 0보다 크면 마지막 정상 볼륨 갱신
+            _isMuted = false;
+        }
+
+        _currentVolume = v;
+        BgmVolum(v); //(배경음+클립 플레이어 볼륨 적용)
+        OnVolumeChanged?.Invoke(_currentVolume, _isMuted);
+    }
+
+
+    public void Mute()
+    {
+        if (!_isMuted)
+            _prevVolume = _currentVolume; // 복귀용 저장
+
+        _isMuted = true;
+        _currentVolume = 0f;
+        BgmVolum(0f);
+        OnVolumeChanged?.Invoke(_currentVolume, _isMuted);
+    }
+
+    public void UnmuteTo(float v)
+    {
+        v = Mathf.Clamp01(v);
+        if (v <= 0f) v = Mathf.Epsilon; // 0은 뮤트로 간주되니 아주 작은 값
+
+        _isMuted = false;
+        _prevVolume = v;
+        _currentVolume = v;
+        BgmVolum(v);
+        OnVolumeChanged?.Invoke(_currentVolume, _isMuted);
+    }
 
     //이름, 사운드/클립
     [System.Serializable]
