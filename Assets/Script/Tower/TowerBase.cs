@@ -207,7 +207,7 @@ public class TowerBase : MonoBehaviour
         EffectManager.Instance.PlayEffect(_fireEffectName, _firePoint.position, _firePoint.rotation, transform);
 
 
-        _bullet = _bulletManager.MakeBullet(_bulletType);
+        _bullet = _bulletManager.MakeBullet(_bulletType);        
 
         if (_bullet != null)
         {
