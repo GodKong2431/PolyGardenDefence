@@ -16,7 +16,7 @@ MonoBehaviour:
   _price: 40
   _damage: 5
   _range: 5
-  _shotDelay: 0.5
+  _shotDelay: 0.6
   _level: 1
   _towerType: 3
   _criticalChance: 0.2

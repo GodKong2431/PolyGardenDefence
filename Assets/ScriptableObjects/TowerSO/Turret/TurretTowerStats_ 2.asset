@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _towerName: TurretTower_Lv2
   _price: 80
-  _damage: 7
+  _damage: 6
   _range: 5
-  _shotDelay: 0.35
+  _shotDelay: 0.5
   _level: 2
   _towerType: 3
   _criticalChance: 0.2
