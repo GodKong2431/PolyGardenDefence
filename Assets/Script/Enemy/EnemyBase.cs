@@ -155,7 +155,7 @@ public class EnemyBase : MonoBehaviour, IPoolable,IDamageable
         {
             _movement?.Stop();
             _animator.SetTrigger("Die");
-            StartCoroutine(DespawnAfter(3.0f)); // 예시: 사망 모션 후 1초 뒤 반환
+            StartCoroutine(DespawnAfter(2.0f)); // 사망 모션 후 2초 뒤 사라짐
             GameManager.Instance.OnEnemyKilled(enemy.Stats.bounty);
             return;
         }
