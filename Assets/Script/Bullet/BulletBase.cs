@@ -13,7 +13,7 @@ public class BulletBase : MonoBehaviour, IPoolable
     [SerializeField] protected float _deactiveTime;
     protected float _timeCount;
     protected Rigidbody _rigidBody;
-    Transform _target;
+    Collider _target;
 
 
     protected void Awake() //리지드바디 세팅.
@@ -67,9 +67,15 @@ public class BulletBase : MonoBehaviour, IPoolable
         ShootBullet();
     }
     protected virtual void ShootBullet()//날아가는 매서드.
-    {
-        transform.LookAt(_target);
+    {        
+        if (_target.enabled == false)
+        {
+            OffBullet();
+            return;
+        }
+        transform.LookAt(_target.transform);
         transform.Translate(Vector3.forward * Time.deltaTime * _speed);
+
         //_rigidBody.AddForce(transform.forward * _speed, ForceMode.Impulse);
     }
 
@@ -88,9 +94,9 @@ public class BulletBase : MonoBehaviour, IPoolable
         }
     }
 
-    public void GetTarget(Transform targetTransform)
+    public void GetTarget(Collider target)
     {
-        _target = targetTransform;
+        _target = target;
     }
 
     public void OnGetFromPool()   // 풀에서 꺼낼 때

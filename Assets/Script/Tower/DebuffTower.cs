@@ -38,7 +38,7 @@ public class DebuffTower : TowerBase
 
         for (int i=_target.Count-1; i>=0; i--)
         {
-            Transform _enemyTransform = _target[i];
+            Collider _enemyTransform = _target[i];
 
             EnemyBase _enemy = _enemyTransform.GetComponent<EnemyBase>();
 
