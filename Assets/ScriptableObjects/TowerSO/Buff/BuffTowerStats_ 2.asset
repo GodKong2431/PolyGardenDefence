@@ -23,8 +23,8 @@ MonoBehaviour:
   _criticalMultiplier: 0
   _explosionRadius: 2
   _pierceCount: 0
-  _buffAmount: 0.5
-  _buffDuration: 2
+  _buffAmount: 0.3
+  _buffDuration: 5
   _buffDelay: 3
   _slowAmount: 0.5
   _slowDuration: 2
