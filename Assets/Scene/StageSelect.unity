@@ -432,6 +432,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2954397120303987366, guid: 937953150075bb547a85490418862a89, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 22081c82595201043a58394fd0b271f3, type: 3}
     - target: {fileID: 3259475536250692821, guid: 937953150075bb547a85490418862a89, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -456,6 +460,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5857030513045682749, guid: 937953150075bb547a85490418862a89, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 18baea0b68129d64baee347c3c3a476a, type: 3}
+    - target: {fileID: 7047256864851409283, guid: 937953150075bb547a85490418862a89, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 61bc50b5ef5562644b233c5b542d937a, type: 3}
     - target: {fileID: 7875213726550256526, guid: 937953150075bb547a85490418862a89, type: 3}
       propertyPath: m_Name
       value: StageSelectCanvas

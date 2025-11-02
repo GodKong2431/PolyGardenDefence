@@ -42,19 +42,4 @@ public class TowerSpot : MonoBehaviour
     {
         return transform.position + _placeOffset;
     }
-
-#if UNITY_EDITOR
-    private void OnDrawGizmos()
-    {
-        if (PlacedTower != null) //타워 설치 가능하면 초록, 불가능은 빨강으로 표시
-        {
-            Gizmos.color = Color.green;
-        }
-        else
-        {
-            Gizmos.color = Color.red;
-        }        
-        Gizmos.DrawWireCube(transform.position + Vector3.up * 0.1f, Vector3.one);
-    }
-#endif
 }
