@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: TurretTowerStats_ 1
   m_EditorClassIdentifier: 
   _towerName: TurretTower_Lv1
-  _price: 10
-  _damage: 10
+  _price: 40
+  _damage: 5
   _range: 5
   _shotDelay: 0.5
   _level: 1

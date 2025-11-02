@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BasslistTowerStats_ 2
   m_EditorClassIdentifier: 
   _towerName: BallistaTower_Lv2
-  _price: 15
+  _price: 100
   _damage: 15
   _range: 5
   _shotDelay: 0.5
@@ -22,7 +22,7 @@ MonoBehaviour:
   _criticalChance: 0
   _criticalMultiplier: 0
   _explosionRadius: 0
-  _pierceCount: 2
+  _pierceCount: 3
   _buffAmount: 0.5
   _buffDuration: 2
   _buffDelay: 3

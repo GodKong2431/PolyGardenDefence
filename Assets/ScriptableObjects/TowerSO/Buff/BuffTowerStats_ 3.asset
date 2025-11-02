@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: BuffTowerStats_ 3
   m_EditorClassIdentifier: 
   _towerName: BuffTower_Lv3
-  _price: 20
+  _price: 180
   _damage: 20
-  _range: 5
+  _range: 2
   _shotDelay: 0.5
   _level: 3
   _towerType: 4

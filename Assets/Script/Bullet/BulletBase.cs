@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
-[RequireComponent(typeof(SphereCollider))]
+[RequireComponent(typeof(Collider))]
 [RequireComponent(typeof(Rigidbody))]
 public class BulletBase : MonoBehaviour, IPoolable
 {
     public BulletType _type;
     [SerializeField] float _attack;
-    [SerializeField] float _speed;
+    [SerializeField] protected float _speed;
     [SerializeField] protected float _deactiveTime;
     protected float _timeCount;
     protected Rigidbody _rigidBody;
-    Collider _target;
+    protected Collider _target;
 
 
     protected void Awake() //리지드바디 세팅.
@@ -29,7 +29,7 @@ public class BulletBase : MonoBehaviour, IPoolable
         //ShootBullet();        
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         CountTime();
         Shoot();
@@ -49,8 +49,15 @@ public class BulletBase : MonoBehaviour, IPoolable
     {
         if (other.CompareTag("Enemy"))
         {
-            GiveDamage(other);
-            OffBullet();
+            if (other.GetComponent<EnemyBase>().IsDead == false)
+            {
+                GiveDamage(other);
+                OffBullet();
+            }
+            else
+            {
+                OffBullet();
+            }            
         }
     }
     private void CountTime()
@@ -67,15 +74,16 @@ public class BulletBase : MonoBehaviour, IPoolable
         ShootBullet();
     }
     protected virtual void ShootBullet()//날아가는 매서드.
-    {        
-        if (_target.enabled == false)
+    {
+        if (_target != null)
+        {
+            transform.LookAt(_target.transform);
+            transform.Translate(Vector3.forward * Time.deltaTime * _speed);
+        }
+        else
         {
             OffBullet();
-            return;
         }
-        transform.LookAt(_target.transform);
-        transform.Translate(Vector3.forward * Time.deltaTime * _speed);
-
         //_rigidBody.AddForce(transform.forward * _speed, ForceMode.Impulse);
     }
 

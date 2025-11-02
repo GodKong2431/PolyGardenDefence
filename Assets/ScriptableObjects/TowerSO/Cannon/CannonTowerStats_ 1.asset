@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: CannonTowerStats_ 1
   m_EditorClassIdentifier: 
   _towerName: CannonTower_Lv1
-  _price: 10
-  _damage: 10
+  _price: 70
+  _damage: 20
   _range: 5
-  _shotDelay: 0.5
+  _shotDelay: 3
   _level: 1
   _towerType: 1
   _criticalChance: 0

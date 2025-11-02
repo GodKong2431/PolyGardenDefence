@@ -11,7 +11,7 @@ public class TowerBase : MonoBehaviour
 
     [Header("Pooling / Manager")]
     [SerializeField] protected BulletManager _bulletManager;
-
+    
 
 
 
@@ -46,6 +46,7 @@ public class TowerBase : MonoBehaviour
 
     private GameObject _currentBuffEffect = null;
     private GameObject _tile = null;
+    GameObject _bullet = null;
 
 
     //프로퍼티들
@@ -100,6 +101,10 @@ public class TowerBase : MonoBehaviour
     protected virtual void Update()
     {
         SetTarget();
+        //if(_target != null && _bullet != null)
+        //{
+        //    _bullet.GetComponent<BulletBase>().GetTarget(_target[0]);
+        //}        
         AttackTarget();
     }
 
@@ -202,7 +207,7 @@ public class TowerBase : MonoBehaviour
         EffectManager.Instance.PlayEffect(_fireEffectName, _firePoint.position, _firePoint.rotation, transform);
 
 
-        GameObject _bullet = _bulletManager.MakeBullet(_bulletType);
+        _bullet = _bulletManager.MakeBullet(_bulletType);
 
         if (_bullet != null)
         {

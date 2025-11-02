@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: CatapultTowerStats_ 1
   m_EditorClassIdentifier: 
   _towerName: CatapultTower_Lv1
-  _price: 10
-  _damage: 10
-  _range: 5
-  _shotDelay: 0.5
+  _price: 70
+  _damage: 50
+  _range: 7
+  _shotDelay: 1.5
   _level: 1
   _towerType: 2
   _criticalChance: 0.2

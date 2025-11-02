@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DebuffTowerStats_ 2
   m_EditorClassIdentifier: 
   _towerName: DebuffTower_Lv2
-  _price: 15
+  _price: 100
   _damage: 15
   _range: 5
   _shotDelay: 0.5

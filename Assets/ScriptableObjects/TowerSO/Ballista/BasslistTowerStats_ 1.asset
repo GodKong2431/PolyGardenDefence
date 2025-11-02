@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BasslistTowerStats_ 1
   m_EditorClassIdentifier: 
   _towerName: BallistaTower_Lv1
-  _price: 10
+  _price: 60
   _damage: 10
   _range: 5
   _shotDelay: 0.5
