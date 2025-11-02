@@ -3554,7 +3554,7 @@ MonoBehaviour:
   - {fileID: 210689628446818451, guid: 54060ae5511ee1448922b846ae79bff9, type: 3}
   - {fileID: 4168819333283339722, guid: bfee8660488e5404799d62d31f51d49d, type: 3}
   - {fileID: 2611393341382466585, guid: 3563dc6bc0c003748adce71558e0b9f7, type: 3}
-  - {fileID: 1895402978943751042, guid: 53da1b1cfa000734d813d34354bf62f2, type: 3}
+  - {fileID: -68993939469103972, guid: 7e8a21f113f5c9c448c6745c5ea5e9d2, type: 3}
   - {fileID: 3488143195567044909, guid: a39ce20cc20ebab4bb65ca45746caa34, type: 3}
   - {fileID: 6284554330863294544, guid: 8758efcc79e0d3d4cb2db9b4b5411c7f, type: 3}
   _usePartialNameMatch: 1
@@ -5249,6 +5249,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5756150906141929767, guid: 4ac829034ebf37e4da70bb2d06a8cbcd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 553181008}
+    - target: {fileID: 5756150906141929767, guid: 4ac829034ebf37e4da70bb2d06a8cbcd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnClickNextWave
+      objectReference: {fileID: 0}
     - target: {fileID: 6144280331936046532, guid: 4ac829034ebf37e4da70bb2d06a8cbcd, type: 3}
       propertyPath: m_Name
       value: MainCanvas
@@ -5284,6 +5292,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ba6f6d6f24034f442b821d04805ec6f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &553181008 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9033413943466255994, guid: 4ac829034ebf37e4da70bb2d06a8cbcd, type: 3}
+  m_PrefabInstance: {fileID: 553181005}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8612275f2893cad428a6b70df3130252, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &554625275

@@ -8147,7 +8147,7 @@ MonoBehaviour:
   - {fileID: 210689628446818451, guid: 54060ae5511ee1448922b846ae79bff9, type: 3}
   - {fileID: 4168819333283339722, guid: bfee8660488e5404799d62d31f51d49d, type: 3}
   - {fileID: 2611393341382466585, guid: 3563dc6bc0c003748adce71558e0b9f7, type: 3}
-  - {fileID: 1895402978943751042, guid: 53da1b1cfa000734d813d34354bf62f2, type: 3}
+  - {fileID: -68993939469103972, guid: 7e8a21f113f5c9c448c6745c5ea5e9d2, type: 3}
   - {fileID: 3488143195567044909, guid: a39ce20cc20ebab4bb65ca45746caa34, type: 3}
   - {fileID: 6284554330863294544, guid: 8758efcc79e0d3d4cb2db9b4b5411c7f, type: 3}
   _usePartialNameMatch: 1
@@ -10491,6 +10491,10 @@ PrefabInstance:
     - target: {fileID: 941844877822714098, guid: ed182b8364ec40449a73a6575d656dfa, type: 3}
       propertyPath: m_Name
       value: MonsterHpBarCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 1388973580706854319, guid: ed182b8364ec40449a73a6575d656dfa, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8363355658070216102, guid: ed182b8364ec40449a73a6575d656dfa, type: 3}
       propertyPath: m_Pivot.x
