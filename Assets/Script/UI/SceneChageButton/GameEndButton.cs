@@ -15,6 +15,6 @@ public class GameEndButton : MonoBehaviour
     }
     public void OnClickExitButton()
     {
-        //Application.Quit();
+        Application.Quit();
     }
 }
