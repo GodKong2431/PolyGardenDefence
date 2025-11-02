@@ -144,12 +144,12 @@ public class EnemyBase : MonoBehaviour, IPoolable,IDamageable
         _isDead = true;            // ← 사망 플래그 on
         StopAttack();
 
-        // 타워 탐지 차단: 콜라이더 끄기
-        foreach (var col in GetComponentsInChildren<Collider>())
-        {
-            if (col != null) 
-            { col.enabled = false; }
-        }
+        //// 타워 탐지 차단: 콜라이더 끄기
+        //foreach (var col in GetComponentsInChildren<Collider>())
+        //{
+        //    if (col != null) 
+        //    { col.enabled = false; }
+        //}
 
         if (_animator != null)
         {
