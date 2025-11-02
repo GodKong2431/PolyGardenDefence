@@ -16,6 +16,7 @@ public class UpgradeUI : MonoBehaviour
     private Camera _camera;
 
     Vector3 currentSelectCameraPos;
+    Vector3 currentSelectCameraRot;
     private void Awake()
     {
         gameObject.SetActive(false);   
@@ -24,7 +25,7 @@ public class UpgradeUI : MonoBehaviour
     //!(Input.GetAxis("Mouse ScrollWheel") == 0)
     private void Update()
     {
-        if (gameObject.activeSelf && (currentSelectCameraPos != _camera.transform.position))
+        if (gameObject.activeSelf && ((currentSelectCameraPos != _camera.transform.position) || (currentSelectCameraRot != _camera.transform.eulerAngles)))
             gameObject.SetActive(false);
     }
 
@@ -33,6 +34,7 @@ public class UpgradeUI : MonoBehaviour
         _selectTower = selectTower.GetComponentInChildren<TowerBase>();
         Vector3 movePos = selectTower.transform.position;
         currentSelectCameraPos = _camera.transform.position;
+        currentSelectCameraRot = _camera.transform.eulerAngles;
         transform.position = _camera.WorldToScreenPoint(movePos);
         gameObject.SetActive(true);
     }
