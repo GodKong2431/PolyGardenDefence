@@ -7,8 +7,6 @@ public class Notify<T>
     //구독자 리스트 T타입으로 생성
     private List<T> _notifyList = new List<T>();
 
-
-
     public List<T> NotifyList
     {
         get { return _notifyList; }
