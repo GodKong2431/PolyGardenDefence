@@ -6,23 +6,38 @@ using UnityEngine;
 public class Arrow : BulletBase
 {
     private int _pierceCount;
+    List<Collider> enemies = null;
+    bool isHit;
 
     protected override void OnEnable()
     {
         base.OnEnable();
+        isHit = false;
     }
 
     protected override void Update()
     {
-        base.Update();
+        if (isHit == false)
+        {
+            base.Update();            
+        }
+        
         if (_pierceCount <= 0)
         {
             OffBullet();
         }
-        if (_target != null && _target.GetComponent<EnemyBase>().IsDead)
+        if (isHit == true)
         {
-            OffBullet();
+            if (_target != null)
+            {                
+                transform.Translate(Vector3.forward * Time.deltaTime * _speed);
+            }
+            else
+            {
+                OffBullet();
+            }
         }
+        
     }
 
     protected override void OnTriggerEnter(Collider other)
@@ -31,12 +46,8 @@ public class Arrow : BulletBase
         {
             _pierceCount = Mathf.Max(_pierceCount - 1, 0);
             GiveDamage(other);
-            if (_pierceCount == 0)
-            {
-                OffBullet();
-            }
+            isHit = true;
         }
-
     }
 
     public void SetPiercing(int pierceCount)

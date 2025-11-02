@@ -10,6 +10,7 @@ public class BulletBase : MonoBehaviour, IPoolable
     [SerializeField] float _attack;
     [SerializeField] protected float _speed;
     [SerializeField] protected float _deactiveTime;
+    [SerializeField] protected BulletManager _bulletManager;
     protected float _timeCount;
     protected Rigidbody _rigidBody;
     protected Collider _target;
@@ -17,6 +18,10 @@ public class BulletBase : MonoBehaviour, IPoolable
 
     protected void Awake() //리지드바디 세팅.
     {
+        if (_bulletManager == null)
+        {
+            _bulletManager = FindFirstObjectByType<BulletManager>();
+        }        
         _rigidBody = GetComponent<Rigidbody>();
         _rigidBody.useGravity = false;
         _timeCount = _deactiveTime;
@@ -36,7 +41,7 @@ public class BulletBase : MonoBehaviour, IPoolable
 
     protected void SetBullet()
     {
-        _rigidBody.velocity = Vector3.zero;
+        //_rigidBody.velocity = Vector3.zero;
         _timeCount = _deactiveTime;
     }
     public void SetDamage(float damage)
@@ -50,7 +55,7 @@ public class BulletBase : MonoBehaviour, IPoolable
         {
             if (other.GetComponent<EnemyBase>().IsDead == false)
             {
-                GiveDamage(other);
+                GiveDamage(other);                
                 OffBullet();
             }
             else
@@ -76,7 +81,8 @@ public class BulletBase : MonoBehaviour, IPoolable
     {
         if (_target != null)
         {
-            transform.LookAt(_target.transform);
+            Vector3 center = _target.bounds.center;
+            transform.LookAt(center);
             transform.Translate(Vector3.forward * Time.deltaTime * _speed);
         }
         else
@@ -89,6 +95,8 @@ public class BulletBase : MonoBehaviour, IPoolable
     protected void OffBullet()//비활성화 매서드.
     {
         gameObject.SetActive(false);
+        OnReturnToPool();
+        _bulletManager.Return(this);
     }
 
     protected void GiveDamage(Collider other)
@@ -109,13 +117,13 @@ public class BulletBase : MonoBehaviour, IPoolable
     public void OnGetFromPool()   // 풀에서 꺼낼 때
     {
         SetBullet();
-        _rigidBody.velocity = Vector3.zero;
+        //_rigidBody.velocity = Vector3.zero;
         _timeCount = _deactiveTime;
     }
 
     public void OnReturnToPool()  // 풀로 반납 직전
     {
-        _rigidBody.velocity = Vector3.zero;
+        //_rigidBody.velocity = Vector3.zero;
         _timeCount = _deactiveTime;
     }
 }

@@ -68,7 +68,7 @@ PrefabInstance:
       addedObject: {fileID: 6937910740211627137}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: cd7df52d9eeda294281c963b67991008, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 4747059254682558614}
+      addedObject: {fileID: 5075248498211191734}
   m_SourcePrefab: {fileID: 100100000, guid: cd7df52d9eeda294281c963b67991008, type: 3}
 --- !u!1 &3549904583290853265 stripped
 GameObject:
@@ -90,7 +90,8 @@ MonoBehaviour:
   _type: 0
   _attack: 1
   _speed: 5
-  _deactiveTime: 3
+  _deactiveTime: 4
+  _bulletManager: {fileID: 0}
 --- !u!54 &6937910740211627137
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -114,12 +115,12 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!135 &4747059254682558614
-SphereCollider:
+--- !u!136 &5075248498211191734
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -136,6 +137,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 2
   m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}

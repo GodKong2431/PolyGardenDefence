@@ -28,7 +28,7 @@ public class CannonBall : BulletBase
             }            
         }
         EffectManager.Instance.PlayEffect(_explosionName, transform.position, transform.rotation);
-        OffBullet();        
+        OffBullet();     
     }
 
     public void SetRadius(float explosionRadius)
